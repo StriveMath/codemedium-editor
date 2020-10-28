@@ -43,7 +43,6 @@
 import Blockly from 'blockly'
 import {mapState} from 'vuex'
 import STRING_WebmidiInterpreter from '!!raw-loader!!../assets/js/webmidi-interpreter.js'
-import webmidi from 'webmidi'
 import {defaults} from 'lodash'
 import Interpreter from 'js-interpreter'
 import midiblocksTheme from '../assets/toolboxes/theme'
@@ -55,10 +54,6 @@ import * as Babel from '@babel/standalone'
 export default {
   name: 'Blockly',
   props: ['options', 'toolbox', 'blocks', 'inline'],
-
-  computed: {
-    ...mapState(['devices'])
-  },
 
   data () {
     return {
@@ -318,15 +313,16 @@ export default {
 
       /**
        * Play a midi sound
+       * @todo Remove
        */
       acorn.setProperty(globalObject, '_playNote', acorn.createNativeFunction((dataStr) => {
         let data = JSON.parse(dataStr)
         
         if (data.device === 'all') {
-          Object.keys(this.devices.outputs).forEach(key => {
-            const output = webmidi.getOutputById(key)
-            output.playNote(data.note, data.channel)
-          })
+          // Object.keys(this.devices.outputs).forEach(key => {
+            // const output = webmidi.getOutputById(key)
+            // output.playNote(data.note, data.channel)
+          // })
         }
       }))
     },

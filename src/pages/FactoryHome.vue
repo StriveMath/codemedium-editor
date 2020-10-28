@@ -785,6 +785,7 @@ export default {
 
             /**
              * Dynamically generate MIDI device selector options
+             * @todo Remove
              */
             case 'field_midi_device_dropdown':
               console.log('CHECKING')

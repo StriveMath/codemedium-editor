@@ -69,25 +69,6 @@ export default function (/* { ssrContext } */) {
        */
       post: {
         isChecking: true
-      },
-      
-      /**
-       * Represents devices, categorized into inputs and outputs
-       */
-      devices: {
-        /**
-         * @see https://webmidijs.org/docs/v2.5.1/classes/Input.html#property_connection
-         * @prop connection
-         * @prop id
-         * @prop manufactuerer
-         * @prop name
-         * @prop state
-         * @prop type
-         * 
-         * @prop led {Boolean} True when a message is received, False a few frames later
-         */
-        inputs: {},
-        outputs: {}
       }
     },
 
