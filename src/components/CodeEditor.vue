@@ -1,5 +1,5 @@
 <template lang="pug">
-  MonacoEditor(ref='editor' v-model='code' language='javascript' :options='settings' @editorDidMount='editorDidMount' theme='shadesofpurple')
+  MonacoEditor(ref='editor' v-model='code' :language='extraOptions.language' :options='settings' @editorDidMount='editorDidMount' theme='shadesofpurple')
 </template>
 
 <script>
@@ -9,7 +9,6 @@ import {defaultsDeep} from 'lodash'
 /**
  * A Monaco (VSCode) editor
  * 
- * @prop options {Object} @see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditorconstructionoptions.html
  * @prop value {String} The initial code to use
  * @emits onCodeChange [{STR} code]
  */
@@ -18,18 +17,14 @@ export default {
 
   components: {MonacoEditor},
   props: {
-    options: {
-      type: Object,
-      default: () => {}
-    },
-    value: {
-      type: String,
-      default: ''
-    },
-    prefix: {
-      type: String,
-      default: ''
-    }
+    // @see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.ieditorconstructionoptions.html
+    options: {default: () => {}},
+    // Extra options that aren't part of the options object
+    extraOptions: {default: () => {
+      language: 'javascript'
+    }},
+    value: {default: ''},
+    prefix: {default: ''}
   },
 
   watch: {
@@ -60,6 +55,12 @@ export default {
   },
 
   methods: {
+    /**
+     * Setup the editor
+     * - Theme
+     * - Set options
+     * - Autoheight if extraOptions.autoheight
+     */
     editorDidMount (editor) {
       const monaco = this.$refs.editor.monaco
       this.$refs.editor.getMonaco().getModel().updateOptions({tabSize: 2})
@@ -107,6 +108,22 @@ export default {
           }
       })
       monaco.editor.setTheme('shadesofpurple')
+
+      // Autoheight
+      if (this.$props.extraOptions.autoheight) {
+        this.updateHeight()
+        this.$refs.editor.editor.onDidContentSizeChange(this.updateHeight)
+      }
+    },
+
+    /**
+     * Autoresize
+     */
+    updateHeight () {
+      const contentHeight = Math.min(1000, this.$refs.editor.editor.getContentHeight()) + 20
+
+      this.$refs.editor.$el.style.height = `${contentHeight}px`
+      this.$refs.editor.editor.layout({ height: contentHeight })
     }
   }
 }
