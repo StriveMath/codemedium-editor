@@ -3,7 +3,7 @@ import Handsfree from 'handsfree'
 import faceClick from './handsfree/faceClick'
 
 // Instantiate
-const handsfree = new Handsfree({
+const handsfree = window.handsfree = new Handsfree({
   assetsPath: document.location.origin + '/assets/',
   weboji: true
 })
