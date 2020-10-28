@@ -15,16 +15,6 @@ q-page.full-height
             q-toggle.no-select(color='negative' dark v-model='settings.isFacePointerActive')
               | Face Pointer
               span.q-ml-xs {{settings.isFacePointerActive ? 'enabled' : 'disabled'}}
-        q-card
-          q-card-section
-            .text-h6 Face Pointer Toggle
-          q-card-section
-            p Enable this to always show the Face Pointer toggle, allowing you to quickly switch it on/off from any screen
-          q-card-actions
-            q-space
-            q-toggle.no-select(color='negative' dark v-model='settings.isFacePointerToggleAlwaysOn')
-              | Face Pointer toggle always-on
-              span.q-ml-xs is {{settings.isFacePointerToggleAlwaysOn ? 'visible' : 'hidden'}}
 </template>
 
 <script>
@@ -36,15 +26,6 @@ export default {
 
   computed: {
     ...mapState(['settings'])
-  },
-
-  watch: {
-    settings: {
-      deep: true,
-      handler (settings) {
-        store.set('facepointer.alwaysOn', settings.isFacePointerToggleAlwaysOn)
-      }
-    }
   }
 }
 </script>

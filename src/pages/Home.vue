@@ -6,7 +6,7 @@ q-page
         q-card-section.text-center
           img.q-mt-lg.max-width-100(src='~assets/logo-title.png' style="width: 500px;")
           p.text-subtitle2.q-mt-lg A handsfree creative coding platform.<br>Build apps, make art, create bots, and more!
-          p.text-subtitle1 beta coming on 11/1
+          p.text-subtitle1 beta coming on 11/8
           p
             small (but feel free to explore anyways)
           p
