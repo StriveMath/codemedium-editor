@@ -1,7 +1,7 @@
 {
   "name": "midiblocks",
   "version": "0.2.0",
-  "description": "A visual MIDI mapping and scripting platform",
+  "description": "A handsfree creative coding platform. Build apps, make art, create bots, & more",
   "productName": "Midiblocks",
   "author": "Oz Ramos <midiblocks@gmail.com>",
   "private": true,
@@ -30,8 +30,7 @@
     "store": "^2.0.12",
     "uuid": "^8.3.0",
     "vue-monaco": "^1.2.1",
-    "vue2-touch-events": "^2.3.2",
-    "webmidi": "^2.5.1"
+    "vue2-touch-events": "^2.3.2"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",

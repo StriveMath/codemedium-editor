@@ -168,7 +168,7 @@ module.exports = function (ctx) {
       manifest: {
         name: `Midiblocks`,
         short_name: `Midiblocks`,
-        description: 'A visual MIDI mapping and scripting platform',
+        description: 'A handsfree creative coding platform. Build apps, make art, create bots, & more',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

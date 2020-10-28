@@ -24,11 +24,6 @@ q-layout(view='lHh Lpr lFf')
         | Handsfree
         span.gt-sm.q-ml-xs {{settings.isFacePointerActive ? 'enabled' : 'disabled'}}
 
-      //- MIDI toggle
-      q-toggle.no-select(color='negative' dark v-model='isMIDIActive')
-        | MIDI
-        span.gt-sm.q-ml-xs {{isMIDIActive ? 'enabled' : 'disabled'}}
-
   //- Sidebar
   q-drawer.main-sidebar.flex-drawer(v-model='leftDrawerOpen' show-if-above bordered :breakpoint='1400')
     q-toolbar.bg-primary.text-white
@@ -165,8 +160,6 @@ export default {
         warning: false
       },
 
-      isMIDIActive: false,
-      
       version: pkg.version,
       leftDrawerOpen: false,
       links: []

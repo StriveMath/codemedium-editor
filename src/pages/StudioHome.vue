@@ -69,7 +69,6 @@ import DialogLoadMidiblock from '../components/dialog/LoadMidiblock'
 import DialogDeleteMidiblock from '../components/dialog/DeleteMidiblock'
 import DialogConfirm from '../components/dialog/Confirm'
 import store from 'store'
-import webmidi from 'webmidi'
 import Blockly from 'blockly'
 import toolbox from '../assets/toolboxes/studio'
 import {v4 as uuidv4} from 'uuid'
@@ -97,35 +96,8 @@ export default {
     }
   },
 
-  /**
-   * Initialize WebMidi
-   */
   mounted () {
     set(window, 'app.$studio', this)
-
-    webmidi.enable((errors) => {
-      const inputs = {}
-      const outputs = {}
-      
-      this.errors.webmidi.enable = errors
-
-      // Map array to object using device.id
-      // @note Any new properties must be set below or Vue won't refresh/update
-      webmidi.inputs.forEach(input => {
-        inputs[input.id] = input
-        input.led = false
-        input.lastMessage = ''
-        this.bindInput(input.id)
-      })
-      webmidi.outputs.forEach(output => {
-        outputs[output.id] = output
-      })
-      
-      this.$store.commit('set', ['devices', {
-        inputs,
-        outputs
-      }])
-    })
 
     // Load workspace
     const currentStudio = store.get('currentStudio', {})
@@ -187,12 +159,6 @@ export default {
       
       hasLoaded: false,
       
-      errors: {
-        webmidi: {
-          enable: false
-        }
-      },
-
       // Current bookmark index
       currentBookmark: -1,
 
@@ -466,69 +432,6 @@ export default {
       })
 
       return categories
-    },
-
-    /**
-     * Binds individiual inputs
-     */
-    bindInput (id) {
-      const input = webmidi.getInputById(id)
-      const events = [/*'midimessage',*/ 'activesensing', 'channelaftertouch', 'channelmode', 'clock', 'continue', 'controlchange', 'keyaftertouch', 'noteoff', 'noteon', 'nrpn', 'pitchbend', 'programchange', 'reset', 'songposition', 'songselect', 'start', 'stop', 'sysex', 'timecode', 'tuningrequest', 'unknownsystemmessage']
-
-      events.forEach(eventName => {
-        input.addListener(eventName, 'all', ev => {
-          this.triggerEvent(eventName, ev)
-        })
-      })
-
-      // Toggle the light indicator
-      input.addListener('midimessage', 'all', e => {
-        this.$store.commit('set', [`devices.inputs['${e.target.id}'].led`, true])
-        setTimeout(() => {
-          this.$store.commit('set', [`devices.inputs['${e.target.id}'].led`, false])
-        }, 10)
-      })
-    },
-
-    /**
-     * Runs the code (if isPlaying)
-     */
-    triggerEvent (eventName, ev) {
-      // Run the code
-      let data = Object.assign({}, ev)
-      data.target = Object.assign({}, data.target)
-      delete data.target._midiInput
-      delete data.target._userHandlers
-      delete data.target.lastMessage
-      data = JSON.stringify(data)
-      
-      this.$refs.workspace.interpreter.appendCode(`triggerEvent('${eventName}', '${data}')`)
-      this.$refs.workspace.interpreter.run()
-
-      // Update device message
-      let midiName
-      let midiData
-      switch (eventName) {
-        case 'noteon':
-        case 'noteoff':
-          midiName = `[${ev.note.number}, ${ev.note.name}, ${ev.note.octave}]`
-          break;
-
-        case 'controlchange':
-          midiName = `[${ev.controller.number}, ${ev.controller.name}]`
-          break;
-      }
-      
-      this.$store.commit('set', [
-        `devices.inputs['${ev.target.id}'].lastMessage`,
-        `<div>
-          <strong>${eventName}</strong>:
-          <span>${midiName}</span>
-        </div>
-        <div>
-          <strong>data</strong>:
-          <span>[${ev.data[0]}, ${ev.data[1]}, ${ev.data[2]}]</span>
-        </div>`])
     }
   }
 }
