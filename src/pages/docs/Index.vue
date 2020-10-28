@@ -24,11 +24,11 @@ q-page.full-height
           q-card-section
             p Learn how to add Face Pointers and gesture recognition to your own projects (outside of Midiblocks) via CDN and NPM
           q-card-actions
-            q-btn.bg-secondary.full-width(:to='{name: "DocsHandsfree"}') Explore the docs
+            q-btn.bg-secondary.full-width(:to='{name: "DocsHandsfreeLanding"}') Explore the docs
 </template>
 
 <script>
 export default {
-  name: 'LibraryHome'
+  name: 'DocsLanding'
 }
 </script>

@@ -29,10 +29,16 @@ const routes = [
         component: () => import('pages/SettingsHome.vue')
       },
 
+      // Docs
       {
-        name: 'Handsfree.js Docs',
+        name: 'DocsLanding',
         path: '/docs',
         component: () => import('pages/docs/Index.vue')
+      },
+      {
+        name: 'DocsHandsfreeLanding',
+        path: '/docs/handsfree',
+        component: () => import('pages/docs/handsfree/Index.vue')
       }
     ]
   },
