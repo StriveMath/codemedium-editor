@@ -28,6 +28,14 @@ export default {
     ...mapState(['settings'])
   },
 
+  mounted () {
+    document.addEventListener('handsfree-handsfreeCalibrationEnded', this.saveCalibration)
+  },
+  
+  beforeDestroy () {
+    document.removeEventListener('handsfree-handsfreeCalibrationEnded', this.saveCalibration)
+  },
+
   methods: {
     /**
      * Starts calibration
@@ -38,6 +46,13 @@ export default {
         this.$handsfree.start()
       }
       this.$handsfree.weboji.calibrate()
+    },
+
+    /**
+     * Saves the calibration setting
+     */
+    saveCalibration () {
+      store.set('handsfree.calibration', this.$handsfree.plugin.facePointer.config)
     }
   }
 }
