@@ -20,6 +20,10 @@ export default {
     CodeEditor
   },
 
+  mounted () {
+    set(window, 'app.$page', this)
+  },
+
   data: () => ({
     code: {
       setup: {

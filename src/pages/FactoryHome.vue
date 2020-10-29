@@ -260,7 +260,7 @@ export default {
   },
 
   mounted () {
-    set(window, 'app.$factory', this)
+    set(window, 'app.$page', this)
     
     // Create workspace
     const currentFactory = store.get('currentFactory', {})
