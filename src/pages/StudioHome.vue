@@ -97,7 +97,7 @@ export default {
   },
 
   mounted () {
-    set(window, 'app.$studio', this)
+    set(window, 'app.$page', this)
 
     // Load workspace
     const currentStudio = store.get('currentStudio', {})

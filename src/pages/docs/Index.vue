@@ -29,6 +29,10 @@ q-page.full-height
 
 <script>
 export default {
-  name: 'DocsLanding'
+  name: 'DocsLanding',
+
+  mounted () {
+    set(window, 'app.$page', this)
+  }
 }
 </script>

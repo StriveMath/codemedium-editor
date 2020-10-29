@@ -15,6 +15,10 @@ q-page
 
 <script>
 export default {
-  name: 'PageHome'
+  name: 'PageHome',
+
+  mounted () {
+    set(window, 'app.$page', this)
+  }
 }
 </script>

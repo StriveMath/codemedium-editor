@@ -29,6 +29,7 @@ export default {
   },
 
   mounted () {
+    set(window, 'app.$page', this)
     document.addEventListener('handsfree-handsfreeCalibrationEnded', this.saveCalibration)
   },
   

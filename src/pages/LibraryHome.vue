@@ -19,6 +19,10 @@ import store from 'store'
 export default {
   name: 'LibraryHome',
 
-  components: {BlocksGrid, MidiblocksTable}
+  components: {BlocksGrid, MidiblocksTable},
+
+  mounted () {
+    set(window, 'app.$page', this)
+  }
 }
 </script>
