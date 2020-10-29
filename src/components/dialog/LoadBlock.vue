@@ -1,11 +1,11 @@
 <template lang="pug">
-q-dialog(v-model='value' maximized @input='$emit("input", $event)')
+q-dialog(:value='value' maximized @input='$emit("input", $event)')
   q-card.full-height.flex.column
     q-card-section(style='flex: 0 0 auto')
       .text-h6
         i.fas.fa-folder-open
         span.q-ml-md Load block
-    q-card-section
+    q-card-section.overflow-auto
       BlocksGrid
     q-card-actions(style='flex: 0 0 auto')
       q-btn.full-width(color='negative' @click='$emit("input", $event.target.value)') Cancel
