@@ -10,7 +10,7 @@ q-page.full-height
             q-space
             
             //- View change
-            q-list(dense style='flex: 0 0 auto')
+            q-list(style='flex: 0 0 auto')
               q-item(@click='splitter = 0' clickable)
                 q-item-section(avatar)
                   q-icon(:color='splitter === 0 ? "active" : "tertiary"' name='fas fa-window-maximize')
@@ -30,7 +30,7 @@ q-page.full-height
             q-space
 
             //- CRUD
-            q-list(dense style='flex: 0 0 auto')
+            q-list(style='flex: 0 0 auto')
               q-item(@click='saveBlock' clickable)
                 q-item-section(avatar)
                   q-icon(color='secondary' name='fas fa-save')
@@ -65,7 +65,7 @@ q-page.full-height
 
         .flex.column.min-height-inherit
           #preview(style='flex: 0 1 250px')
-          CodeEditor(ref='code' @onCodeChange='onCodeChange' :value='block.code')
+          CodeEditor(ref='code' @onCodeChange='onCodeChange' :value='block.code' :extraOptions='{language: "javascript"}')
 
     //- Workspace
     template(v-slot:before)
@@ -73,7 +73,7 @@ q-page.full-height
       Workspace.fill(ref='workspace' :toolbox='toolbox' :blocks='[]' :options='options' @change='workspaceEventHandler')
         //- View change
         template(v-slot:extraControls)
-          q-list(dense style='flex: 0 0 auto')
+          q-list(style='flex: 0 0 auto')
             q-item(@click='splitter = 0' clickable)
               q-item-section(avatar)
                 q-icon(:color='splitter === 0 ? "active" : "tertiary"' name='fas fa-window-maximize')
