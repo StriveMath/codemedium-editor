@@ -5,7 +5,7 @@ q-dialog(:value='value' maximized @input='$emit("input", $event)')
       .text-h6
         i.fas.fa-folder-open
         span.q-ml-md Load Midiblock
-    q-card-section
+    q-card-section.overflow-auto
       MidiblocksTable(:midiblocks='midiblocks')
     q-card-actions(style='flex: 0 0 auto')
       q-btn.full-width(color='negative' @click='$emit("input", $event.target.value)') Cancel

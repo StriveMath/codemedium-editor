@@ -1,16 +1,16 @@
 <template lang="pug">
-q-page.full-height
-  q-splitter#factory-splitter.min-height-inherit.q-pt-appbar(v-model='splitter' reverse :limits='[0, 100]')
+q-page(:style-fn='resizePage')
+  q-splitter#factory-splitter.max-height-inherit.q-pt-appbar(v-model='splitter' reverse :limits='[0, 100]')
     //- Block preview and code editor
     template(v-slot:after)
-      .flex.min-height-inherit(style='flex-wrap: nowrap')
-        .min-height-inherit.position-relative.workspace-toolbox(v-if='splitter === 100' style='flex: 0 0 auto')
-          .q-pa-sm.flex.column.min-height-inherit
+      .flex.full-height(style='flex-wrap: nowrap')
+        .max-height-inherit.position-relative.workspace-toolbox(v-if='splitter === 100' style='flex: 0 0 auto')
+          .q-pa-sm.flex.column.max-height-inherit
             //- @todo make this a component as it's used in workspace too
             q-space
             
             //- View change
-            q-list(dense style='flex: 0 0 auto')
+            q-list(style='flex: 0 0 auto')
               q-item(@click='splitter = 0' clickable)
                 q-item-section(avatar)
                   q-icon(:color='splitter === 0 ? "active" : "tertiary"' name='fas fa-window-maximize')
@@ -30,7 +30,7 @@ q-page.full-height
             q-space
 
             //- CRUD
-            q-list(dense style='flex: 0 0 auto')
+            q-list(style='flex: 0 0 auto')
               q-item(@click='saveBlock' clickable)
                 q-item-section(avatar)
                   q-icon(color='secondary' name='fas fa-save')
@@ -63,9 +63,9 @@ q-page.full-height
                 q-item-section.gt-sm
                   q-item-label.text-negative Delete Block
 
-        .flex.column.min-height-inherit
+        .flex.column.max-height-inherit(style='flex-wrap: nowrap')
           #preview(style='flex: 0 1 250px')
-          CodeEditor(ref='code' @onCodeChange='onCodeChange' :value='block.code')
+          CodeEditor.full-height(ref='code' @onCodeChange='onCodeChange' :value='block.code' :extraOptions='{language: "javascript"}')
 
     //- Workspace
     template(v-slot:before)
@@ -73,7 +73,7 @@ q-page.full-height
       Workspace.fill(ref='workspace' :toolbox='toolbox' :blocks='[]' :options='options' @change='workspaceEventHandler')
         //- View change
         template(v-slot:extraControls)
-          q-list(dense style='flex: 0 0 auto')
+          q-list(style='flex: 0 0 auto')
             q-item(@click='splitter = 0' clickable)
               q-item-section(avatar)
                 q-icon(:color='splitter === 0 ? "active" : "tertiary"' name='fas fa-window-maximize')
@@ -289,6 +289,11 @@ export default {
       ev.preventDefault()
       this.saveBlock()
     })
+
+    // Trigger resize (for editor)
+    this.$nextTick(() => {
+      window.dispatchEvent(new Event('resize'))
+    })
   },
 
   destroyed () {
@@ -383,6 +388,17 @@ export default {
       } else {
         this.createNewBlock()
       }
+    },
+
+    /**
+     * Use max height instead of max-height for page height
+     */
+    resizePage (offset) {
+      this.$nextTick(() => {
+        const height = `calc(100vh - ${offset}px)`
+        document.querySelector('.q-splitter__after').style.height = height
+      })
+      return { maxHeight: offset ? `calc(100vh - ${offset}px)` : '100vh' }
     },
 
     /**
@@ -896,4 +912,14 @@ table
 
     .blocklySvg
       height: 100%
+
+#factory-splitter > .q-splitter__panel
+  max-height: inherit
+
+// Splitter
+#factory-splitter
+  > .q-splitter__panel
+    min-height: inherit
+  > .q-splitter__after
+    overflow-y: hidden
 </style>

@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.min-height-inherit(v-touch:start='onTouch' v-touch:end='onTouch')
-  .min-height-inherit.position-relative.workspace-toolbox(
+.flex.max-height-inherit(v-touch:start='onTouch' v-touch:end='onTouch')
+  .max-height-inherit.position-relative.workspace-toolbox.overflow-auto(
     ref='quasarToolbox'
     :class='{blocklyToolboxDelete: !!blockBeingDragged}'
     v-if='!inline' style='flex: 0 0 auto'
@@ -8,7 +8,7 @@
     @mouseenter='isMouseInQuasarToolbox = true')
 
     //- Quasar Toolbox
-    .q-pa-sm.flex.column
+    .q-pa-sm.flex.column.no-wrap
       q-list
         template(v-for='category in toolbox')
           q-separator(v-if='category.tag === "sep"')
@@ -21,8 +21,8 @@
       q-list(style='flex: 0 0 auto')
         slot
 
-  .min-height-inherit.position-relative(@click='closeToolboxFLyout')
-    .blockly(style='min-height: inherit' :class='{"blockly-inline": inline}')
+  .max-height-inherit.position-relative(@click='closeToolboxFLyout')
+    .blockly(style='max-height: inherit' :class='{"blockly-inline": inline}')
       //- Blockly
       .blockly-wrap(ref='blockly')
       //- Hidden Blockly Toolbox

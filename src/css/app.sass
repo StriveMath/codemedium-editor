@@ -30,7 +30,11 @@ a
   &.column
     height: 100%
     flex-direction: column
+    flex-wrap: wrap
 
+    &.no-wrap
+      flex-wrap: nowrap !important
+  
   > *
     flex: 1
 
@@ -39,6 +43,8 @@ a
 
 .min-height-inherit
   min-height: inherit
+.max-height-inherit
+  max-height: inherit
 
 .position-relative
   position: relative
@@ -50,6 +56,9 @@ a
 .white-space-normal
   white-space: normal !important
   
+.overflow-auto
+  overflow: auto !important
+
 // Device lists
 .device-led.off
   transition: background .5s ease
