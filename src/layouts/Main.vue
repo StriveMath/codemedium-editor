@@ -1,5 +1,5 @@
 <template lang="pug">
-q-layout(view='lHh Lpr lFf')
+q-layout(ref='main' view='lHh Lpr lFf')
   //- Header
   q-header.main-header-left-pixel-gap-fix
     q-toolbar
@@ -169,6 +169,7 @@ export default {
   /**
    * Load and setup payload
    * - Binds global navigation shortcuts
+   * - Sets max height to force scrollbars into child elements
    */
   mounted () {
     this.$mousetrap.bind('s', ev => {

@@ -1,5 +1,5 @@
 <template lang="pug">
-q-page.full-height
+q-page(:style-fn='resizePage')
   Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler')
     q-item(@click='saveMidiblock' clickable)
       q-item-section(avatar)
@@ -313,7 +313,14 @@ export default {
     getSortedBookmarks () {
       return sortBy(this.$refs.workspace.blockly.getBlocksByType('bookmark'), [bookmark => bookmark.getFieldValue('index')])
     },
-    
+
+    /**
+     * Use max height instead of max-height for page height
+     */
+    resizePage (offset) {
+      return { maxHeight: offset ? `calc(100vh - ${offset}px)` : '100vh' }
+    },
+
     /**
      * Handles Workspace events
      */
