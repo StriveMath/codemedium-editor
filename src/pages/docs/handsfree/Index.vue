@@ -1,7 +1,11 @@
 <template lang="pug">
 q-page.full-height
   section.content
-    h1.text-center Handsfree.js
+    .text-center
+      h1 Handsfree.js
+      h3 coming soon
+      p.q-mb-xl
+        a(href='https://github.com/midiblocks/handsfree') https://github.com/midiblocks/handsfree
 
     .row.q-col-gutter-md.justify-center
       .col-12.col-md-9
