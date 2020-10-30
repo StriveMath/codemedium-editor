@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
   Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler')
-    q-item(@click='saveMidiblock' clickable)
+    q-item.q-mt-lg(@click='saveMidiblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
       q-item-section.gt-sm
@@ -127,10 +127,16 @@ export default {
       ev.preventDefault()
       this.saveMidiblock()
     })
+    this.$mousetrap.bindGlobal('ctrl+o', ev => {
+      ev.preventDefault()
+      this.dialog.loadBlock = true
+    })
   },
 
   destroyed () {
     this.$mousetrap.unbind('ctrl+s')
+    this.$mousetrap.unbind('ctrl+o')
+    
     this.$root.$off('studio.prevBookmark', this.prevBookmark)
     this.$root.$off('studio.nextBookmark', this.nextBookmark)
     for (let i = 0; i < 10; i++) {

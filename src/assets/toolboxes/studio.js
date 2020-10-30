@@ -3,7 +3,7 @@ export default [
     tag: 'category',
     category: 'event',
     name: 'Events',
-    icon: 'fas fa-gamepad',
+    icon: 'fas fa-satellite-dish',
     colour: '#fad000',
     children: []
   },
@@ -12,7 +12,7 @@ export default [
     category: 'keyboard_mouse',
     name: 'Keyboard & Mouse',
     icon: 'fas fa-keyboard',
-    colour: '#FF9D00',
+    colour: '#2ec4b6',
     children: []
   },  
   {

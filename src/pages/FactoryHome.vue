@@ -288,7 +288,7 @@ export default {
       ev.preventDefault()
       this.saveBlock()
     })
-    this.$mousetrap.bindGlobal('ctrl+l', ev => {
+    this.$mousetrap.bindGlobal('ctrl+o', ev => {
       ev.preventDefault()
       this.dialog.loadBlock = true
     })
@@ -301,7 +301,7 @@ export default {
 
   destroyed () {
     this.$mousetrap.unbind('ctrl+s')
-    this.$mousetrap.unbind('ctrl+l')
+    this.$mousetrap.unbind('ctrl+o')
   },
 
   methods: {
