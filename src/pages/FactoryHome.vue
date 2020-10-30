@@ -5,10 +5,7 @@ q-page(:style-fn='resizePage')
     template(v-slot:after)
       .flex.full-height(style='flex-wrap: nowrap')
         .max-height-inherit.position-relative.workspace-toolbox(v-if='splitter === 100' style='flex: 0 0 auto')
-          .q-pa-sm.flex.column.max-height-inherit
-            //- @todo make this a component as it's used in workspace too
-            q-space
-            
+          .q-pa-sm.flex.column.max-height-inherit.overflow-auto.no-wrap
             //- View change
             q-list(style='flex: 0 0 auto')
               q-item(@click='splitter = 0' clickable)
@@ -21,47 +18,46 @@ q-page(:style-fn='resizePage')
                   q-icon(:color='splitter === 50 ? "active" : "tertiary"' name='fas fa-columns')
                 q-item-section.gt-sm
                   q-item-label.text-tertiary Split view
-              q-item(@click='splitter = 100' clickable)
+              q-item.q-mb-lg(@click='splitter = 100' clickable)
                 q-item-section(avatar)
                   q-icon(:color='splitter === 100 ? "active" : "tertiary"' name='fas fa-code')
                 q-item-section.gt-sm
                   q-item-label.text-tertiary Code view
 
-            q-space
-
             //- CRUD
-            q-list(style='flex: 0 0 auto')
-              q-item(@click='saveBlock' clickable)
-                q-item-section(avatar)
-                  q-icon(color='secondary' name='fas fa-save')
-                q-item-section.gt-sm
-                  q-badge(v-if='isUnsaved' color='negative' floating) Unsaved changes
-                  q-item-label.text-secondary Save Block
-              q-item.q-mb-lg(@click='showSettings' clickable)
-                q-item-section(avatar)
-                  q-icon(name='fas fa-cogs')
-                q-item-section.gt-sm
-                  q-item-label Block Settings
-              q-item(@click='dialog.confirmNew = true' clickable)
-                q-item-section(avatar)
-                  q-icon(color='positive' name='fas fa-file')
-                q-item-section.gt-sm
-                  q-item-label.text-positive New Block
-              q-item(@click='dialog.loadBlock = true' clickable)
-                q-item-section(avatar)
-                  q-icon(color='positive' name='fas fa-folder-open')
-                q-item-section.gt-sm
-                  q-item-label.text-positive Load Block
-              q-item.q-mb-lg(@click='dialog.remixConfirm = true' clickable)
-                q-item-section(avatar)
-                  q-icon(color='positive' name='fas fa-copy')
-                q-item-section.gt-sm
-                  q-item-label.text-positive Remix Block
-              q-item(@click='dialog.deleteConfirm = true' clickable)
-                q-item-section(avatar)
-                  q-icon(color='negative' name='fas fa-trash')
-                q-item-section.gt-sm
-                  q-item-label.text-negative Delete Block
+            q-item(@click='saveBlock' clickable)
+              q-item-section(avatar)
+                q-icon(color='secondary' name='fas fa-save')
+              q-item-section.gt-sm
+                q-badge(v-if='isUnsaved' color='negative' floating) Unsaved changes
+                q-item-label.text-secondary Save Block
+            q-item.q-mb-lg(@click='showSettings' clickable)
+              q-item-section(avatar)
+                q-icon(name='fas fa-cogs')
+              q-item-section.gt-sm
+                q-item-label Block Settings
+
+            q-item(@click='dialog.confirmNew = true' clickable)
+              q-item-section(avatar)
+                q-icon(color='positive' name='fas fa-file')
+              q-item-section.gt-sm
+                q-item-label.text-positive New Block
+            q-item(@click='dialog.loadBlock = true' clickable)
+              q-item-section(avatar)
+                q-icon(color='positive' name='fas fa-folder-open')
+              q-item-section.gt-sm
+                q-item-label.text-positive Load Block
+            q-item.q-mb-lg(@click='dialog.remixConfirm = true' clickable)
+              q-item-section(avatar)
+                q-icon(color='positive' name='fas fa-copy')
+              q-item-section.gt-sm
+                q-item-label.text-positive Remix Block
+
+            q-item(@click='dialog.deleteConfirm = true' clickable)
+              q-item-section(avatar)
+                q-icon(color='negative' name='fas fa-trash')
+              q-item-section.gt-sm
+                q-item-label.text-negative Delete Block
 
         .flex.column.max-height-inherit(style='flex-wrap: nowrap')
           #preview(style='flex: 0 1 250px')
@@ -74,7 +70,7 @@ q-page(:style-fn='resizePage')
         //- View change
         template(v-slot:extraControls)
           q-list(style='flex: 0 0 auto')
-            q-item(@click='splitter = 0' clickable)
+            q-item.q-mt-lg(@click='splitter = 0' clickable)
               q-item-section(avatar)
                 q-icon(:color='splitter === 0 ? "active" : "tertiary"' name='fas fa-window-maximize')
               q-item-section.gt-sm
@@ -84,46 +80,47 @@ q-page(:style-fn='resizePage')
                 q-icon(:color='splitter === 50 ? "active" : "tertiary"' name='fas fa-columns')
               q-item-section.gt-sm
                 q-item-label.text-tertiary Split view
-            q-item(@click='splitter = 100' clickable)
+            q-item.q-mb-lg(@click='splitter = 100' clickable)
               q-item-section(avatar)
                 q-icon(:color='splitter === 100 ? "active" : "tertiary"' name='fas fa-code')
               q-item-section.gt-sm
                 q-item-label.text-tertiary Code view
 
-          q-space
 
-        //- CRUD
-        q-item(@click='saveBlock' clickable)
-          q-item-section(avatar)
-            q-icon(color='secondary' name='fas fa-save')
-          q-item-section.gt-sm
-            q-badge(v-if='isUnsaved' color='negative' floating) Unsaved changes
-            q-item-label.text-secondary Save Block
-        q-item.q-mb-lg(@click='showSettings' clickable)
-          q-item-section(avatar)
-            q-icon(name='fas fa-cogs')
-          q-item-section.gt-sm
-            q-item-label Block Settings
-        q-item(@click='onNewBlock' clickable)
-          q-item-section(avatar)
-            q-icon(color='positive' name='fas fa-file')
-          q-item-section.gt-sm
-            q-item-label.text-positive New Block
-        q-item(@click='dialog.loadBlock = true' clickable)
-          q-item-section(avatar)
-            q-icon(color='positive' name='fas fa-folder-open')
-          q-item-section.gt-sm
-            q-item-label.text-positive Load Block
-        q-item.q-mb-lg(@click='dialog.remixConfirm = true' clickable)
-          q-item-section(avatar)
-            q-icon(color='positive' name='fas fa-copy')
-          q-item-section.gt-sm
-            q-item-label.text-positive Remix Block
-        q-item(@click='dialog.deleteConfirm = true' clickable)
-          q-item-section(avatar)
-            q-icon(color='negative' name='fas fa-trash')
-          q-item-section.gt-sm
-            q-item-label.text-negative Delete Block
+          //- CRUD
+          q-item(@click='saveBlock' clickable)
+            q-item-section(avatar)
+              q-icon(color='secondary' name='fas fa-save')
+            q-item-section.gt-sm
+              q-badge(v-if='isUnsaved' color='negative' floating) Unsaved changes
+              q-item-label.text-secondary Save Block
+          q-item.q-mb-lg(@click='showSettings' clickable)
+            q-item-section(avatar)
+              q-icon(name='fas fa-cogs')
+            q-item-section.gt-sm
+              q-item-label Block Settings
+
+          q-item(@click='onNewBlock' clickable)
+            q-item-section(avatar)
+              q-icon(color='positive' name='fas fa-file')
+            q-item-section.gt-sm
+              q-item-label.text-positive New Block
+          q-item(@click='dialog.loadBlock = true' clickable)
+            q-item-section(avatar)
+              q-icon(color='positive' name='fas fa-folder-open')
+            q-item-section.gt-sm
+              q-item-label.text-positive Load Block
+          q-item.q-mb-lg(@click='dialog.remixConfirm = true' clickable)
+            q-item-section(avatar)
+              q-icon(color='positive' name='fas fa-copy')
+            q-item-section.gt-sm
+              q-item-label.text-positive Remix Block
+
+          q-item(@click='dialog.deleteConfirm = true' clickable)
+            q-item-section(avatar)
+              q-icon(color='negative' name='fas fa-trash')
+            q-item-section.gt-sm
+              q-item-label.text-negative Delete Block
 
   //- Modals
   DialogConfirm(v-model='dialog.confirmNew'
@@ -284,10 +281,16 @@ export default {
     // Listeners
     this.$refs.workspace.blockly.addChangeListener(Blockly.Events.disableOrphans)
 
-    // Autosave with CTRL+S
+    /**
+     * Keyboard shortcuts
+     */
     this.$mousetrap.bindGlobal('ctrl+s', ev => {
       ev.preventDefault()
       this.saveBlock()
+    })
+    this.$mousetrap.bindGlobal('ctrl+l', ev => {
+      ev.preventDefault()
+      this.dialog.loadBlock = true
     })
 
     // Trigger resize (for editor)
@@ -298,6 +301,7 @@ export default {
 
   destroyed () {
     this.$mousetrap.unbind('ctrl+s')
+    this.$mousetrap.unbind('ctrl+l')
   },
 
   methods: {

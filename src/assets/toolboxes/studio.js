@@ -9,20 +9,12 @@ export default [
   },
   {
     tag: 'category',
-    category: 'event_modifier',
-    name: 'Event Modifiers',
-    icon: 'fas fa-filter',
+    category: 'keyboard_mouse',
+    name: 'Keyboard & Mouse',
+    icon: 'fas fa-keyboard',
     colour: '#FF9D00',
     children: []
   },  
-  {
-    tag: 'category',
-    category: 'event_send',
-    name: 'Send Event',
-    icon: 'fas fa-broadcast-tower',
-    colour: '#2EC4B6',
-    children: []
-  },
   {
     tag: 'category',
     category: 'misc',
