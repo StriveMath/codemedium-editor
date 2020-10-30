@@ -28,11 +28,13 @@ Blockly.Blocks['factory_base'] = {
 
     // Input Type & Connections
     dropdown = new Blockly.FieldDropdown([
-        ['automatic inputs', 'AUTO'],
-        ['external inputs', 'EXT'],
-        ['inline inputs', 'INT']])
+      ['automatic inputs', 'AUTO'],
+      ['external inputs', 'EXT'],
+      ['inline inputs', 'INT']])
     this.appendDummyInput()
         .appendField(dropdown, 'INLINE')
+
+    // Connections
     dropdown = new Blockly.FieldDropdown([
         ['no connections', 'NONE'],
         ['← left output', 'LEFT'],
@@ -53,7 +55,7 @@ Blockly.Blocks['factory_base'] = {
         .appendField('styles')
     setTimeout(() => {
       if (!this.getInputTargetBlock('COLOR')) {
-        this.connectOutputShadow('COLOR', 'style_color')
+        this.connectOutputShadow_('COLOR', 'style_color')
       }
     }, 0)
 
@@ -82,17 +84,17 @@ Blockly.Blocks['factory_base'] = {
   spawnOutputShadow_: function(option) {
     switch (option) {
       case 'LEFT':
-        this.connectOutputShadow('OUTPUTTYPE')
+        this.connectOutputShadow_('OUTPUTTYPE')
       break
       case 'TOP':
-        this.connectOutputShadow('TOPTYPE')
+        this.connectOutputShadow_('TOPTYPE')
       break
       case 'BOTTOM':
-        this.connectOutputShadow('BOTTOMTYPE')
+        this.connectOutputShadow_('BOTTOMTYPE')
       break
       case 'BOTH':
-        this.connectOutputShadow('TOPTYPE')
-        this.connectOutputShadow('BOTTOMTYPE')
+        this.connectOutputShadow_('TOPTYPE')
+        this.connectOutputShadow_('BOTTOMTYPE')
       break
     }
   },
@@ -102,12 +104,14 @@ Blockly.Blocks['factory_base'] = {
    * @param {String} outputType 
    * @param {String} fieldType 
    */
-  connectOutputShadow: function(outputType, fieldType = 'type_null') {
-    let type = this.workspace.newBlock(fieldType)
+  connectOutputShadow_: function(outputType, fieldType = 'type_null') {
+    let type = this.workspace.newBlock('type_null') //this.workspace.newBlock(fieldType)
     type.setShadow(true)
     type.outputConnection.connect(this.getInput(outputType).connection)
     type.initSvg()
-    type.render()
+    if (this.rendered) {
+      type.render()
+    }
   },
 
   updateShape_: function(option) {
