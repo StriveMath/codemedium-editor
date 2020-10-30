@@ -12,6 +12,7 @@ q-page.full-height
 
 <script>
 import CodeEditor from '../../../components/CodeEditor'
+import {set} from 'lodash'
 
 export default {
   name: 'DocsHandsfreeLanding',

@@ -14,6 +14,8 @@ q-page
 </template>
 
 <script>
+import {set} from 'lodash'
+
 export default {
   name: 'PageHome',
 
