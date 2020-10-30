@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import {set} from 'lodash'
+
 export default {
   name: 'Error404',
 

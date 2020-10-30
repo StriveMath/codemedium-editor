@@ -20,6 +20,7 @@ q-page.full-height
 <script>
 import {mapState} from 'vuex'
 import store from 'store'
+import {set} from 'lodash'
 
 export default {
   name: 'SettingsHome',

@@ -60,6 +60,11 @@ export default {
     set(window, 'app.version', this.$v)
     set(window, 'app.$', this)
 
+    // Check version
+    if (!localStorage.version) {
+      localStorage.clear()
+    }
+
     // Load default workspace if no localstorage
     if (!localStorage.blocks) {
       Object.keys(defaultWorkspace.localStorage).forEach(key => {

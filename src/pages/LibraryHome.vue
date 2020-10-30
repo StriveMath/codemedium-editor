@@ -14,7 +14,7 @@ q-page.full-height
 import BlocksGrid from '../components/library/BlocksGrid'
 import MidiblocksTable from '../components/library/MidiblocksTable'
 import {mapState} from 'vuex'
-import store from 'store'
+import {set} from 'lodash'
 
 export default {
   name: 'LibraryHome',

@@ -3,26 +3,18 @@ export default [
     tag: 'category',
     category: 'event',
     name: 'Events',
-    icon: 'fas fa-gamepad',
+    icon: 'fas fa-satellite-dish',
     colour: '#fad000',
     children: []
   },
   {
     tag: 'category',
-    category: 'event_modifier',
-    name: 'Event Modifiers',
-    icon: 'fas fa-filter',
-    colour: '#FF9D00',
+    category: 'keyboard_mouse',
+    name: 'Keyboard & Mouse',
+    icon: 'fas fa-keyboard',
+    colour: '#2ec4b6',
     children: []
   },  
-  {
-    tag: 'category',
-    category: 'event_send',
-    name: 'Send Event',
-    icon: 'fas fa-broadcast-tower',
-    colour: '#2EC4B6',
-    children: []
-  },
   {
     tag: 'category',
     category: 'misc',

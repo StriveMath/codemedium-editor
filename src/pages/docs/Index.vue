@@ -28,6 +28,8 @@ q-page.full-height
 </template>
 
 <script>
+import {set} from 'lodash'
+
 export default {
   name: 'DocsLanding',
 
