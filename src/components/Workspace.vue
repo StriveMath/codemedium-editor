@@ -8,7 +8,7 @@
     @mouseenter='isMouseInQuasarToolbox = true')
 
     //- Quasar Toolbox
-    .q-pa-sm.flex.column.no-wrap
+    .q-pa-sm.flex.column.no-wrap(:class='{hidden: options.hideToolbox}')
       q-list
         template(v-for='category in toolbox')
           q-separator(v-if='category.tag === "sep"')
@@ -53,7 +53,7 @@ import * as Babel from '@babel/standalone'
  */
 export default {
   name: 'Blockly',
-  props: ['options', 'toolbox', 'blocks', 'inline'],
+  props: ['options', 'toolbox', 'blocks', 'inline', 'autoload'],
 
   data () {
     return {
@@ -91,6 +91,7 @@ export default {
     let options = this.$props.options || {}
     options = defaults(this.$props.options, {
       renderer: 'zelos',
+      hideToolbox: false,
       sounds: false,
       toolbox: this.$refs.toolbox,
       media: 'media/',
@@ -116,6 +117,19 @@ export default {
 
     // Add blocks
     this.addBlocks()
+
+    // Autoload
+    if (this.autoload) {
+      Blockly.Xml.domToWorkspace(
+        Blockly.Xml.textToDom(this.autoload),
+        this.blockly
+      )
+    }
+
+    // Autozoom
+    if (options.zoomToFit) {
+      this.blockly.zoomToFit()
+    }
 
     // Handsfree
     document.addEventListener('handsfree-blockly-click', this.onBlocklyHandsfreeClick)
