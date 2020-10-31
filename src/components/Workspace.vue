@@ -53,7 +53,7 @@ import * as Babel from '@babel/standalone'
  */
 export default {
   name: 'Blockly',
-  props: ['options', 'toolbox', 'blocks', 'inline'],
+  props: ['options', 'toolbox', 'blocks', 'inline', 'autoload'],
 
   data () {
     return {
@@ -116,6 +116,14 @@ export default {
 
     // Add blocks
     this.addBlocks()
+
+    // Autoload
+    if (this.autoload) {
+      Blockly.Xml.domToWorkspace(
+        Blockly.Xml.textToDom(this.autoload),
+        this.blockly
+      )
+    }
 
     // Handsfree
     document.addEventListener('handsfree-blockly-click', this.onBlocklyHandsfreeClick)
