@@ -8,7 +8,7 @@
     @mouseenter='isMouseInQuasarToolbox = true')
 
     //- Quasar Toolbox
-    .q-pa-sm.flex.column.no-wrap
+    .q-pa-sm.flex.column.no-wrap(:class='{hidden: options.hideToolbox}')
       q-list
         template(v-for='category in toolbox')
           q-separator(v-if='category.tag === "sep"')
@@ -91,6 +91,7 @@ export default {
     let options = this.$props.options || {}
     options = defaults(this.$props.options, {
       renderer: 'zelos',
+      hideToolbox: false,
       sounds: false,
       toolbox: this.$refs.toolbox,
       media: 'media/',

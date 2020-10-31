@@ -42,7 +42,7 @@ q-page
             ul.tight
               li (<span class="text-negative">Web only</span>) <span class="text-info">Move</span> the <span class="text-negative">Face Pointer</span> above or below a scroll area to scroll in that direction (see below)
               li <span class="text-negative">Click</span> by <span class="text-info">smiling</span> or <span class="text-info">smirking to either side</span>
-            p <span class="text-negative">Midiblocks </span> <span class="text-info">Face Pointer</span> is powered by our gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
+            p <span class="text-negative">Midiblock's </span> <span class="text-info">Face Pointer</span> is powered by our gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
           q-card-actions
             q-btn.bg-secondary.full-width(:disabled='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")') Try it, enable Handsfree mode
 
@@ -57,11 +57,11 @@ q-page
                 q-card.bg-inactive
                   q-card-section
                     h3 Try it!
-                    p <span class='text-info'>Snap</span> these <span class='text-negative'>two blocks</span> together to create a small Midiblock that responds to the selected event by emitting the selected key.
+                    p <span class='text-info'>Snap</span> these <span class='text-negative'>two blocks</span> together to create a small <span class='text-negative'>Midiblock</span> that <span class='text-info'>responds</span> to the <span class='text-info'>selected event</span> by emitting the <span class='text-negative'>selected key</span>.
               .col-12.col-md-6
                 q-card.bg-inactive
                   q-card-section(style='height: 300px')
-                    Workspace.full-height(:toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]')
+                    Workspace.full-height(:toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options')
 </template>
 
 <script>
@@ -87,6 +87,7 @@ export default {
     return {
       toolbox: this.getToolbox(),
       workspaces: {
+        options: {hideToolbox: true},
         simpleDemo: '<xml xmlns="https://developers.google.com/blockly/xml"><block type="handsfree_gesture" id="QoTbk/,sPtuU1-TT0k2m" x="225" y="125"><field name="gesture">right_eyebrow</field></block><block type="keyboardtapkey" id="S9]!S21$c%0~kooT[$Pn" disabled="true" x="577" y="129"><field name="key">space</field></block></xml>'
       }
     }
