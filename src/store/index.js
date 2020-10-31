@@ -29,7 +29,7 @@ export default function (/* { ssrContext } */) {
        * Settings
        */
       settings: {
-        isFacePointerActive: false //store.get('facepointer.active', false)
+        isFacePointerActive: false
       },
 
       /**

@@ -1,15 +1,15 @@
 <template lang="pug">
 q-page
   section.content.flex.flex-center
-    .row.q-col-gutter-md
+    .row.q-col-gutter-lg
       .col-12.col-sm-6
         q-card
           q-card-section.text-center
             img.q-mt-lg.max-width-100(src='~assets/logo-title.png')
-            p.text-subtitle2.q-mt-lg.text-info A platform for doing things handsfree
+            p.text-subtitle2.q-mt-lg A platform for <span class="text-negative">doing</span> things <span class="text-info">handsfree</span>
             div.text-subtitle1 
-              strong check back
-              span  on around <span class="text-negative">11/8</span> for beta!
+              strong 📅 This project is a work in progress.
+              div Please check back on around <span class="text-negative">11/8</span> for beta!
           
           q-card-section
             q-card.bg-inactive
@@ -27,10 +27,22 @@ q-page
       .col-12.col-sm-6
         q-card
           q-card-section.text-subtitle1
-            p.q-mt-lg <span class="text-negative">Midiblocks</span> are little apps that help you do different things with <span class="text-info">gestures</span>. By default, you get a <span class="text-negative">Face Pointer</span> that you can control with <span class="text-info">your face</span>.
+            p <span class="text-negative">Midiblocks</span> are little apps that help you do different things with <span class="text-info">gestures</span>. By default, you get a <span class="text-negative">Face Pointer</span> that you can control with <span class="text-info">your face</span>.
             p <small>(and soon other methods too)</small>
             q-video(:ratio='16/9' src='//www.youtube.com/embed/8FQGv_j_lZo')
             //- q-video(:ratio='16/9' src='//www.youtube.com/embed/bcDOv09-5RI')
+
+  section.content.q-mt-xl
+    .row.q-col-gutter-lg.justify-center
+      .col-12.col-sm-6
+        q-card
+          q-card-section.text-subtitle1
+            h2 Face Pointers
+            p A <span class="text-negative">Face Pointer</span> is a pointer that is controlled with <span class="text-info">head movements</span> and <span class="text-info">face gestures</span> through a <span class="text-negative">webcam</span>. By default, the <span class="text-negative">Face Pointer</span> that comes with <span class="text-negative">Midiblocks</span> has the following features:
+            ul.tight
+              li (<span class="text-negative">Web only</span>) <span class="text-info">Move</span> the <span class="text-negative">Face Pointer</span> above or below a scroll area to scroll in that direction (see below)
+              li <span class="text-negative">Click</span> by <span class="text-info">smiling</span> or <span class="text-info">smirking to either side</span>
+            q-img(:ratio='16/9' src='https://media0.giphy.com/media/Iv2aSMS0QTy2P5JNCX/giphy.gif')
 </template>
 
 <script>
