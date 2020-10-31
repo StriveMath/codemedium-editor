@@ -124,6 +124,7 @@ export default {
         Blockly.Xml.textToDom(this.autoload),
         this.blockly
       )
+      this.blockly.zoomToFit()
     }
 
     // Handsfree

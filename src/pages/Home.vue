@@ -58,6 +58,7 @@ q-page
                   q-card-section
                     h3 Try it!
                     p <span class='text-info'>Snap</span> these <span class='text-negative'>two blocks</span> together to create a small <span class='text-negative'>Midiblock</span> that <span class='text-info'>responds</span> to the <span class='text-info'>selected event</span> by emitting the <span class='text-negative'>selected key</span>.
+                    p <span class='text-negative'>Midiblocks</span> can be composed of two blocks or dozens or even hundreds of blocks. <span class='text-negative'>Midiblocks</span> comes with a <router-link :to='{name: "Library"}'>growing Library</router-link> of Blocks, but you can create new ones using JavaScript and any library that runs in the browser!
               .col-12.col-md-6
                 q-card.bg-inactive
                   q-card-section(style='height: 300px')
@@ -87,7 +88,13 @@ export default {
     return {
       toolbox: this.getToolbox(),
       workspaces: {
-        options: {hideToolbox: true},
+        options: {
+          hideToolbox: true,
+          trashcan: false,
+          zoom: {
+            controls: false
+          }
+        },
         simpleDemo: '<xml xmlns="https://developers.google.com/blockly/xml"><block type="handsfree_gesture" id="QoTbk/,sPtuU1-TT0k2m" x="225" y="125"><field name="gesture">right_eyebrow</field></block><block type="keyboardtapkey" id="S9]!S21$c%0~kooT[$Pn" disabled="true" x="577" y="129"><field name="key">space</field></block></xml>'
       }
     }
