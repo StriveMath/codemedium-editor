@@ -27,23 +27,32 @@ q-page
       .col-12.col-sm-6
         q-card
           q-card-section.text-subtitle1
+            q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif')
             p <span class="text-negative">Midiblocks</span> are little apps that help you do different things with <span class="text-info">gestures</span>. By default, you get a <span class="text-negative">Face Pointer</span> that you can control with <span class="text-info">your face </span> <small>(and soon other methods too)</small>.
             p But that's just to get you started! You can add more functionality with the handsfree visual code in the <router-link :to='{name: "Studio"}'>Midiblocks Studio</router-link>.
-            //- q-video(:ratio='16/9' src='//www.youtube.com/embed/8FQGv_j_lZo')
-            q-video(:ratio='16/9' src='//www.youtube.com/embed/bcDOv09-5RI')
 
   section.content.q-mt-xl
     .row.q-col-gutter-lg.justify-center
       .col-12.col-sm-6
         q-card
           q-card-section.text-subtitle1
-            h2 Face Pointers
+            h2 About <span class='text-negative'>Face Pointers</span>
+            q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/Iv2aSMS0QTy2P5JNCX/giphy.gif')
             p A <span class="text-negative">Face Pointer</span> is a pointer that is controlled with <span class="text-info">head movements</span> and <span class="text-info">face gestures</span> through a <span class="text-negative">webcam</span>. By default, the <span class="text-negative">Face Pointer</span> that comes with <span class="text-negative">Midiblocks</span> has the following features:
             ul.tight
               li (<span class="text-negative">Web only</span>) <span class="text-info">Move</span> the <span class="text-negative">Face Pointer</span> above or below a scroll area to scroll in that direction (see below)
               li <span class="text-negative">Click</span> by <span class="text-info">smiling</span> or <span class="text-info">smirking to either side</span>
             p <span class="text-negative">Midiblocks </span> <span class="text-info">Face Pointer</span> is powered by our gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
-            q-img(:ratio='16/9' src='https://media0.giphy.com/media/Iv2aSMS0QTy2P5JNCX/giphy.gif')
+          q-card-actions
+            q-btn.bg-secondary.full-width(@click='$store.dispatch("toggleHandsfree")') Try it, enable Handsfree mode
+
+  section.content.q-mt-xl
+    .row.q-col-gutter-lg.justify-center
+      .col-12.col-sm-6
+        q-card
+          q-card-section.text-subtitle1
+            h2 Map <span class='text-info'>face gestures</span> to the <span class='text-negative'>keyboard</span> and <span class='text-negative'>mouse</span>
+
 </template>
 
 <script>

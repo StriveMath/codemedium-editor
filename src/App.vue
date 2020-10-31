@@ -30,7 +30,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['reloads', 'settings'])
+    ...mapState(['reloads'])
   },
 
   data () {
@@ -38,18 +38,6 @@ export default {
       // Will display different modals based on error messages
       errors: {
         generic: ''
-      }
-    }
-  },
-
-  watch: {
-    /**
-     * Toggle Handsfree and persist the state
-     */
-    settings: {
-      deep: true,
-      handler (settings) {
-        this.toggleHandsfree()
       }
     }
   },
@@ -99,9 +87,6 @@ export default {
       this.$store.commit('push', ['eventLogs.warn', {log: args[0]}])
       warn(...args)
     }
-
-    // APIs
-    this.toggleHandsfree()
   },
 
   destroyed () {
@@ -116,15 +101,6 @@ export default {
     goHome () {
       this.$router.push({name: 'Home'})
       this.errors.generic = ''
-    },
-
-    /**
-     * Toggle Handsfree on/off and persist the state
-     */
-    toggleHandsfree () {
-      this.settings.isFacePointerActive && this.$handsfree.start()
-      !this.settings.isFacePointerActive && this.$handsfree.isLooping && this.$handsfree.stop()
-      store.set('facepointer.active', this.settings.isFacePointerActive)
     }
   }
 }
