@@ -11,6 +11,21 @@ h2
 a
   color: $secondary
 
+ul
+  list-style: none
+  padding-left: 1.5em
+  
+  li
+    padding-left: 1em
+    margin-bottom: 1em
+    
+    &:before
+      position: absolute
+      margin-left: -1em
+      content: "•"
+      font-size: 2em
+      color: $negative
+  
 // Helpers
 .no-select
   user-select: none
