@@ -89,6 +89,7 @@ export default {
       toolbox: this.getToolbox(),
       workspaces: {
         options: {
+          zoomToFit: true,
           hideToolbox: true,
           trashcan: false,
           zoom: {

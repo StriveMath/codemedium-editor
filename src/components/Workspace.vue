@@ -124,6 +124,10 @@ export default {
         Blockly.Xml.textToDom(this.autoload),
         this.blockly
       )
+    }
+
+    // Autozoom
+    if (options.zoomToFit) {
       this.blockly.zoomToFit()
     }
 
