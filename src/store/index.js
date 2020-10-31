@@ -100,6 +100,23 @@ export default function (/* { ssrContext } */) {
       tally (state, path) {
         set(state, path, get(state, path) + 1)
       }
+    },
+
+    actions: {
+      /**
+       * Toggles the Handsfree mode on/off
+       */
+      toggleHandsfree ({commit}, callback) {
+        commit('set', ['settings.isFacePointerActive', !window.handsfree.isLooping])
+
+        if (window.handsfree.isLooping) {
+          window.handsfree.stop()
+        } else {
+          window.handsfree.start(() => {
+            callback && callback()
+          })
+        }
+      }
     }
   })
 

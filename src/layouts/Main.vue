@@ -20,9 +20,9 @@ q-layout(ref='main' view='lHh Lpr lFf')
         q-space
 
       //- Handsfree toggle
-      q-toggle.no-select(color='negative' dark v-model='settings.isFacePointerActive')
+      q-toggle.no-select(color='negative' dark :value='settings.isFacePointerActive' @input='$store.dispatch("toggleHandsfree")')
         | Handsfree
-        span.gt-sm.q-ml-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
+        span.q-ml-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
 
   //- Sidebar
   q-drawer.main-sidebar.flex-drawer(v-model='leftDrawerOpen' show-if-above bordered :breakpoint='1400')

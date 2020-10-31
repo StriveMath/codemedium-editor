@@ -44,9 +44,17 @@ export default {
      * - Automatically starts Handsfree.js if not started
      */
     calibrate () {
-      if (!this.$handsfree.isStarted) {
-        this.$handsfree.start()
+      if (!this.$handsfree.isLooping) {
+        this.$store.dispatch('toggleHandsfree', () => {
+          this.$handsfree.weboji.calibrate()
+        })
+      } else {
+        this.$handsfree.weboji.calibrate()
       }
+    },
+
+    onModelLoaded () {
+      console.log('modelLoaded')
       this.$handsfree.weboji.calibrate()
     },
 
