@@ -1,6 +1,7 @@
 <template lang="pug">
 q-page
   section.content.flex.flex-center
+    //- Hero
     .row.q-col-gutter-lg
       .col-12.col-md-6
         q-card
@@ -31,6 +32,7 @@ q-page
             p <span class="text-negative">Midiblocks</span> are little apps that help you do different things with <span class="text-info">gestures</span>. By default, you get a <span class="text-negative">Face Pointer</span> that you can control with <span class="text-info">your face </span> <small>(and soon other methods too)</small>.
             p But that's just to get you started! You can add more functionality with the handsfree visual code in the <router-link :to='{name: "Studio"}'>Midiblocks Studio</router-link>.
 
+  //- About Face Pointers
   section.content.q-mt-xl
     .row.q-col-gutter-lg.justify-center
       .col-12.col-md-6
@@ -42,10 +44,11 @@ q-page
             ul.tight
               li (<span class="text-negative">Web only</span>) <span class="text-info">Move</span> the <span class="text-negative">Face Pointer</span> above or below a scroll area to scroll in that direction (see below)
               li <span class="text-negative">Click</span> by <span class="text-info">smiling</span> or <span class="text-info">smirking to either side</span>
-            p <span class="text-negative">Midiblock's </span> <span class="text-info">Face Pointer</span> is powered by our gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
+            p <span class="text-negative">Midiblock's </span> <span class="text-info">Face Pointer</span> is powered by my gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
           q-card-actions
             q-btn.bg-secondary.full-width(:disabled='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")') Try it, enable Handsfree mode
 
+  //- Mapping Face Gestures
   section.content.q-mt-xl
     .row.q-col-gutter-lg.justify-center
       .col-12
@@ -63,6 +66,28 @@ q-page
                 q-card.bg-inactive
                   q-card-section(style='height: 300px')
                     Workspace.full-height(:toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options')
+
+  //- Mapping Face Gestures
+  section.content.q-mt-xl
+    .row.q-col-gutter-lg.justify-center
+      .col-12.col-md-6
+        q-card
+          q-card-section.text-subtitle1
+            h2 The <span class='text-negative'>Midiblocks </span> <span class='text-info'>Newsletter</span>
+            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once a week</span> (but probably way less, especially in the beginning). These updates will include:
+            ul.tight
+              li Updates to Midiblocks and Handsfree.js
+              li Upcoming plans and roadmap
+              li Links to special newsletter-only videos, repositories, and more
+          q-card-section
+            div(v-if='hasSubmittedNewsletter')
+              q-card.bg-positive
+                q-card-section
+                  div 🎉 Thank you for signing up to the Newsletter!
+            q-form(v-else @submit='onNewsletterSubmit' action='https://midiblocks.us2.list-manage.com/subscribe/post?u=d46c4c0193c967959310937da&amp;id=868ba249fe' method='post' target='_blank')
+              q-input(v-model='newsletterEmail' lazy-rules type='email' name='EMAIL' color='secondary' filled placeholder='Your email')
+              q-input.hidden(name='b_d46c4c0193c967959310937da_868ba249fe')
+              q-btn.q-mt-md.bg-secondary.full-width(type='submit') Sign up
 </template>
 
 <script>
@@ -86,7 +111,11 @@ export default {
 
   data () {
     return {
+      newsletterEmail: '',
+      hasSubmittedNewsletter: false,
+
       toolbox: this.getToolbox(),
+      
       workspaces: {
         options: {
           zoomToFit: true,
@@ -106,6 +135,17 @@ export default {
   },
 
   methods: {
+    onNewsletterSubmit (ev) {
+      this.hasSubmittedNewsletter = true
+      this.$q.notify({
+        type: 'positive',
+        message: '🎉 Thank you for signing up to the Newsletter!',
+        timeout: 5000
+      })
+
+      ev.target.submit()
+    },
+    
     /**
      * Gets an organized Blockly toolbox JSON, which consists of core blocks and custom blocks
      * @todo Refactor this into a file and reuse for StudioHome
