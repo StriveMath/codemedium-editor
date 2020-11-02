@@ -162,6 +162,7 @@ import store from 'store'
 import {set, throttle} from 'lodash'
 import toolbox from '../assets/toolboxes/factory'
 import { v4 as uuidv4 } from 'uuid'
+import {mapState} from 'vuex'
 
 /**
  * @todo document
@@ -172,6 +173,8 @@ export default {
   components: {Workspace, CodeEditor, ColorPicker, DialogLoadBlock, DialogConfirm, DialogDeleteBlock},
 
   computed: {
+    ...mapState(['notifications']),
+    
     /**
      * Returns the data used for saving this view
      * @returns {Object} save data
@@ -292,6 +295,20 @@ export default {
       ev.preventDefault()
       this.dialog.loadBlock = true
     })
+
+    // Tutorials coming soon message
+    // @todo Delete this once tutorials are in place
+    if (!this.notifications.hasSeenTutorialsComingSoon) {
+      this.$store.commit('persist', ['notifications.hasSeenTutorialsComingSoon', true])
+      this.$q.notify({
+        type: 'info',
+        timeout: 5000,
+        message: 'Tutorials coming soon!',
+        actions: [
+          {label: 'Join Newsletter', handler: () => {window.open('https://eepurl.com/hhD7S1')}}
+        ]
+      })
+    }
 
     // Trigger resize (for editor)
     this.$nextTick(() => {

@@ -67,7 +67,7 @@ q-page
                   q-card-section(style='height: 300px')
                     Workspace.full-height(:toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options')
 
-  //- Mapping Face Gestures
+  //- Newsletter
   section.content.q-mt-xl
     .row.q-col-gutter-lg.justify-center
       .col-12.col-md-6
@@ -77,6 +77,7 @@ q-page
             p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once a week</span> (but probably way less, especially in the beginning). These updates will include:
             ul.tight
               li Updates to Midiblocks and Handsfree.js
+              li Tips & Tricks for using Midiblocks and Handsfree.js
               li Upcoming plans and roadmap
               li Links to special newsletter-only videos, repositories, and more
           q-card-section
@@ -88,18 +89,52 @@ q-page
               q-input(v-model='newsletterEmail' lazy-rules type='email' name='EMAIL' color='secondary' filled placeholder='Your email')
               q-input.hidden(name='b_d46c4c0193c967959310937da_868ba249fe')
               q-btn.q-mt-md.bg-secondary.full-width(type='submit') Sign up
+
+  //- Going further
+  section.content.q-mt-xl
+    .row.q-col-gutter-lg.justify-center
+      .col-12
+        q-card
+          q-card-section.text-subtitle1
+            .row.q-col-gutter-lg
+              .col-12.col-md-6
+                q-card.bg-inactive
+                  q-card-section
+                    h3 More updates and documentation coming soon!
+                    p Hi! My name is Oz Ramos and I've been towards releasing <span class='text-negative'>Midiblocks</span> and <span class='text-info'>Handsfree.js</span> since 2018 with the goal of helping people who currently cannot use the computer at all to gain complete control of their devices handsfree. <strong>It's also just a lot of fun!</strong>
+                    p Make sure to sign up for the newsletter above to stay updated on these projects. Also, here are some more links you may enjoy:
+                    ul.tight
+                      li
+                        q-icon.q-mr-sm.text-info(name='fab fa-github')
+                        a(href='https://github.com/midiblocks') GitHub <small>@Midiblocks</small>
+                        span  - View the sourcecode to all of my projects, fork them, contribute, or make them your own!
+                      li
+                        q-icon.q-mr-sm.text-info(name='fab fa-twitter')
+                        a(href='https://twitter.com/midiblocks') Twitter <small>@Midiblocks</small>
+                        span  - Connect with me on Twitter to follow along this epic journey!
+                      li
+                        q-icon.q-mr-sm.text-info(name='fab fa-youtube')
+                        a(href='https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA') YouTube
+                        span  - Watch demos, get quick tips & tricks, and watch me game and build things handsfree!
+              .col-12.col-md-6
+                q-card.bg-inactive
+                  q-card-section
+                    h3 Recent updates
+                    q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/YATR9GZSSHKeNw3fht/giphy.gif')
+                    p Progress and the ability to control the desktop mouse handsfree with Handsfree.js
 </template>
 
 <script>
-import Blockly from 'blockly'
-import {set, cloneDeep} from 'lodash'
+import {set} from 'lodash'
 import {mapState} from 'vuex'
 import Workspace from '../components/Workspace'
 import toolbox from '../assets/toolboxes/studio'
-import store from 'store'
+import getToolbox from '../mixins/getToolbox'
 
 export default {
   name: 'PageHome',
+
+  mixins: [getToolbox],
 
   components: {
     Workspace
@@ -114,7 +149,7 @@ export default {
       newsletterEmail: '',
       hasSubmittedNewsletter: false,
 
-      toolbox: this.getToolbox(),
+      toolbox: this.getToolbox(toolbox),
       
       workspaces: {
         options: {
@@ -144,96 +179,6 @@ export default {
       })
 
       ev.target.submit()
-    },
-    
-    /**
-     * Gets an organized Blockly toolbox JSON, which consists of core blocks and custom blocks
-     * @todo Refactor this into a file and reuse for StudioHome
-     */
-    getToolbox () {
-      const categories = cloneDeep(toolbox)
-      const customBlocks = store.get('blocks', {})
-
-      // Map categories to indexes
-      const coreBlockCats = categories.map(block => {
-        return block.category || ''
-      })
-
-      // Add custom block to appropriate category
-      Object.keys(customBlocks).forEach(id => {
-        const customBlock = customBlocks[id]
-        const catIndex = coreBlockCats.indexOf(customBlock.category)
-
-        if (categories[catIndex]) {
-          categories[catIndex].children.push({
-            tag: 'block',
-            type: customBlock.json.type
-          })
-
-          // Create block...
-          Blockly.Blocks[customBlock.json.type] = {
-            init: function() {
-              this.jsonInit(customBlock.json)
-            }
-          }
-          // ...and generator
-          Blockly.JavaScript[customBlock.json.type] = function (block) {
-            let code = []
-
-            customBlock.variables.forEach(variable => {
-              // Fields
-              if (variable.type === 'field') {
-                switch (variable.field) {
-                  case 'variable':
-                    code.push(`var $${variable.name} = ${JSON.stringify(Blockly.JavaScript.variableDB_.getName(block.getFieldValue(variable.name), Blockly.Variables.NAME_TYPE))}`)
-                  break
-                  case 'angle':
-                    code.push(`var $${variable.name} = ${block.getFieldValue(variable.name)}`)
-                  break
-                  case 'colour':
-                    code.push(`var $${variable.name} = ${JSON.stringify(block.getFieldValue(variable.name))}`)
-                  break
-                  case 'checkbox':
-                    code.push(`var $${variable.name} = ${block.getFieldValue(variable.name) === 'TRUE' ? 'true' : 'false'}`)
-                  break
-                  case 'dropdown':
-                    code.push(`var $${variable.name} = ${JSON.stringify(block.getFieldValue(variable.name))}`)
-                  break
-                  case 'number':
-                    code.push(`var $${variable.name} = ${block.getFieldValue(variable.name)}`)
-                  break
-                  case 'text':
-                    code.push(`var $${variable.name} = ${JSON.stringify(block.getFieldValue(variable.name))}`)
-                  break
-                }
-              // Inputs
-              } else {
-                switch (variable.input) {
-                  case 'value':
-                    code.push(`var $${variable.name} = ${JSON.stringify(Blockly.JavaScript.valueToCode(block, variable.name, Blockly.JavaScript.ORDER_ATOMIC))}`)
-                  break
-                  case 'statements':
-                    const statement = Blockly.JavaScript.statementToCode(block, variable.name)
-                    code.push(`var $${variable.name} = function () {\n${statement}\n}`)
-                  break
-                }
-              }
-            })
-            
-            code = code.join(';\n')
-            code += ';\n' + (customBlock.code || '')
-
-            // Return code
-            if (block.outputConnection) {
-              return [code, Blockly.JavaScript.ORDER_NONE]
-            } else {
-              return code
-            }
-          }
-        }
-      })
-
-      return categories
     }
   }
 }

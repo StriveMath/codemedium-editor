@@ -1,11 +1,12 @@
 {
   "localStorage": {
     "version": "0.2.0",
+    "splitter": 50,
     "currentStudio": {
       "title": "Raise Eyebrow to press Space (not yet working)",
       "description": "Great for running games (like Google Chrome's Dino Run)",
       "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
-      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block><block type=\"bookmark\" id=\"L2T}xcSQxniR!7J`2aRl\" x=\"625\" y=\"175\"><field name=\"index\">0</field><comment pinned=\"true\" h=\"124.16670227050781\" w=\"299.1666259765625\">Click on the categories in the sidebar to the left and then drag a block into this workspace.\n\nNote: Code does not actually run yet</comment></block></xml>"
+      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block></xml>"
     },
     "facepointer.active": false,
     "currentFactory": {
@@ -41,14 +42,6 @@
     },
     "isStudioUnsaved": false,
     "isFactoryUnsaved": false,
-    "midiblocks": {
-      "ae28920f-c7f7-42bf-891a-c00f46951e48": {
-        "title": "Raise Eyebrow to press Space (not yet working)",
-        "description": "Great for running games (like Google Chrome's Dino Run)",
-        "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block><block type=\"bookmark\" id=\"L2T}xcSQxniR!7J`2aRl\" x=\"625\" y=\"175\"><field name=\"index\">0</field><comment pinned=\"true\" h=\"124\" w=\"299\">Click on the categories in the sidebar to the left and then drag a block into this workspace.\n\nNote: Code does not actually run yet</comment></block></xml>"
-      }
-    },
     "blocks": {
       "6d675ace-0a37-4b1f-8bfa-513fd137b81f": {
         "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
@@ -161,6 +154,13 @@
         "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">keyboardTapKey</field><field name=\"category\">keyboard_mouse</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">⌨ Tap Key</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">space</field><field name=\"FIELDNAME\">key</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
       }
     },
-    "splitter": 46.328125
+    "midiblocks": {
+      "ae28920f-c7f7-42bf-891a-c00f46951e48": {
+        "title": "Raise Eyebrow to press Space (not yet working)",
+        "description": "Great for running games (like Google Chrome's Dino Run)",
+        "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block></xml>"
+      }
+    }
   }
 }
