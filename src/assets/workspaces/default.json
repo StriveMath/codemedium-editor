@@ -38,7 +38,6 @@
       "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"o)]~^g?+Z8Zx~*I~Nv#^\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">bookmark</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"rS0y4nN{g3CF2Q(uJ|zY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"7.nS9XE$yVxtOgY^4/Rx\"><field name=\"TEXT\">📌</field><next><block type=\"field_number\" id=\"fKkD3?V,JX!(807:Sr#4\"><field name=\"VALUE\">0</field><field name=\"FIELDNAME\">index</field><field name=\"MIN\">-Infinity</field><field name=\"MAX\">Infinity</field><field name=\"PRECISION\">0</field></block></next></block></statement></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"?}w]N$5{m|#R|W[Z-Z.2\"><mutation colour=\"#ffffff\"></mutation><field name=\"COLOR\">#fff</field></shadow></value></block></xml>"
     },
     "isStudioUnsaved": false,
-    "notifications.hasSeenTutorialsComingSoon": true,
     "isFactoryUnsaved": false,
     "midiblocks": {
       "ae28920f-c7f7-42bf-891a-c00f46951e48": {
