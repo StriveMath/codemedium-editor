@@ -293,6 +293,17 @@ export default {
       this.dialog.loadBlock = true
     })
 
+    // Tutorials coming soon message
+    // @todo Delete this once tutorials are in place
+    this.$q.notify({
+      type: 'info',
+      timeout: 3000,
+      message: 'Tutorials coming soon!',
+      actions: [
+        {label: 'Join Newsletter', handler: () => {window.open('https://eepurl.com/hhD7S1')}}
+      ]
+    })
+
     // Trigger resize (for editor)
     this.$nextTick(() => {
       window.dispatchEvent(new Event('resize'))

@@ -125,6 +125,17 @@ export default {
       this.$mousetrap.bind(i.toString(), this.onNumberKeypress)
     }
 
+    // Tutorials coming soon message
+    // @todo Delete this once tutorials are in place
+    this.$q.notify({
+      type: 'info',
+      timeout: 3000,
+      message: 'Tutorials coming soon!',
+      actions: [
+        {label: 'Join Newsletter', handler: () => {window.open('https://eepurl.com/hhD7S1')}}
+      ]
+    })
+
     // Autosave with CTRL+S
     this.$mousetrap.bindGlobal('ctrl+s', ev => {
       ev.preventDefault()
