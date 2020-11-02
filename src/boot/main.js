@@ -35,7 +35,4 @@ console.log(`
 Star:   https://github.com/midiblocks/midiblocks
 Follow: https://twitter.com/midiblocks
 Watch:  https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA
-
-Our mission is to help literally anyone get involved in tech.
-
 `)
