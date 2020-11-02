@@ -83,6 +83,8 @@ export default {
   components: {Workspace, DialogConfirm, DialogLoadMidiblock, DialogDeleteMidiblock},
 
   computed: {
+    ...mapState(['notifications']),
+    
     /**
      * Returns the data used for saving this view
      * @returns {Object} save data
@@ -127,14 +129,17 @@ export default {
 
     // Tutorials coming soon message
     // @todo Delete this once tutorials are in place
-    this.$q.notify({
-      type: 'info',
-      timeout: 3000,
-      message: 'Tutorials coming soon!',
-      actions: [
-        {label: 'Join Newsletter', handler: () => {window.open('https://eepurl.com/hhD7S1')}}
-      ]
-    })
+    if (!this.notifications.hasSeenTutorialsComingSoon) {
+      this.$store.commit('persist', ['notifications.hasSeenTutorialsComingSoon', true])
+      this.$q.notify({
+        type: 'info',
+        timeout: 5000,
+        message: 'Tutorials coming soon!',
+        actions: [
+          {label: 'Join Newsletter', handler: () => {window.open('https://eepurl.com/hhD7S1')}}
+        ]
+      })
+    }
 
     // Autosave with CTRL+S
     this.$mousetrap.bindGlobal('ctrl+s', ev => {

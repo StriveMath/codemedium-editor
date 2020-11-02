@@ -18,6 +18,13 @@ export default function (/* { ssrContext } */) {
     state: {
       // Used to force rerender a component by updating a :key set to this
       reloads: 0,
+
+      /**
+       * Stores states for various notifications
+       */
+      notifications: {
+        hasSeenTutorialsComingSoon: store.get('notifications.hasSeenTutorialsComingSoon', false)
+      },
       
       /**
        * Blocks library
@@ -79,6 +86,16 @@ export default function (/* { ssrContext } */) {
        */
       set (state, payload) {
         set(state, payload[0], payload[1])
+      },
+
+      /**
+       * Same as set, but alsos aves it to localStore
+       * @param {*} state 
+       * @param {*} payload ["path.to.state", value]
+       */
+      persist (state, payload) {
+        set(state, payload[0], payload[1])
+        store.set(payload[0], payload[1])
       },
 
       /**
