@@ -47,7 +47,9 @@ q-page
               li <span class="text-negative">Click</span> by <span class="text-info">smiling</span> or <span class="text-info">smirking to either side</span>
             p <span class="text-negative">Midiblock's </span> <span class="text-info">Face Pointer</span> is powered by my gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
           q-card-actions
-            q-btn.bg-secondary.full-width(:disabled='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")') Try it, enable Handsfree mode
+            q-btn.bg-secondary.full-width(:disabled='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")')
+              span.q-mr-sm Try it
+              <strong><small>(requires GPU)</small></strong>
 
   //- Mapping Face Gestures
   section.content.q-mt-xl
