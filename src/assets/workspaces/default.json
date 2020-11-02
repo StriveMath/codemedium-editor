@@ -1,7 +1,6 @@
 {
   "localStorage": {
     "version": "0.2.0",
-    "splitter": 50,
     "currentStudio": {
       "title": "Raise Eyebrow to press Space (not yet working)",
       "description": "Great for running games (like Google Chrome's Dino Run)",
@@ -10,38 +9,45 @@
     },
     "facepointer.active": false,
     "currentFactory": {
-      "uuid": "01b9e5f6-7869-43e3-8556-329c6ccdb7a4",
+      "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
       "json": {
-        "type": "keyboardtapkey",
+        "type": "bookmark",
         "tooltip": "",
-        "helpUrl": "https://midiblocks.com/help/block/keyboardtapkey",
-        "message0": "⌨ Tap Key %1",
+        "helpUrl": "https://midiblocks.com/help/block/bookmark",
+        "message0": "📌 %1",
         "args0": [
           {
-            "type": "field_input",
-            "name": "key",
-            "text": "space"
+            "type": "field_number",
+            "name": "index",
+            "value": 0
           }
         ],
-        "previousStatement": null,
-        "nextStatement": null,
-        "colour": "#2ec4b6"
+        "colour": "#fff"
       },
-      "code": "/**\r\n * Sends the key\r\n * @todo\r\n */\r\nconsole.log($key)",
+      "code": "/**\r\n * This is the bookmark block.\r\n * @todo Add code to this block 😅\r\n */",
       "variables": [
         {
           "type": "field",
-          "field": "text",
-          "name": "key"
+          "field": "number",
+          "name": "index"
         }
       ],
       "description": "",
-      "name": "keyboardTapKey",
-      "category": "keyboard_mouse",
-      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">keyboardTapKey</field><field name=\"category\">keyboard_mouse</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">⌨ Tap Key</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">space</field><field name=\"FIELDNAME\">key</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
+      "name": "bookmark",
+      "category": "misc",
+      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"o)]~^g?+Z8Zx~*I~Nv#^\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">bookmark</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"rS0y4nN{g3CF2Q(uJ|zY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"7.nS9XE$yVxtOgY^4/Rx\"><field name=\"TEXT\">📌</field><next><block type=\"field_number\" id=\"fKkD3?V,JX!(807:Sr#4\"><field name=\"VALUE\">0</field><field name=\"FIELDNAME\">index</field><field name=\"MIN\">-Infinity</field><field name=\"MAX\">Infinity</field><field name=\"PRECISION\">0</field></block></next></block></statement></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"?}w]N$5{m|#R|W[Z-Z.2\"><mutation colour=\"#ffffff\"></mutation><field name=\"COLOR\">#fff</field></shadow></value></block></xml>"
     },
     "isStudioUnsaved": false,
+    "notifications.hasSeenTutorialsComingSoon": true,
     "isFactoryUnsaved": false,
+    "midiblocks": {
+      "ae28920f-c7f7-42bf-891a-c00f46951e48": {
+        "title": "Raise Eyebrow to press Space (not yet working)",
+        "description": "Great for running games (like Google Chrome's Dino Run)",
+        "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block></xml>"
+      }
+    },
     "blocks": {
       "6d675ace-0a37-4b1f-8bfa-513fd137b81f": {
         "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
@@ -104,7 +110,7 @@
           ],
           "colour": "#fad000"
         },
-        "code": "/**\r\n * Runs code when a face gesture is made\r\n * @todo\r\n */\r\nconsole.log($gesture)",
+        "code": "/**\r\n * Runs code when a face gesture is made\r\n * @todo\r\n */",
         "variables": [
           {
             "type": "field",
@@ -140,7 +146,7 @@
           "nextStatement": null,
           "colour": "#2ec4b6"
         },
-        "code": "/**\r\n * Sends the key\r\n * @todo\r\n */\r\nconsole.log($key)",
+        "code": "/**\r\n * Sends the key\r\n * @todo\r\n */",
         "variables": [
           {
             "type": "field",
@@ -154,13 +160,6 @@
         "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">keyboardTapKey</field><field name=\"category\">keyboard_mouse</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">⌨ Tap Key</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">space</field><field name=\"FIELDNAME\">key</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
       }
     },
-    "midiblocks": {
-      "ae28920f-c7f7-42bf-891a-c00f46951e48": {
-        "title": "Raise Eyebrow to press Space (not yet working)",
-        "description": "Great for running games (like Google Chrome's Dino Run)",
-        "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block></xml>"
-      }
-    }
+    "splitter": 50
   }
 }
