@@ -23,7 +23,15 @@
 .bg-block-orange
   background: $block-orange
   .q-btn__content
-    color: #fff !important
+    color: $primary !important
+
+.text-ansi-bright-green
+  color: lighten($ansi-bright-green, 20%)
+.bg-ansi-bright-green
+  background: $ansi-bright-green
+  .q-btn__content,
+  .q-notification__message.col
+    color: $primary !important
 
 // Buttons
 .q-btn

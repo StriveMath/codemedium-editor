@@ -87,6 +87,18 @@ export default {
       this.$store.commit('push', ['eventLogs.warn', {log: args[0]}])
       warn(...args)
     }
+
+    /**
+     * @todo Remove after beta
+     */
+    this.$nextTick(() => {
+      this.$q.notify({
+        position: 'center',
+        timeout: 2500,
+        message: 'This is still a prototype and may be buggy 😅',
+        color: 'ansi-bright-green'
+      })
+    })
   },
 
   destroyed () {
