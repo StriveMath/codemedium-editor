@@ -165,6 +165,11 @@ For more info, including on how to support Firefox, Internet Explorer, and Safar
 # Start the app in development mode with localStorage
 npm start
 
+# HANDSFREE DESKTOP 
+# -----------
+# Same as `npm start` but it controls the desktop pointer instead of a virtual one
+npm run handsfree-desktop
+
 # PRODUCTION
 # ----------
 # Build the app for production with localStorage

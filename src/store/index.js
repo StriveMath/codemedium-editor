@@ -36,7 +36,8 @@ export default function (/* { ssrContext } */) {
        * Settings
        */
       settings: {
-        isFacePointerActive: false
+        isFacePointerActive: false,
+        isDesktopMode: false
       },
 
       /**
@@ -116,6 +117,15 @@ export default function (/* { ssrContext } */) {
        */
       tally (state, path) {
         set(state, path, get(state, path) + 1)
+      },
+
+      /**
+       * Flip the boolean value of something
+       * @param {*} state 
+       * @param {String} path "path.to.state"
+       */
+      flip (state, path) {
+        set(state, path, !get(state, path))
       }
     },
 
@@ -133,6 +143,14 @@ export default function (/* { ssrContext } */) {
             callback && callback()
           })
         }
+      },
+
+      /**
+       * Toggles desktop mode
+       */
+      toggleDesktopMode ({state, commit}) {
+        commit('flip', ['settings.isDesktopMode'])
+        window.handsfree.emit('toggleWebsocket', state.settings.isDesktopMode)
       }
     }
   })

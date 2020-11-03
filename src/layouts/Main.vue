@@ -19,8 +19,13 @@ q-layout(ref='main' view='lHh Lpr lFf')
           q-btn(color='tertiary' size='sm' icon='fas fa-caret-square-right' @click='$root.$emit("studio.nextBookmark")')
         q-space
 
+      //- Desktop toggle
+      q-toggle.no-select(color='negative' dark v-model='settings.isDesktopMode' @input='$store.dispatch("toggleDesktopMode")')
+        | Desktop Mode
+        span.q-ml-xs {{settings.isDesktopMode ? 'on' : 'off'}}
+
       //- Handsfree toggle
-      q-toggle.no-select(color='negative' dark :value='settings.isFacePointerActive' @input='$store.dispatch("toggleHandsfree")')
+      q-toggle.no-select(color='negative' dark v-model='settings.isFacePointerActive' @input='$store.dispatch("toggleHandsfree")')
         | Handsfree
         span.q-ml-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
 

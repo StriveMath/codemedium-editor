@@ -9,16 +9,14 @@
 const fs = require('fs-extra')
 
 /**
- * Storage environment
+ * Conditional environment variables
  */
-let storageMode
+let HANDSFREE_DESKTOP = false
 process.argv.forEach(arg => {
   switch (arg) {
-    case '--use-remote-storage':
-      storageMode = 'remote'
+    case '--handsfree-desktop':
+      HANDSFREE_DESKTOP = true
       break
-    default:
-      storageMode = 'local'
   }
 })
 
@@ -45,7 +43,8 @@ module.exports = function (ctx) {
     boot: [
       'main',
       'mousetrap',
-      'handsfree'
+      'handsfree',
+      HANDSFREE_DESKTOP ? 'handsfree-desktop' : null
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -72,6 +71,10 @@ module.exports = function (ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
     build: {
+      env: {
+        HANDSFREE_DESKTOP
+      },
+      
       vueRouterMode: 'history', // available values: 'hash', 'history'
 
       publicPath: env.PUBLIC_PATH,
