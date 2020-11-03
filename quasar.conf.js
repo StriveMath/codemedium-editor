@@ -9,7 +9,7 @@
 const fs = require('fs-extra')
 
 /**
- * Storage environment
+ * Conditional environment variables
  */
 let HANDSFREE_DESKTOP = false
 process.argv.forEach(arg => {
@@ -43,7 +43,8 @@ module.exports = function (ctx) {
     boot: [
       'main',
       'mousetrap',
-      'handsfree'
+      'handsfree',
+      HANDSFREE_DESKTOP ? 'handsfree-desktop' : null
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
