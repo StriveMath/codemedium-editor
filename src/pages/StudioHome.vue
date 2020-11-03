@@ -165,7 +165,7 @@ export default {
       this.$mousetrap.unbind(i.toString())
     }
 
-    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
+    document.removeEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   watch: {
@@ -386,6 +386,7 @@ export default {
         case Blockly.Events.VAR_CREATE:
         case Blockly.Events.VAR_DELETE:
         case Blockly.Events.VAR_RENAME:
+          this.$refs.workspace.restartCode()
           this.checkBookmarks()
           this.hasLoaded && this.autosave()
         break

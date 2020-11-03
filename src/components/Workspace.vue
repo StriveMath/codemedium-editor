@@ -46,6 +46,7 @@ import interpreterBase from '../assets/interpreter/index.js'
 import {defaults} from 'lodash'
 import Interpreter from 'js-interpreter'
 import midiblocksTheme from '../assets/toolboxes/theme'
+import emitHandler from '../assets/interpreter/emit-handler.js'
 import * as Babel from '@babel/standalone'
 import * as BabelClassProperties from '@babel/plugin-proposal-class-properties'
 
@@ -328,19 +329,9 @@ export default {
       }))
 
       /**
-       * Play a midi sound
-       * @todo Remove
+       * Emit a message
        */
-      acorn.setProperty(globalObject, '_playNote', acorn.createNativeFunction((dataStr) => {
-        let data = JSON.parse(dataStr)
-        
-        if (data.device === 'all') {
-          // Object.keys(this.devices.outputs).forEach(key => {
-            // const output = webmidi.getOutputById(key)
-            // output.playNote(data.note, data.channel)
-          // })
-        }
-      }))
+      acorn.setProperty(globalObject, 'emit', acorn.createNativeFunction(emitHandler))
     },
 
     /**
