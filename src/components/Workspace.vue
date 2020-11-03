@@ -42,7 +42,7 @@
 <script>
 import Blockly from 'blockly'
 import {mapState} from 'vuex'
-import STRING_WebmidiInterpreter from '!!raw-loader!!../assets/js/webmidi-interpreter.js'
+import interpreterBase from '../assets/interpreter/index.js'
 import {defaults} from 'lodash'
 import Interpreter from 'js-interpreter'
 import midiblocksTheme from '../assets/toolboxes/theme'
@@ -53,7 +53,7 @@ import * as Babel from '@babel/standalone'
  */
 export default {
   name: 'Blockly',
-  props: ['options', 'toolbox', 'blocks', 'inline', 'autoload'],
+  props: ['options', 'toolbox', 'blocks', 'inline', 'autoload', 'isRunning'],
 
   data () {
     return {
@@ -307,7 +307,7 @@ export default {
       if (this.$props.isRunning) {
         const code = Blockly.JavaScript.workspaceToCode(this.blockly)
         this.interpreter = new Interpreter(
-          Babel.transform(STRING_WebmidiInterpreter + '\n' + code, {
+          Babel.transform(interpreterBase + '\n' + code, {
             presets: ['env'],
             sourceType: 'script'
           }).code, this.setupInterpreter)
