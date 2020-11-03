@@ -47,6 +47,7 @@ import {defaults} from 'lodash'
 import Interpreter from 'js-interpreter'
 import midiblocksTheme from '../assets/toolboxes/theme'
 import * as Babel from '@babel/standalone'
+import * as BabelClassProperties from '@babel/plugin-proposal-class-properties'
 
 /**
  * @emits onChange
@@ -308,6 +309,7 @@ export default {
       this.interpreter = new Interpreter(
         Babel.transform(interpreterBase + '\n' + code, {
           presets: ['env'],
+          plugins: [BabelClassProperties],
           sourceType: 'script'
         }).code, this.setupInterpreter)
       this.interpreter.run()

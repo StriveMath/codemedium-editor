@@ -1,4 +1,11 @@
 class Handsfree {
+  constructor () {
+    this.plugin = {}
+    this.config = {
+      plugin: {}
+    }
+  }
+  
   /**
    * Calls a callback on `document` when an event is triggered
    *
@@ -28,7 +35,7 @@ class Handsfree {
    * @param {Object|Function} config The config object, or a callback to run on every fram
    * @returns {Plugin} The plugin object
    */
-  use(name, config) {
+  use (name, config) {
     // Make sure we have an options object
     if (typeof config === 'function') {
       config = {
@@ -56,7 +63,7 @@ class Handsfree {
       config
     )
 
-    // // Create the plugin
+    // Create the plugin
     this.plugin[name] = new Plugin(config, this)
     this.plugin[name].enabled &&
       this.plugin[name].onUse &&
@@ -72,7 +79,7 @@ handsfree = new Handsfree()
  * Plugin class
  */
 class Plugin {
-  constructor(plugin, handsfree) {
+  constructor (plugin, handsfree) {
     // Props
     this.plugin = plugin
     this.handsfree = handsfree
@@ -100,11 +107,11 @@ class Plugin {
   /**
    * Toggle plugins
    */
-  enable() {
+  enable () {
     !this.enabled && this.onEnable && this.onEnable(this.handsfree)
     this.enabled = true
   }
-  disable() {
+  disable () {
     this.enabled && this.onDisable && this.onDisable(this.handsfree)
     this.enabled = false
   }
