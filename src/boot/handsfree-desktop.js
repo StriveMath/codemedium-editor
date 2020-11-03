@@ -67,13 +67,18 @@ handsfree.on('toggleWebsocket', function (state) {
       socketConnected = true
       console.log('connected...')
     }
+
+    // Notify user
     window.app.$page.$q.notify({
       timeout: 5000,
       message: 'Press ESC to exit desktop mode',
       type: 'positive'
     })
+
+    document.body.classList.add('handsfree-desktop-mode')
   } else {
     socketConnected = false
+    document.body.classList.remove('handsfree-desktop-mode')
     console.log('...disconnected')
   }
 })
