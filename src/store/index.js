@@ -44,7 +44,8 @@ export default function (/* { ssrContext } */) {
        * Global Studio props
        */
       studio: {
-        hasBookmarks: false
+        hasBookmarks: false,
+        isRunning: true
       },
 
       /**

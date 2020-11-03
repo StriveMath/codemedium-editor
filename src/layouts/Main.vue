@@ -5,7 +5,7 @@ q-layout(ref='main' view='lHh Lpr lFf')
     q-toolbar
       q-btn(flat dense round icon='fas fa-bars' aria-label='Menu' @click='leftDrawerOpen = !leftDrawerOpen')
       q-toolbar-title(style='flex: 0 0 auto')
-        router-link.text-decoration-none.text-white(:to='{name: "Home"}')
+        router-link.gt-xs.text-decoration-none.text-white(:to='{name: "Home"}')
           img.gt-sm.q-mr-sm(src='~assets/logo-title.png' height=32 style='vertical-align: middle')
           img.lt-md.q-mr-sm(src='~assets/logo-title-favicon.png' height=32 style='vertical-align: middle')
         small.gt-xs.q-ml-sm.text-secondary(style='font-size: .65em; display: inline-block; transform: translate(0, -3px)') {{version}}
@@ -13,21 +13,29 @@ q-layout(ref='main' view='lHh Lpr lFf')
 
       //- Studio controls
       template(v-if='studio.hasBookmarks && $route.name === "Studio"')
-        span.q-mr-sm 📌
+        span.q-mr-sm.gt-xs 📌
         q-btn-group(push dense)
           q-btn(color='tertiary' size='sm' icon='fas fa-caret-square-left' @click='$root.$emit("studio.prevBookmark")')
           q-btn(color='tertiary' size='sm' icon='fas fa-caret-square-right' @click='$root.$emit("studio.nextBookmark")')
         q-space
 
+      template(v-if='$route.name === "Studio"')
+        q-toggle.no-select(color='negative' dark v-model='studio.isRunning' @input='$store.dispatch("toggleDesktopMode")')
+          span.gt-xs Code is
+          span.q-ml-xs.gt-xs {{studio.isRunning ? 'running' : 'stopped'}}
+        q-space
+
       //- Desktop toggle
       q-toggle.no-select(color='negative' dark v-model='settings.isDesktopMode' @input='$store.dispatch("toggleDesktopMode")')
-        | Desktop Mode
-        span.q-ml-xs {{settings.isDesktopMode ? 'on' : 'off'}}
+        span.gt-xs Desktop Mode
+        span.lt-sm 💻
+        span.q-ml-xs.gt-xs {{settings.isDesktopMode ? 'on' : 'off'}}
 
       //- Handsfree toggle
       q-toggle.no-select(color='negative' dark v-model='settings.isFacePointerActive' @input='$store.dispatch("toggleHandsfree")')
-        | Handsfree
-        span.q-ml-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
+        span.gt-xs Handsfree
+        span.lt-sm 👋
+        span.q-ml-xs.gt-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
 
   //- Sidebar
   q-drawer.main-sidebar.flex-drawer(v-model='leftDrawerOpen' show-if-above bordered :breakpoint='1400')

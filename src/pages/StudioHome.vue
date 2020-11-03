@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
-  Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler')
+  Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
     q-item.q-mt-lg(@click='saveMidiblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
@@ -83,7 +83,7 @@ export default {
   components: {Workspace, DialogConfirm, DialogLoadMidiblock, DialogDeleteMidiblock},
 
   computed: {
-    ...mapState(['notifications']),
+    ...mapState(['notifications', 'studio']),
     
     /**
      * Returns the data used for saving this view
