@@ -172,7 +172,16 @@ export default {
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'))
       })
-    }, 50, {leading: true, trailing: true})
+    }, 50, {leading: true, trailing: true}),
+
+    studio: {
+      deep: true,
+      handler (settings) {
+        if (settings.isRunning) {
+          this.$refs.workspace.run()
+        }
+      }
+    }
   },
   
   data () {
@@ -362,7 +371,7 @@ export default {
         case Blockly.Events.VAR_CREATE:
         case Blockly.Events.VAR_DELETE:
         case Blockly.Events.VAR_RENAME:
-          this.$refs.workspace.run()
+          // this.$refs.workspace.run()
           this.checkBookmarks()
           this.hasLoaded && this.autosave()
         break

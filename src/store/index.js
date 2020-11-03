@@ -45,7 +45,7 @@ export default function (/* { ssrContext } */) {
        */
       studio: {
         hasBookmarks: false,
-        isRunning: true
+        isRunning: false
       },
 
       /**

@@ -304,15 +304,13 @@ export default {
      * Execute code
      */
     run () {
-      if (this.$props.isRunning) {
-        const code = Blockly.JavaScript.workspaceToCode(this.blockly)
-        this.interpreter = new Interpreter(
-          Babel.transform(interpreterBase + '\n' + code, {
-            presets: ['env'],
-            sourceType: 'script'
-          }).code, this.setupInterpreter)
-        this.interpreter.run()
-      }
+      const code = Blockly.JavaScript.workspaceToCode(this.blockly)
+      this.interpreter = new Interpreter(
+        Babel.transform(interpreterBase + '\n' + code, {
+          presets: ['env'],
+          sourceType: 'script'
+        }).code, this.setupInterpreter)
+      this.interpreter.run()
     },
 
     /**

@@ -4,7 +4,7 @@ export default [
     category: 'event',
     name: 'Events',
     icon: 'fas fa-satellite-dish',
-    colour: '#fad000',
+    colour: '#ff9d00',
     children: []
   },
   {
