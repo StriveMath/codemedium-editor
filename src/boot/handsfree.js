@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Handsfree from 'handsfree'
-import faceClick from './handsfree/faceClick'
+import faceClick from './handsfree/face-click.js'
 import store from 'store'
 
 // Instantiate

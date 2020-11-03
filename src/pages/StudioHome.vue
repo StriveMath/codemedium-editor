@@ -150,6 +150,9 @@ export default {
       ev.preventDefault()
       this.dialog.loadBlock = true
     })
+
+    // Handsfree
+    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   destroyed () {
@@ -161,6 +164,8 @@ export default {
     for (let i = 0; i < 10; i++) {
       this.$mousetrap.unbind(i.toString())
     }
+
+    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   watch: {
@@ -176,9 +181,9 @@ export default {
 
     studio: {
       deep: true,
-      handler (settings) {
-        if (settings.isRunning) {
-          this.$refs.workspace.run()
+      handler (studio) {
+        if (studio.isRunning) {
+          this.$refs.workspace.restartCode()
         }
       }
     }
@@ -327,6 +332,16 @@ export default {
     },
 
     /**
+     * Triggers the loop inside the interpreter
+     */
+    sendHandsfreeToInterpreter (data) {
+      if (this.studio.isRunning) {
+        this.$refs.workspace.interpreter.appendCode(`handsfree.loop(${JSON.stringify(data.detail)})`)
+        this.$refs.workspace.interpreter.run()
+      }
+    },
+
+    /**
      * Navigates to the bookmark if it exists
      * @param {Event} ev
      */
@@ -371,7 +386,6 @@ export default {
         case Blockly.Events.VAR_CREATE:
         case Blockly.Events.VAR_DELETE:
         case Blockly.Events.VAR_RENAME:
-          // this.$refs.workspace.run()
           this.checkBookmarks()
           this.hasLoaded && this.autosave()
         break

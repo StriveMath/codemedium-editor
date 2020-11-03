@@ -302,9 +302,9 @@ export default {
     },
 
     /**
-     * Execute code
+     * Execute code from beginning
      */
-    run () {
+    restartCode () {
       const code = Blockly.JavaScript.workspaceToCode(this.blockly)
       this.interpreter = new Interpreter(
         Babel.transform(interpreterBase + '\n' + code, {
