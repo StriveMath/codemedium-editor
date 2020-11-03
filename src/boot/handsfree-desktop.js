@@ -46,8 +46,8 @@ handsfree.plugin.faceClick.click = function () {
  */
 window.addEventListener('keydown', ({key}) => {
   if (socket && key === 'Escape') {
-    socket.close()
-    socketConnected = false
+    handsfree.emit('toggleWebsocket', false)
+    app.$page.$store.commit('set', ['settings.isDesktopMode', false])
   }
 })
 
@@ -67,6 +67,11 @@ handsfree.on('toggleWebsocket', function (state) {
       socketConnected = true
       console.log('connected...')
     }
+    window.app.$page.$q.notify({
+      timeout: 5000,
+      message: 'Press ESC to exit desktop mode',
+      type: 'positive'
+    })
   } else {
     socketConnected = false
     console.log('...disconnected')

@@ -149,7 +149,8 @@ export default function (/* { ssrContext } */) {
        * Toggles desktop mode
        */
       toggleDesktopMode ({state, commit}) {
-        commit('flip', ['settings.isDesktopMode'])
+        console.log(state)
+        // commit('flip', ['settings.isDesktopMode'])
         window.handsfree.emit('toggleWebsocket', state.settings.isDesktopMode)
       }
     }
