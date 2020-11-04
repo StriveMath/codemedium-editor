@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
-  Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
+  Workspace.full-height(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
     q-item.q-mt-lg(@click='saveMidiblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
@@ -367,7 +367,7 @@ export default {
      * Use max height instead of max-height for page height
      */
     resizePage (offset) {
-      return { maxHeight: offset ? `calc(100vh - ${offset}px)` : '100vh' }
+      return {height: offset ? `calc(100vh - ${offset}px)` : '100vh'}
     },
 
     /**
