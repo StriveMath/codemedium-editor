@@ -49,7 +49,14 @@ export default {
     set(window, 'app.$', this)
 
     // Check version
-    if (!localStorage.version || localStorage.version < '0.2.1') {
+    if (!store.get('version') || store.get('version') < this.$v) {
+      if (store.get('version')) {
+        this.$q.notify({
+          message: '📦 Midiblocks has been updated!',
+          type: 'positive',
+          timeout: 5000
+        })
+      }
       localStorage.clear()
     }
 
@@ -61,6 +68,9 @@ export default {
       this.$store.commit('set', ['blocks', defaultWorkspace.localStorage.blocks])
       this.$store.commit('set', ['midiblocks', defaultWorkspace.localStorage.midiblocks])
     }
+
+    // Use new version
+    store.set('version', this.$v)
 
     /**
      * Override notify to update status
