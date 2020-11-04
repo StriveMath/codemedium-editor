@@ -8,7 +8,7 @@ Blockly.Blocks['factory_base'] = {
     // Name
     this.appendDummyInput()
         .appendField('name')
-        .appendField(new Blockly.FieldTextInput('block_type'), 'name')
+        .appendField(new Blockly.FieldTextInput('Untitled Block'), 'name')
 
     // Category Dropdown
     let dropdown = new Blockly.FieldDropdown([
@@ -105,7 +105,7 @@ Blockly.Blocks['factory_base'] = {
    * @param {String} fieldType 
    */
   connectOutputShadow_: function(outputType, fieldType = 'type_null') {
-    let type = this.workspace.newBlock('type_null') //this.workspace.newBlock(fieldType)
+    let type = this.workspace.newBlock(fieldType)
     type.setShadow(true)
     type.outputConnection.connect(this.getInput(outputType).connection)
     type.initSvg()

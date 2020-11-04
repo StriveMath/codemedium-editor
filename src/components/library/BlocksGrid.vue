@@ -6,7 +6,7 @@
         Workspace(:options='options' :blocks='[block]' :inline='true' :toolbox='toolbox')
       q-separator
       q-card-section
-        h3 {{block.json.type}}
+        h3 {{block.name}}
         p.pre-wrap {{block.description}}
       q-card-actions(align='right')
         template(slot-scope='props')
@@ -119,8 +119,8 @@ export default {
     remixBlock (block) {
       const oldName = block.name
       block = cloneDeep(block)
-      block.uuid = uuidv4()
-      block.json.type = block.name += '_remixed'
+      block.json.type = block.uuid = uuidv4()
+      block.name += ' [Remixed]'
       block.workspace = block.workspace.replace(`<field name="name">${oldName}</field>`, `<field name="name">${block.name}</field>`)
 
       this.$store.commit('set', [`blocks["${block.uuid}"]`, block])
