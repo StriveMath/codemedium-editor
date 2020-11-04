@@ -20,6 +20,13 @@ export default function (/* { ssrContext } */) {
       reloads: 0,
 
       /**
+       * "Environment" variables
+       */
+      env: {
+        mode: process.env.HANDSFREE_DESKTOP ? 'desktop' : 'web',
+      },
+
+      /**
        * Stores states for various notifications
        */
       notifications: {

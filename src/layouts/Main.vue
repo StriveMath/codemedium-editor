@@ -26,7 +26,7 @@ q-layout(ref='main' view='lHh Lpr lFf')
         q-space
 
       //- Desktop toggle
-      q-toggle.no-select(color='negative' dark v-model='settings.isDesktopMode' @input='$store.dispatch("toggleDesktopMode")')
+      q-toggle.no-select(v-if='env.mode === "desktop"' color='negative' dark v-model='settings.isDesktopMode' @input='$store.dispatch("toggleDesktopMode")')
         span.gt-xs Desktop Mode
         span.lt-sm 💻
         span.q-ml-xs.gt-xs {{settings.isDesktopMode ? 'on' : 'off'}}
@@ -99,7 +99,7 @@ export default {
   components: {ImporterExporter, MainNavLink, DialogConfirm},
 
   computed: {
-    ...mapState(['user', 'lastEvent', 'eventLogs', 'studio', 'settings'])
+    ...mapState(['env', 'user', 'lastEvent', 'eventLogs', 'studio', 'settings'])
   },
 
   watch: {

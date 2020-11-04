@@ -16,6 +16,7 @@ process.argv.forEach(arg => {
   switch (arg) {
     case '--handsfree-desktop':
       HANDSFREE_DESKTOP = true
+      process.env.HANDSFREE_DESKTOP = true
       break
   }
 })

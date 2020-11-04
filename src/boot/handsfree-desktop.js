@@ -14,19 +14,17 @@ handsfree.use('socketConnector', {
    */
   onFrame ({weboji}) {
     lastPose = weboji
-    this.sendMessage(weboji)
+    this.sendMessage('move', weboji)
   },
 
   /**
-   * Sends a message to the socket
+   * Sends a message
    */
-  sendMessage (weboji) {
+  sendMessage (action, data) {
     lastPose && socketConnected && socket && socket.send(JSON.stringify({
       handsfree: true,
-      action: 'move',
-      data: {
-        ...weboji
-      }
+      action,
+      data
     }))
   }
 })

@@ -21,6 +21,11 @@ wss.on('connection', (ws) => {
     if (message.action === 'click') {
       robot.mouseClick()
     }
+
+    // Click
+    if (message.action === 'keypress') {
+      robot.keyTap(message.data.key)
+    }
   })
 
   /**

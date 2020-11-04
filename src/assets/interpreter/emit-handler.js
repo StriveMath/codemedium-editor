@@ -6,7 +6,11 @@ export default (ev) => {
 
   switch (emitted.event) {
     case 'keypress':
-      console.log(emitted.data)
+      if (window.app.$page.$store.state.settings.isDesktopMode) {
+        handsfree.plugin.socketConnector.sendMessage('keypress', {key: emitted.key})
+      } else {
+        document.dispatchEvent(new KeyboardEvent('keypress', {key: emitted.key}))
+      }
     break
   }
 }
