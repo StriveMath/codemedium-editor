@@ -163,7 +163,7 @@ export default {
             controls: false
           }
         },
-        simpleDemo: '<xml xmlns="https://developers.google.com/blockly/xml"><block type="handsfree_gesture" id="QoTbk/,sPtuU1-TT0k2m" x="225" y="125"><field name="gesture">right_eyebrow</field></block><block type="keyboardtapkey" id="S9]!S21$c%0~kooT[$Pn" disabled="true" x="577" y="129"><field name="key">space</field></block></xml>'
+        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfreefacegesture\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field></block><block type=\"specialtoast\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"true\" x=\"289\" y=\"258\"><field name=\"message\">Hello World!</field></block></xml>"
       }
     }
   },

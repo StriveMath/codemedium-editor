@@ -42,18 +42,20 @@
 <script>
 import Blockly from 'blockly'
 import {mapState} from 'vuex'
-import STRING_WebmidiInterpreter from '!!raw-loader!!../assets/js/webmidi-interpreter.js'
+import interpreterBase from '../assets/interpreter/index.js'
 import {defaults} from 'lodash'
 import Interpreter from 'js-interpreter'
 import midiblocksTheme from '../assets/toolboxes/theme'
+import emitHandler from '../assets/interpreter/emit-handler.js'
 import * as Babel from '@babel/standalone'
+import * as BabelClassProperties from '@babel/plugin-proposal-class-properties'
 
 /**
  * @emits onChange
  */
 export default {
   name: 'Blockly',
-  props: ['options', 'toolbox', 'blocks', 'inline', 'autoload'],
+  props: ['options', 'toolbox', 'blocks', 'inline', 'autoload', 'isRunning'],
 
   data () {
     return {
@@ -301,13 +303,14 @@ export default {
     },
 
     /**
-     * Execute code
+     * Execute code from beginning
      */
-    run () {
+    restartCode () {
       const code = Blockly.JavaScript.workspaceToCode(this.blockly)
       this.interpreter = new Interpreter(
-        Babel.transform(STRING_WebmidiInterpreter + '\n' + code, {
+        Babel.transform(interpreterBase + '\n' + code, {
           presets: ['env'],
+          plugins: [BabelClassProperties],
           sourceType: 'script'
         }).code, this.setupInterpreter)
       this.interpreter.run()
@@ -326,18 +329,19 @@ export default {
       }))
 
       /**
-       * Play a midi sound
-       * @todo Remove
+       * Emit a message
        */
-      acorn.setProperty(globalObject, '_playNote', acorn.createNativeFunction((dataStr) => {
-        let data = JSON.parse(dataStr)
-        
-        if (data.device === 'all') {
-          // Object.keys(this.devices.outputs).forEach(key => {
-            // const output = webmidi.getOutputById(key)
-            // output.playNote(data.note, data.channel)
-          // })
-        }
+      acorn.setProperty(globalObject, 'emit', acorn.createNativeFunction(emitHandler))
+
+      /**
+       * Timeouts
+       */
+      acorn.setProperty(globalObject, '_setTimeout', acorn.createNativeFunction((callbackID, time) => {
+        setTimeout(() => {
+          // @FIXME This is creating memory overflow
+          this.interpreter.appendCode(`;_timeouts['${callbackID}'] && _timeouts['${callbackID}']()`)
+          this.interpreter.run()
+        }, +time)
       }))
     },
 

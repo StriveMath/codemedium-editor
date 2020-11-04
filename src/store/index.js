@@ -20,6 +20,13 @@ export default function (/* { ssrContext } */) {
       reloads: 0,
 
       /**
+       * "Environment" variables
+       */
+      env: {
+        mode: process.env.HANDSFREE_DESKTOP ? 'desktop' : 'web',
+      },
+
+      /**
        * Stores states for various notifications
        */
       notifications: {
@@ -44,7 +51,8 @@ export default function (/* { ssrContext } */) {
        * Global Studio props
        */
       studio: {
-        hasBookmarks: false
+        hasBookmarks: false,
+        isRunning: false
       },
 
       /**
@@ -148,8 +156,7 @@ export default function (/* { ssrContext } */) {
       /**
        * Toggles desktop mode
        */
-      toggleDesktopMode ({state, commit}) {
-        commit('flip', ['settings.isDesktopMode'])
+      toggleDesktopMode ({state}) {
         window.handsfree.emit('toggleWebsocket', state.settings.isDesktopMode)
       }
     }

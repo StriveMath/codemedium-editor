@@ -49,7 +49,7 @@ export default {
     set(window, 'app.$', this)
 
     // Check version
-    if (!localStorage.version) {
+    if (!localStorage.version || localStorage.version < '0.2.1') {
       localStorage.clear()
     }
 

@@ -14,19 +14,17 @@ handsfree.use('socketConnector', {
    */
   onFrame ({weboji}) {
     lastPose = weboji
-    this.sendMessage(weboji)
+    this.sendMessage('move', weboji)
   },
 
   /**
-   * Sends a message to the socket
+   * Sends a message
    */
-  sendMessage (weboji) {
+  sendMessage (action, data) {
     lastPose && socketConnected && socket && socket.send(JSON.stringify({
       handsfree: true,
-      action: 'move',
-      data: {
-        ...weboji
-      }
+      action,
+      data
     }))
   }
 })
@@ -46,8 +44,8 @@ handsfree.plugin.faceClick.click = function () {
  */
 window.addEventListener('keydown', ({key}) => {
   if (socket && key === 'Escape') {
-    socket.close()
-    socketConnected = false
+    handsfree.emit('toggleWebsocket', false)
+    app.$page.$store.commit('set', ['settings.isDesktopMode', false])
   }
 })
 
@@ -67,8 +65,18 @@ handsfree.on('toggleWebsocket', function (state) {
       socketConnected = true
       console.log('connected...')
     }
+
+    // Notify user
+    window.app.$page.$q.notify({
+      timeout: 5000,
+      message: 'Press ESC to exit desktop mode',
+      type: 'positive'
+    })
+
+    document.body.classList.add('handsfree-desktop-mode')
   } else {
     socketConnected = false
+    document.body.classList.remove('handsfree-desktop-mode')
     console.log('...disconnected')
   }
 })

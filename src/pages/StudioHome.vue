@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
-  Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler')
+  Workspace(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
     q-item.q-mt-lg(@click='saveMidiblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
@@ -83,7 +83,7 @@ export default {
   components: {Workspace, DialogConfirm, DialogLoadMidiblock, DialogDeleteMidiblock},
 
   computed: {
-    ...mapState(['notifications']),
+    ...mapState(['notifications', 'studio']),
     
     /**
      * Returns the data used for saving this view
@@ -150,6 +150,9 @@ export default {
       ev.preventDefault()
       this.dialog.loadBlock = true
     })
+
+    // Handsfree
+    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   destroyed () {
@@ -161,6 +164,8 @@ export default {
     for (let i = 0; i < 10; i++) {
       this.$mousetrap.unbind(i.toString())
     }
+
+    document.removeEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   watch: {
@@ -172,7 +177,16 @@ export default {
       setTimeout(() => {
         window.dispatchEvent(new Event('resize'))
       })
-    }, 50, {leading: true, trailing: true})
+    }, 50, {leading: true, trailing: true}),
+
+    studio: {
+      deep: true,
+      handler (studio) {
+        if (studio.isRunning) {
+          this.$refs.workspace.restartCode()
+        }
+      }
+    }
   },
   
   data () {
@@ -318,6 +332,16 @@ export default {
     },
 
     /**
+     * Triggers the loop inside the interpreter
+     */
+    sendHandsfreeToInterpreter (data) {
+      if (this.studio.isRunning) {
+        this.$refs.workspace.interpreter.appendCode(`handsfree.loop(${JSON.stringify(data.detail)})`)
+        this.$refs.workspace.interpreter.run()
+      }
+    },
+
+    /**
      * Navigates to the bookmark if it exists
      * @param {Event} ev
      */
@@ -362,7 +386,9 @@ export default {
         case Blockly.Events.VAR_CREATE:
         case Blockly.Events.VAR_DELETE:
         case Blockly.Events.VAR_RENAME:
-          this.$refs.workspace.run()
+          if (this.studio.isRunning) {
+            this.$refs.workspace.restartCode()
+          }
           this.checkBookmarks()
           this.hasLoaded && this.autosave()
         break
