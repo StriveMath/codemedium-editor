@@ -1,52 +1,138 @@
 {
   "localStorage": {
-    "version": "0.2.0",
+    "version": "0.2.1",
+    "splitter": 50,
     "currentStudio": {
-      "title": "Raise Eyebrow to press Space (not yet working)",
-      "description": "Great for running games (like Google Chrome's Dino Run)",
-      "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
-      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block></xml>"
+      "title": "Hello World",
+      "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
+      "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
+      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfreefacegesture\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"specialtoast\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
     },
-    "facepointer.active": false,
     "currentFactory": {
-      "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
+      "uuid": "12bffcf1-2bd3-4303-a009-f2831d502267",
       "json": {
-        "type": "bookmark",
+        "type": "handsfreefacegesture",
         "tooltip": "",
-        "helpUrl": "https://midiblocks.com/help/block/bookmark",
-        "message0": "📌 %1",
+        "helpUrl": "https://midiblocks.com/help/block/handsfreefacegesture",
+        "message0": "😀 Face Gesture %1 %2 %3",
         "args0": [
           {
-            "type": "field_number",
-            "name": "index",
-            "value": 0
+            "type": "field_dropdown",
+            "name": "gesture",
+            "options": [
+              [
+                "Left Eyebrow Up",
+                "browLeftUp"
+              ],
+              [
+                "Right Eyebrow Up",
+                "browRightUp"
+              ],
+              [
+                "Left Eyebrow Down",
+                "browLeftDown"
+              ],
+              [
+                "Right Eyebrow Down",
+                "browRightDown"
+              ],
+              [
+                "Both Eyebrows Up",
+                "browsUp"
+              ],
+              [
+                "Both Eyebrows Down",
+                "browsDown"
+              ],
+              [
+                "One Eyebrow Up, the Other Down",
+                "browsUpDown"
+              ],
+              [
+                "Smile Left",
+                "smileLeft"
+              ],
+              [
+                "Smile Right",
+                "smileRight"
+              ],
+              [
+                "Smile to Either Side",
+                "smirk"
+              ],
+              [
+                "Pursed Lips",
+                "pursed"
+              ],
+              [
+                "Smile",
+                "smile"
+              ],
+              [
+                "Left Eye Closed",
+                "eyeLeftClosed"
+              ],
+              [
+                "Right Eye Closed",
+                "eyeRightClosed"
+              ],
+              [
+                "Both Eyes Closed",
+                "eyesClosed"
+              ],
+              [
+                "Mouth Closed",
+                "mouthClosed"
+              ],
+              [
+                "Mouth Open",
+                "mouthOpen"
+              ]
+            ]
+          },
+          {
+            "type": "input_dummy"
+          },
+          {
+            "type": "input_statement",
+            "name": "args"
           }
         ],
-        "colour": "#fff"
+        "colour": "#ff628c"
       },
-      "code": "/**\r\n * This is the bookmark block.\r\n * @todo Add code to this block 😅\r\n */",
+      "code": "const throttledArgs = throttle(function () {\r\n  $args() // Run everything inside the block\r\n}, 250)\r\n\r\n/**\r\n * Runs code when a face gesture is made\r\n */\r\nhandsfree.use('faceGesture', {\r\n  onFrame ({weboji}) {\r\n    if (weboji.state[$gesture]) {\r\n      throttledArgs()\r\n    }\r\n  }\r\n})",
       "variables": [
         {
           "type": "field",
-          "field": "number",
-          "name": "index"
+          "field": "dropdown",
+          "name": "gesture"
+        },
+        {
+          "type": "input",
+          "input": "statements",
+          "name": "args"
         }
       ],
       "description": "",
-      "name": "bookmark",
-      "category": "misc",
-      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"o)]~^g?+Z8Zx~*I~Nv#^\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">bookmark</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"rS0y4nN{g3CF2Q(uJ|zY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"7.nS9XE$yVxtOgY^4/Rx\"><field name=\"TEXT\">📌</field><next><block type=\"field_number\" id=\"fKkD3?V,JX!(807:Sr#4\"><field name=\"VALUE\">0</field><field name=\"FIELDNAME\">index</field><field name=\"MIN\">-Infinity</field><field name=\"MAX\">Infinity</field><field name=\"PRECISION\">0</field></block></next></block></statement></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"?}w]N$5{m|#R|W[Z-Z.2\"><mutation colour=\"#ffffff\"></mutation><field name=\"COLOR\">#fff</field></shadow></value></block></xml>"
+      "name": "handsfreeFaceGesture",
+      "category": "event",
+      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">handsfreeFaceGesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😀 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"17\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Left Eyebrow Up</field><field name=\"CPU0\">browLeftUp</field><field name=\"USER1\">Right Eyebrow Up</field><field name=\"CPU1\">browRightUp</field><field name=\"USER2\">Left Eyebrow Down</field><field name=\"CPU2\">browLeftDown</field><field name=\"USER3\">Right Eyebrow Down</field><field name=\"CPU3\">browRightDown</field><field name=\"USER4\">Both Eyebrows Up</field><field name=\"CPU4\">browsUp</field><field name=\"USER5\">Both Eyebrows Down</field><field name=\"CPU5\">browsDown</field><field name=\"USER6\">One Eyebrow Up, the Other Down</field><field name=\"CPU6\">browsUpDown</field><field name=\"USER7\">Smile Left</field><field name=\"CPU7\">smileLeft</field><field name=\"USER8\">Smile Right</field><field name=\"CPU8\">smileRight</field><field name=\"USER9\">Smile to Either Side</field><field name=\"CPU9\">smirk</field><field name=\"USER10\">Pursed Lips</field><field name=\"CPU10\">pursed</field><field name=\"USER11\">Smile</field><field name=\"CPU11\">smile</field><field name=\"USER12\">Left Eye Closed</field><field name=\"CPU12\">eyeLeftClosed</field><field name=\"USER13\">Right Eye Closed</field><field name=\"CPU13\">eyeRightClosed</field><field name=\"USER14\">Both Eyes Closed</field><field name=\"CPU14\">eyesClosed</field><field name=\"USER15\">Mouth Closed</field><field name=\"CPU15\">mouthClosed</field><field name=\"USER16\">Mouth Open</field><field name=\"CPU16\">mouthOpen</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#ff628c\"></mutation><field name=\"COLOR\">#ff628c</field></shadow></value></block></xml>"
     },
     "isStudioUnsaved": false,
-    "isFactoryUnsaved": false,
-    "midiblocks": {
-      "ae28920f-c7f7-42bf-891a-c00f46951e48": {
-        "title": "Raise Eyebrow to press Space (not yet working)",
-        "description": "Great for running games (like Google Chrome's Dino Run)",
-        "uuid": "ae28920f-c7f7-42bf-891a-c00f46951e48",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfree_gesture\" id=\"QoTbk/,sPtuU1-TT0k2m\" x=\"288\" y=\"163\"><field name=\"gesture\">right_eyebrow</field><statement name=\"args\"><block type=\"keyboardtapkey\" id=\"S9]!S21$c%0~kooT[$Pn\"><field name=\"key\">space</field></block></statement></block></xml>"
+    "handsfree.calibration": {
+      "offset": {
+        "x": 0,
+        "y": 0,
+        "pitch": 0,
+        "yaw": 0,
+        "roll": 0
+      },
+      "speed": {
+        "x": 1,
+        "y": 1
       }
     },
+    "isFactoryUnsaved": false,
     "blocks": {
       "6d675ace-0a37-4b1f-8bfa-513fd137b81f": {
         "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
@@ -80,22 +166,82 @@
       "12bffcf1-2bd3-4303-a009-f2831d502267": {
         "uuid": "12bffcf1-2bd3-4303-a009-f2831d502267",
         "json": {
-          "type": "handsfree_gesture",
+          "type": "handsfreefacegesture",
           "tooltip": "",
-          "helpUrl": "https://midiblocks.com/help/block/handsfree_gesture",
-          "message0": "😊 Face Gesture %1 %2 %3",
+          "helpUrl": "https://midiblocks.com/help/block/handsfreefacegesture",
+          "message0": "😀 Face Gesture %1 %2 %3",
           "args0": [
             {
               "type": "field_dropdown",
               "name": "gesture",
               "options": [
                 [
-                  "Right Eyebrow",
-                  "right_eyebrow"
+                  "Left Eyebrow Up",
+                  "browLeftUp"
                 ],
                 [
-                  "Left Eyebrow",
-                  "left_eyebrow"
+                  "Right Eyebrow Up",
+                  "browRightUp"
+                ],
+                [
+                  "Left Eyebrow Down",
+                  "browLeftDown"
+                ],
+                [
+                  "Right Eyebrow Down",
+                  "browRightDown"
+                ],
+                [
+                  "Both Eyebrows Up",
+                  "browsUp"
+                ],
+                [
+                  "Both Eyebrows Down",
+                  "browsDown"
+                ],
+                [
+                  "One Eyebrow Up, the Other Down",
+                  "browsUpDown"
+                ],
+                [
+                  "Smile Left",
+                  "smileLeft"
+                ],
+                [
+                  "Smile Right",
+                  "smileRight"
+                ],
+                [
+                  "Smile to Either Side",
+                  "smirk"
+                ],
+                [
+                  "Pursed Lips",
+                  "pursed"
+                ],
+                [
+                  "Smile",
+                  "smile"
+                ],
+                [
+                  "Left Eye Closed",
+                  "eyeLeftClosed"
+                ],
+                [
+                  "Right Eye Closed",
+                  "eyeRightClosed"
+                ],
+                [
+                  "Both Eyes Closed",
+                  "eyesClosed"
+                ],
+                [
+                  "Mouth Closed",
+                  "mouthClosed"
+                ],
+                [
+                  "Mouth Open",
+                  "mouthOpen"
                 ]
               ]
             },
@@ -107,9 +253,9 @@
               "name": "args"
             }
           ],
-          "colour": "#fad000"
+          "colour": "#ff628c"
         },
-        "code": "/**\r\n * Runs code when a face gesture is made\r\n * @todo\r\n */",
+        "code": "const throttledArgs = throttle(function () {\r\n  $args() // Run everything inside the block\r\n}, 250)\r\n\r\n/**\r\n * Runs code when a face gesture is made\r\n */\r\nhandsfree.use('faceGesture', {\r\n  onFrame ({weboji}) {\r\n    if (weboji.state[$gesture]) {\r\n      throttledArgs()\r\n    }\r\n  }\r\n})",
         "variables": [
           {
             "type": "field",
@@ -123,9 +269,9 @@
           }
         ],
         "description": "",
-        "name": "handsfree_gesture",
+        "name": "handsfreeFaceGesture",
         "category": "event",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">handsfree_gesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😊 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"2\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Right Eyebrow</field><field name=\"CPU0\">right_eyebrow</field><field name=\"USER1\">Left Eyebrow</field><field name=\"CPU1\">left_eyebrow</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#fad000\"></mutation><field name=\"COLOR\">#fad000</field></shadow></value></block></xml>"
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">handsfreeFaceGesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😀 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"17\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Left Eyebrow Up</field><field name=\"CPU0\">browLeftUp</field><field name=\"USER1\">Right Eyebrow Up</field><field name=\"CPU1\">browRightUp</field><field name=\"USER2\">Left Eyebrow Down</field><field name=\"CPU2\">browLeftDown</field><field name=\"USER3\">Right Eyebrow Down</field><field name=\"CPU3\">browRightDown</field><field name=\"USER4\">Both Eyebrows Up</field><field name=\"CPU4\">browsUp</field><field name=\"USER5\">Both Eyebrows Down</field><field name=\"CPU5\">browsDown</field><field name=\"USER6\">One Eyebrow Up, the Other Down</field><field name=\"CPU6\">browsUpDown</field><field name=\"USER7\">Smile Left</field><field name=\"CPU7\">smileLeft</field><field name=\"USER8\">Smile Right</field><field name=\"CPU8\">smileRight</field><field name=\"USER9\">Smile to Either Side</field><field name=\"CPU9\">smirk</field><field name=\"USER10\">Pursed Lips</field><field name=\"CPU10\">pursed</field><field name=\"USER11\">Smile</field><field name=\"CPU11\">smile</field><field name=\"USER12\">Left Eye Closed</field><field name=\"CPU12\">eyeLeftClosed</field><field name=\"USER13\">Right Eye Closed</field><field name=\"CPU13\">eyeRightClosed</field><field name=\"USER14\">Both Eyes Closed</field><field name=\"CPU14\">eyesClosed</field><field name=\"USER15\">Mouth Closed</field><field name=\"CPU15\">mouthClosed</field><field name=\"USER16\">Mouth Open</field><field name=\"CPU16\">mouthOpen</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#ff628c\"></mutation><field name=\"COLOR\">#ff628c</field></shadow></value></block></xml>"
       },
       "01b9e5f6-7869-43e3-8556-329c6ccdb7a4": {
         "uuid": "01b9e5f6-7869-43e3-8556-329c6ccdb7a4",
@@ -145,7 +291,7 @@
           "nextStatement": null,
           "colour": "#2ec4b6"
         },
-        "code": "/**\r\n * Sends the key\r\n * @todo\r\n */",
+        "code": "/**\r\n * Sends the key\r\n */\r\nemit({\r\n  event: 'keypress',\r\n  key: $key\r\n})",
         "variables": [
           {
             "type": "field",
@@ -157,8 +303,46 @@
         "name": "keyboardTapKey",
         "category": "keyboard_mouse",
         "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">keyboardTapKey</field><field name=\"category\">keyboard_mouse</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">⌨ Tap Key</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">space</field><field name=\"FIELDNAME\">key</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
+      },
+      "62746a3c-92de-439f-b74f-fe74130713d3": {
+        "uuid": "62746a3c-92de-439f-b74f-fe74130713d3",
+        "json": {
+          "type": "specialtoast",
+          "tooltip": "",
+          "helpUrl": "https://midiblocks.com/help/block/specialtoast",
+          "message0": "🔔 Show notification %1",
+          "args0": [
+            {
+              "type": "field_input",
+              "name": "message",
+              "text": "Hello World!"
+            }
+          ],
+          "previousStatement": null,
+          "nextStatement": null,
+          "colour": "#2ec4b6"
+        },
+        "code": "/**\r\n * Sends the key\r\n */\r\nemit({\r\n  event: 'toast',\r\n  $message\r\n})",
+        "variables": [
+          {
+            "type": "field",
+            "field": "text",
+            "name": "message"
+          }
+        ],
+        "description": "",
+        "name": "specialToast",
+        "category": "misc",
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">specialToast</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">🔔 Show notification</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">Hello World!</field><field name=\"FIELDNAME\">message</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
       }
     },
-    "splitter": 50
+    "midiblocks": {
+      "61c228d7-5e97-4ad9-aae6-37471e3631f9": {
+        "title": "Hello World",
+        "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
+        "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfreefacegesture\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"specialtoast\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
+      }
+    }
   }
 }

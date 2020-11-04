@@ -338,7 +338,8 @@ export default {
        */
       acorn.setProperty(globalObject, '_setTimeout', acorn.createNativeFunction((callbackID, time) => {
         setTimeout(() => {
-          this.interpreter.appendCode(`_timeouts['${callbackID}']()`)
+          // @FIXME This is creating memory overflow
+          this.interpreter.appendCode(`;_timeouts['${callbackID}'] && _timeouts['${callbackID}']()`)
           this.interpreter.run()
         }, +time)
       }))

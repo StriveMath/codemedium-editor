@@ -12,5 +12,16 @@ export default (ev) => {
         document.dispatchEvent(new KeyboardEvent('keypress', {key: emitted.key}))
       }
     break
+
+    /**
+     * Special/Misc
+     */
+    case 'toast':
+      window.app.$page.$q.notify({
+        message: `🔔 ${emitted.$message}`,
+        timeout: 3000,
+        type: 'positive'
+      })
+    break
   }
 }

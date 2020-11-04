@@ -51,6 +51,12 @@ function setTimeout (cb, time) {
   const id = makeId()
   _timeouts[id] = cb
   _setTimeout(id, time)
+
+  return id
+}
+
+function clearTimeout (id) {
+  delete _timeouts[id]
 }
 
 /**
@@ -80,14 +86,14 @@ function throttle (func, wait, options) {
 
   if (!options) options = {}
 
-  let later = function() {
+  let later = function () {
     previous = options.leading === false ? 0 : Date.now()
     timeout = null
     result = func.apply(context, args)
     if (!timeout) context = args = null
   }
 
-  return function() {
+  return function () {
     let now = Date.now()
     if (!previous && options.leading === false) previous = now
 
