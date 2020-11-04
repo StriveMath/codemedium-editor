@@ -77,8 +77,9 @@ export default {
               }
             })
             
-            code = code.join(';\n')
-            code += ';\n' + (customBlock.code || '')
+            // Compile code
+            code = '\n' + code.join(';\n')
+            code += '\n' + (customBlock.code || '')
 
             // Return code
             if (block.outputConnection) {

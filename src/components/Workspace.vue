@@ -350,15 +350,15 @@ export default {
      */
     addBlocks () {
       this.blocks.forEach(block => {
-        Blockly.Blocks[block.name] = {
+        Blockly.Blocks[block.json.type] = {
           init: function () {
             this.jsonInit(block.json)
           }
         }
-        Blockly.JavaScript[block.name] = () => ''
+        Blockly.JavaScript[block.json.type] = () => ''
 
         // Inject into workspace
-        const theBlock = this.blockly.newBlock(block.name)
+        const theBlock = this.blockly.newBlock(block.json.type)
         theBlock.initSvg()
         theBlock.render()
 
