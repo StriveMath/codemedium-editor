@@ -163,7 +163,7 @@ export default {
             controls: false
           }
         },
-        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfreefacegesture\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field></block><block type=\"specialtoast\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"true\" x=\"289\" y=\"258\"><field name=\"message\">Hello World!</field></block></xml>"
+        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field></block><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"true\" x=\"289\" y=\"258\"><field name=\"message\">Hello World!</field></block></xml>"
       }
     }
   },
