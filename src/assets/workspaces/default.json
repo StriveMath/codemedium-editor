@@ -1,19 +1,18 @@
 {
   "localStorage": {
     "version": "0.2.1",
-    "splitter": 50,
     "currentStudio": {
       "title": "Hello World",
       "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
       "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
-      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfreefacegesture\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"specialtoast\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
+      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
     },
     "currentFactory": {
       "uuid": "12bffcf1-2bd3-4303-a009-f2831d502267",
       "json": {
-        "type": "handsfreefacegesture",
+        "type": "12bffcf1-2bd3-4303-a009-f2831d502267",
         "tooltip": "",
-        "helpUrl": "https://midiblocks.com/help/block/handsfreefacegesture",
+        "helpUrl": "https://midiblocks.com/help/block/12bffcf1-2bd3-4303-a009-f2831d502267",
         "message0": "😀 Face Gesture %1 %2 %3",
         "args0": [
           {
@@ -114,9 +113,9 @@
         }
       ],
       "description": "",
-      "name": "handsfreeFaceGesture",
+      "name": "Face Gesture",
       "category": "event",
-      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">handsfreeFaceGesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😀 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"17\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Left Eyebrow Up</field><field name=\"CPU0\">browLeftUp</field><field name=\"USER1\">Right Eyebrow Up</field><field name=\"CPU1\">browRightUp</field><field name=\"USER2\">Left Eyebrow Down</field><field name=\"CPU2\">browLeftDown</field><field name=\"USER3\">Right Eyebrow Down</field><field name=\"CPU3\">browRightDown</field><field name=\"USER4\">Both Eyebrows Up</field><field name=\"CPU4\">browsUp</field><field name=\"USER5\">Both Eyebrows Down</field><field name=\"CPU5\">browsDown</field><field name=\"USER6\">One Eyebrow Up, the Other Down</field><field name=\"CPU6\">browsUpDown</field><field name=\"USER7\">Smile Left</field><field name=\"CPU7\">smileLeft</field><field name=\"USER8\">Smile Right</field><field name=\"CPU8\">smileRight</field><field name=\"USER9\">Smile to Either Side</field><field name=\"CPU9\">smirk</field><field name=\"USER10\">Pursed Lips</field><field name=\"CPU10\">pursed</field><field name=\"USER11\">Smile</field><field name=\"CPU11\">smile</field><field name=\"USER12\">Left Eye Closed</field><field name=\"CPU12\">eyeLeftClosed</field><field name=\"USER13\">Right Eye Closed</field><field name=\"CPU13\">eyeRightClosed</field><field name=\"USER14\">Both Eyes Closed</field><field name=\"CPU14\">eyesClosed</field><field name=\"USER15\">Mouth Closed</field><field name=\"CPU15\">mouthClosed</field><field name=\"USER16\">Mouth Open</field><field name=\"CPU16\">mouthOpen</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#ff628c\"></mutation><field name=\"COLOR\">#ff628c</field></shadow></value></block></xml>"
+      "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">Face Gesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😀 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"17\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Left Eyebrow Up</field><field name=\"CPU0\">browLeftUp</field><field name=\"USER1\">Right Eyebrow Up</field><field name=\"CPU1\">browRightUp</field><field name=\"USER2\">Left Eyebrow Down</field><field name=\"CPU2\">browLeftDown</field><field name=\"USER3\">Right Eyebrow Down</field><field name=\"CPU3\">browRightDown</field><field name=\"USER4\">Both Eyebrows Up</field><field name=\"CPU4\">browsUp</field><field name=\"USER5\">Both Eyebrows Down</field><field name=\"CPU5\">browsDown</field><field name=\"USER6\">One Eyebrow Up, the Other Down</field><field name=\"CPU6\">browsUpDown</field><field name=\"USER7\">Smile Left</field><field name=\"CPU7\">smileLeft</field><field name=\"USER8\">Smile Right</field><field name=\"CPU8\">smileRight</field><field name=\"USER9\">Smile to Either Side</field><field name=\"CPU9\">smirk</field><field name=\"USER10\">Pursed Lips</field><field name=\"CPU10\">pursed</field><field name=\"USER11\">Smile</field><field name=\"CPU11\">smile</field><field name=\"USER12\">Left Eye Closed</field><field name=\"CPU12\">eyeLeftClosed</field><field name=\"USER13\">Right Eye Closed</field><field name=\"CPU13\">eyeRightClosed</field><field name=\"USER14\">Both Eyes Closed</field><field name=\"CPU14\">eyesClosed</field><field name=\"USER15\">Mouth Closed</field><field name=\"CPU15\">mouthClosed</field><field name=\"USER16\">Mouth Open</field><field name=\"CPU16\">mouthOpen</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#ff628c\"></mutation><field name=\"COLOR\">#ff628c</field></shadow></value></block></xml>"
     },
     "isStudioUnsaved": false,
     "handsfree.calibration": {
@@ -132,14 +131,23 @@
         "y": 1
       }
     },
+    "notifications.hasSeenTutorialsComingSoon": true,
     "isFactoryUnsaved": false,
+    "midiblocks": {
+      "61c228d7-5e97-4ad9-aae6-37471e3631f9": {
+        "title": "Hello World",
+        "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
+        "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
+      }
+    },
     "blocks": {
       "6d675ace-0a37-4b1f-8bfa-513fd137b81f": {
         "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
         "json": {
-          "type": "bookmark",
+          "type": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
           "tooltip": "",
-          "helpUrl": "https://midiblocks.com/help/block/bookmark",
+          "helpUrl": "https://midiblocks.com/help/block/6d675ace-0a37-4b1f-8bfa-513fd137b81f",
           "message0": "📌 %1",
           "args0": [
             {
@@ -159,16 +167,16 @@
           }
         ],
         "description": "",
-        "name": "bookmark",
+        "name": "Bookmark",
         "category": "misc",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"o)]~^g?+Z8Zx~*I~Nv#^\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">bookmark</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"rS0y4nN{g3CF2Q(uJ|zY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"7.nS9XE$yVxtOgY^4/Rx\"><field name=\"TEXT\">📌</field><next><block type=\"field_number\" id=\"fKkD3?V,JX!(807:Sr#4\"><field name=\"VALUE\">0</field><field name=\"FIELDNAME\">index</field><field name=\"MIN\">-Infinity</field><field name=\"MAX\">Infinity</field><field name=\"PRECISION\">0</field></block></next></block></statement></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"?}w]N$5{m|#R|W[Z-Z.2\"><mutation colour=\"#ffffff\"></mutation><field name=\"COLOR\">#fff</field></shadow></value></block></xml>"
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"o)]~^g?+Z8Zx~*I~Nv#^\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">Bookmark</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"rS0y4nN{g3CF2Q(uJ|zY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"7.nS9XE$yVxtOgY^4/Rx\"><field name=\"TEXT\">📌</field><next><block type=\"field_number\" id=\"fKkD3?V,JX!(807:Sr#4\"><field name=\"VALUE\">0</field><field name=\"FIELDNAME\">index</field><field name=\"MIN\">-Infinity</field><field name=\"MAX\">Infinity</field><field name=\"PRECISION\">0</field></block></next></block></statement></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"?}w]N$5{m|#R|W[Z-Z.2\"><mutation colour=\"#ffffff\"></mutation><field name=\"COLOR\">#fff</field></shadow></value></block></xml>"
       },
       "12bffcf1-2bd3-4303-a009-f2831d502267": {
         "uuid": "12bffcf1-2bd3-4303-a009-f2831d502267",
         "json": {
-          "type": "handsfreefacegesture",
+          "type": "12bffcf1-2bd3-4303-a009-f2831d502267",
           "tooltip": "",
-          "helpUrl": "https://midiblocks.com/help/block/handsfreefacegesture",
+          "helpUrl": "https://midiblocks.com/help/block/12bffcf1-2bd3-4303-a009-f2831d502267",
           "message0": "😀 Face Gesture %1 %2 %3",
           "args0": [
             {
@@ -269,16 +277,16 @@
           }
         ],
         "description": "",
-        "name": "handsfreeFaceGesture",
+        "name": "Face Gesture",
         "category": "event",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">handsfreeFaceGesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😀 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"17\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Left Eyebrow Up</field><field name=\"CPU0\">browLeftUp</field><field name=\"USER1\">Right Eyebrow Up</field><field name=\"CPU1\">browRightUp</field><field name=\"USER2\">Left Eyebrow Down</field><field name=\"CPU2\">browLeftDown</field><field name=\"USER3\">Right Eyebrow Down</field><field name=\"CPU3\">browRightDown</field><field name=\"USER4\">Both Eyebrows Up</field><field name=\"CPU4\">browsUp</field><field name=\"USER5\">Both Eyebrows Down</field><field name=\"CPU5\">browsDown</field><field name=\"USER6\">One Eyebrow Up, the Other Down</field><field name=\"CPU6\">browsUpDown</field><field name=\"USER7\">Smile Left</field><field name=\"CPU7\">smileLeft</field><field name=\"USER8\">Smile Right</field><field name=\"CPU8\">smileRight</field><field name=\"USER9\">Smile to Either Side</field><field name=\"CPU9\">smirk</field><field name=\"USER10\">Pursed Lips</field><field name=\"CPU10\">pursed</field><field name=\"USER11\">Smile</field><field name=\"CPU11\">smile</field><field name=\"USER12\">Left Eye Closed</field><field name=\"CPU12\">eyeLeftClosed</field><field name=\"USER13\">Right Eye Closed</field><field name=\"CPU13\">eyeRightClosed</field><field name=\"USER14\">Both Eyes Closed</field><field name=\"CPU14\">eyesClosed</field><field name=\"USER15\">Mouth Closed</field><field name=\"CPU15\">mouthClosed</field><field name=\"USER16\">Mouth Open</field><field name=\"CPU16\">mouthOpen</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#ff628c\"></mutation><field name=\"COLOR\">#ff628c</field></shadow></value></block></xml>"
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"?.N/aj!}/z+og(r.I?h(\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"NONE\"></mutation><field name=\"name\">Face Gesture</field><field name=\"category\">event</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">NONE</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"j[7xHqmGh9].Mf7i%.uY\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"L~uc[^(}6}A{*WeV;Prr\"><field name=\"TEXT\">😀 Face Gesture</field><next><block type=\"field_dropdown\" id=\"@q=wJRH(*CCUIg:kq`q=\"><mutation options=\"17\"></mutation><field name=\"FIELDNAME\">gesture</field><field name=\"USER0\">Left Eyebrow Up</field><field name=\"CPU0\">browLeftUp</field><field name=\"USER1\">Right Eyebrow Up</field><field name=\"CPU1\">browRightUp</field><field name=\"USER2\">Left Eyebrow Down</field><field name=\"CPU2\">browLeftDown</field><field name=\"USER3\">Right Eyebrow Down</field><field name=\"CPU3\">browRightDown</field><field name=\"USER4\">Both Eyebrows Up</field><field name=\"CPU4\">browsUp</field><field name=\"USER5\">Both Eyebrows Down</field><field name=\"CPU5\">browsDown</field><field name=\"USER6\">One Eyebrow Up, the Other Down</field><field name=\"CPU6\">browsUpDown</field><field name=\"USER7\">Smile Left</field><field name=\"CPU7\">smileLeft</field><field name=\"USER8\">Smile Right</field><field name=\"CPU8\">smileRight</field><field name=\"USER9\">Smile to Either Side</field><field name=\"CPU9\">smirk</field><field name=\"USER10\">Pursed Lips</field><field name=\"CPU10\">pursed</field><field name=\"USER11\">Smile</field><field name=\"CPU11\">smile</field><field name=\"USER12\">Left Eye Closed</field><field name=\"CPU12\">eyeLeftClosed</field><field name=\"USER13\">Right Eye Closed</field><field name=\"CPU13\">eyeRightClosed</field><field name=\"USER14\">Both Eyes Closed</field><field name=\"CPU14\">eyesClosed</field><field name=\"USER15\">Mouth Closed</field><field name=\"CPU15\">mouthClosed</field><field name=\"USER16\">Mouth Open</field><field name=\"CPU16\">mouthOpen</field></block></next></block></statement><next><block type=\"input_statement\" id=\"__[/nWl6_gCr:,}|Cv*h\"><field name=\"INPUTNAME\">args</field><field name=\"ALIGN\">LEFT</field><value name=\"TYPE\"><shadow type=\"type_null\" id=\"E?Mp_OEuZCjidLs87B!u\"></shadow></value></block></next></block></statement><value name=\"COLOR\"><shadow type=\"style_color\" id=\"Wc~M3@R*O;/+?b~1ho$)\"><mutation colour=\"#ff628c\"></mutation><field name=\"COLOR\">#ff628c</field></shadow></value></block></xml>"
       },
       "01b9e5f6-7869-43e3-8556-329c6ccdb7a4": {
         "uuid": "01b9e5f6-7869-43e3-8556-329c6ccdb7a4",
         "json": {
-          "type": "keyboardtapkey",
+          "type": "01b9e5f6-7869-43e3-8556-329c6ccdb7a4",
           "tooltip": "",
-          "helpUrl": "https://midiblocks.com/help/block/keyboardtapkey",
+          "helpUrl": "https://midiblocks.com/help/block/01b9e5f6-7869-43e3-8556-329c6ccdb7a4",
           "message0": "⌨ Tap Key %1",
           "args0": [
             {
@@ -300,16 +308,16 @@
           }
         ],
         "description": "",
-        "name": "keyboardTapKey",
+        "name": "Tap Key",
         "category": "keyboard_mouse",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">keyboardTapKey</field><field name=\"category\">keyboard_mouse</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">⌨ Tap Key</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">space</field><field name=\"FIELDNAME\">key</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">Tap Key</field><field name=\"category\">keyboard_mouse</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">⌨ Tap Key</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">space</field><field name=\"FIELDNAME\">key</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
       },
       "62746a3c-92de-439f-b74f-fe74130713d3": {
         "uuid": "62746a3c-92de-439f-b74f-fe74130713d3",
         "json": {
-          "type": "specialtoast",
+          "type": "62746a3c-92de-439f-b74f-fe74130713d3",
           "tooltip": "",
-          "helpUrl": "https://midiblocks.com/help/block/specialtoast",
+          "helpUrl": "https://midiblocks.com/help/block/62746a3c-92de-439f-b74f-fe74130713d3",
           "message0": "🔔 Show notification %1",
           "args0": [
             {
@@ -331,18 +339,11 @@
           }
         ],
         "description": "",
-        "name": "specialToast",
+        "name": "Show Notification",
         "category": "misc",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">specialToast</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">🔔 Show notification</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">Hello World!</field><field name=\"FIELDNAME\">message</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">Show Notification</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">🔔 Show notification</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">Hello World!</field><field name=\"FIELDNAME\">message</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
       }
     },
-    "midiblocks": {
-      "61c228d7-5e97-4ad9-aae6-37471e3631f9": {
-        "title": "Hello World",
-        "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
-        "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"handsfreefacegesture\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"specialtoast\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
-      }
-    }
+    "splitter": 50
   }
 }

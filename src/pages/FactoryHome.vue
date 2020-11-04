@@ -364,8 +364,8 @@ export default {
      * Create a clone of a block
      */
     remixBlock () {
-      this.block.uuid = uuidv4()
-      this.getRootBlock().setFieldValue(this.getRootBlock().getFieldValue('name') + '_remix', 'name')
+      this.block.json.type = this.block.uuid = uuidv4()
+      this.getRootBlock().setFieldValue(this.getRootBlock().getFieldValue('name') + ' [Remixed]', 'name')
       this.$forceUpdate()
 
       this.autosave()
@@ -451,10 +451,7 @@ export default {
       const rootBlock = this.getRootBlock()
       if (!rootBlock) return
 
-      let blockType = rootBlock.getFieldValue('name').trim().toLowerCase() || ''
-      blockType = blockType.replace(/\W/g, '_').replace(/^(\d)/, '_\\1')
-
-      this.block.json = this.formatJson(blockType, rootBlock)
+      this.block.json = this.formatJson(this.block.uuid, rootBlock)
       this.updatePreview()
     },
 
@@ -824,18 +821,18 @@ export default {
              * Dynamically generate MIDI device selector options
              * @todo Remove
              */
-            case 'field_midi_device_dropdown':
-              console.log('CHECKING')
-              options = [['MIDI is disabled', 'DISABLED']]
+            // case 'field_midi_device_dropdown':
+            //   console.log('CHECKING')
+            //   options = [['MIDI is disabled', 'DISABLED']]
 
-              if (options.length) {
-                fields.push({
-                  type: block.type,
-                  name: block.getFieldValue('FIELDNAME'),
-                  options: options
-                })
-              }
-            break
+            //   if (options.length) {
+            //     fields.push({
+            //       type: block.type,
+            //       name: block.getFieldValue('FIELDNAME'),
+            //       options: options
+            //     })
+            //   }
+            // break
 
             // case 'field_image':
             //   fields.push({

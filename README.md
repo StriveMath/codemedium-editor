@@ -168,7 +168,8 @@ npm start
 # HANDSFREE DESKTOP 
 # -----------
 # Same as `npm start` but it controls the desktop pointer instead of a virtual one
-npm run handsfree-desktop
+# Adds a "Desktop Mode" toggle
+npm run desktop
 
 # PRODUCTION
 # ----------

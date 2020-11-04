@@ -1,13 +1,13 @@
 {
   "name": "midiblocks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A handsfree creative coding platform. Build apps, make art, create bots, & more",
   "productName": "Midiblocks",
   "author": "Oz Ramos <midiblocks@gmail.com>",
   "private": true,
   "scripts": {
     "start": "quasar dev",
-    "handsfree-desktop": "concurrently \"quasar dev --handsfree-desktop\" \"nodemon desktop/server.js\"",
+    "desktop": "concurrently \"quasar dev --handsfree-desktop\" \"nodemon desktop/server.js\"",
     "build": "quasar build",
     "deploy": "npm run build && firebase deploy",
     "lint": "eslint --ext .js,.vue ./",
