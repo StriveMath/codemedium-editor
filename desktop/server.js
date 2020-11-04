@@ -11,20 +11,17 @@ wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     message = JSON.parse(message)
     if (!message.handsfree) return
-    
-    // Move cursor
-    if (message.action === 'move') {
-      robot.moveMouse(message.data.pointer.x, message.data.pointer.y)
-    }
 
-    // Click
-    if (message.action === 'click') {
-      robot.mouseClick()
-    }
-
-    // Click
-    if (message.action === 'keypress') {
-      robot.keyTap(message.data.key)
+    switch (message.action) {
+      case 'move':
+        robot.moveMouse(message.data.pointer.x, message.data.pointer.y)
+      break
+      case 'click':
+        robot.mouseClick()
+      break
+      case 'keypress':
+        robot.keyTap(message.data.key)
+      break
     }
   })
 

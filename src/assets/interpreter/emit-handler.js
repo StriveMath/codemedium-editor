@@ -3,11 +3,17 @@
  */
 export default (ev) => {
   let emitted = ev.properties
+  const $socket = handsfree.plugin.socketConnector
 
   switch (emitted.event) {
+    /**
+     * Keyboard
+     * @see http://robotjs.io/docs/syntax#keyboard
+     */
+    // keyTap
     case 'keypress':
       if (window.app.$page.$store.state.settings.isDesktopMode) {
-        handsfree.plugin.socketConnector.sendMessage('keypress', {key: emitted.key})
+        $socket.sendMessage('keypress', {key: emitted.key})
       } else {
         document.dispatchEvent(new KeyboardEvent('keypress', {key: emitted.key}))
       }

@@ -66,7 +66,7 @@ q-page(:style-fn='resizePage')
     //- Workspace
     template(v-slot:before)
       ColorPicker
-      Workspace.fill(ref='workspace' :toolbox='toolbox' :blocks='[]' :options='options' @change='workspaceEventHandler')
+      Workspace.full-height(ref='workspace' :toolbox='toolbox' :blocks='[]' :options='options' @change='workspaceEventHandler')
         //- View change
         template(v-slot:extraControls)
           q-list(style='flex: 0 0 auto')
@@ -417,6 +417,7 @@ export default {
     resizePage (offset) {
       this.$nextTick(() => {
         const height = `calc(100vh - ${offset}px)`
+        document.querySelector('.q-splitter__before').style.height = height
         document.querySelector('.q-splitter__after').style.height = height
       })
       return { maxHeight: offset ? `calc(100vh - ${offset}px)` : '100vh' }
