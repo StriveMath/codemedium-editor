@@ -364,7 +364,7 @@ export default {
      * Create a clone of a block
      */
     remixBlock () {
-      this.block.uuid = uuidv4()
+      this.block.json.type = this.block.uuid = uuidv4()
       this.getRootBlock().setFieldValue(this.getRootBlock().getFieldValue('name') + ' [Remixed]', 'name')
       this.$forceUpdate()
 
