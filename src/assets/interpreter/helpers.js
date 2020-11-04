@@ -10,7 +10,7 @@ _events = {}
  * @param {Array} args The list of arguments
  * @param {Function} callback The function to call when this event is triggered
  */
-addEventListener = function (eventName, args, callback) {
+function addEventListener (eventName, args, callback) {
   if (!_events[eventName]) {
     _events[eventName] = []
   }
@@ -34,7 +34,7 @@ console = {
  * @param {String} eventName 
  * @param {*} payload
  */
-triggerEvent = function (eventName, payload) {
+function triggerEvent (eventName, payload) {
   _events[eventName] && _events[eventName].forEach(function (event) {
     event.callback({
       args: event.args,
@@ -44,10 +44,36 @@ triggerEvent = function (eventName, payload) {
 }
 
 /**
+ * Timeouts
+ */
+_timeouts = {}
+function setTimeout (cb, time) {
+  const id = makeId()
+  _timeouts[id] = cb
+  _setTimeout(id, time)
+}
+
+/**
+ * Used for generating unique ids
+ * @see https://stackoverflow.com/a/1349426
+ */
+function makeId (length = 16) {
+  let result = '';
+  let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_$'
+  let charactersLength = characters.length
+
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+
+  return result
+}
+
+/**
  * Throttle
  * @see https://stackoverflow.com/a/27078401
  */
-function throttle(func, wait, options) {
+function throttle (func, wait, options) {
   let context, args, result
   let timeout = null
   let previous = 0

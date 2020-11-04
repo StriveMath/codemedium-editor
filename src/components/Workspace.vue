@@ -332,6 +332,16 @@ export default {
        * Emit a message
        */
       acorn.setProperty(globalObject, 'emit', acorn.createNativeFunction(emitHandler))
+
+      /**
+       * Timeouts
+       */
+      acorn.setProperty(globalObject, '_setTimeout', acorn.createNativeFunction((callbackID, time) => {
+        setTimeout(() => {
+          this.interpreter.appendCode(`_timeouts['${callbackID}']()`)
+          this.interpreter.run()
+        }, +time)
+      }))
     },
 
     /**

@@ -386,7 +386,9 @@ export default {
         case Blockly.Events.VAR_CREATE:
         case Blockly.Events.VAR_DELETE:
         case Blockly.Events.VAR_RENAME:
-          this.$refs.workspace.restartCode()
+          if (this.studio.isRunning) {
+            this.$refs.workspace.restartCode()
+          }
           this.checkBookmarks()
           this.hasLoaded && this.autosave()
         break
