@@ -4,7 +4,7 @@ export default [
     category: 'event',
     name: 'Events',
     icon: 'fas fa-satellite-dish',
-    colour: '#ff9d00',
+    colour: '#ff628c',
     children: []
   },
   {
@@ -1291,14 +1291,14 @@ export default [
     tag: 'category',
     name: 'Variables',
     icon: 'fas fa-box',
-    colour: '#ff628c',
+    colour: '#ff9d00',
     custom: 'VARIABLE',
     children: []
   },
   {
     tag: 'category',
     name: 'Functions',
-    colour: '#ff628c',
+    colour: '#ff9d00',
     icon: 'fas fa-plug',
     custom: 'PROCEDURE',
     children: []

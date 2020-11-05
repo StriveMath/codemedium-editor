@@ -1,6 +1,6 @@
 {
   "localStorage": {
-    "version": "0.2.1",
+    "splitter": 50,
     "currentStudio": {
       "title": "Hello World",
       "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
@@ -131,16 +131,7 @@
         "y": 1
       }
     },
-    "notifications.hasSeenTutorialsComingSoon": true,
     "isFactoryUnsaved": false,
-    "midiblocks": {
-      "61c228d7-5e97-4ad9-aae6-37471e3631f9": {
-        "title": "Hello World",
-        "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
-        "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
-        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
-      }
-    },
     "blocks": {
       "6d675ace-0a37-4b1f-8bfa-513fd137b81f": {
         "uuid": "6d675ace-0a37-4b1f-8bfa-513fd137b81f",
@@ -344,6 +335,13 @@
         "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"factory_base\" id=\"tGal;xJ3lm,XRC[|00S)\" deletable=\"false\" movable=\"false\" x=\"10\" y=\"10\"><mutation connections=\"BOTH\"></mutation><field name=\"name\">Show Notification</field><field name=\"category\">misc</field><field name=\"INLINE\">AUTO</field><field name=\"CONNECTIONS\">BOTH</field><statement name=\"INPUTS\"><block type=\"input_dummy\" id=\"#B//?D:{UWU^NJOTwFF*\"><field name=\"ALIGN\">LEFT</field><statement name=\"FIELDS\"><block type=\"field_static\" id=\"Vj|6|AA0`c}V)NphxvbQ\"><field name=\"TEXT\">🔔 Show notification</field><next><block type=\"field_input\" id=\"o^m^X%E^qSAHbEvw|8un\"><field name=\"TEXT\">Hello World!</field><field name=\"FIELDNAME\">message</field></block></next></block></statement></block></statement><value name=\"TOPTYPE\"><shadow type=\"type_null\" id=\"bJLZhO@n}xwv!h(JdITt\"></shadow></value><value name=\"BOTTOMTYPE\"><shadow type=\"type_null\" id=\"PKYe1*J+wd#w)/(:zyyn\"></shadow></value><value name=\"COLOR\"><shadow type=\"style_color\" id=\"^Y@Fu.AbVK+2r/_T_S]F\"><mutation colour=\"#2ec4b6\"></mutation><field name=\"COLOR\">#2ec4b6</field></shadow></value></block></xml>"
       }
     },
-    "splitter": 50
+    "midiblocks": {
+      "61c228d7-5e97-4ad9-aae6-37471e3631f9": {
+        "title": "Hello World",
+        "description": "A minimal example that displays a 🔔 Notification when you 😏 Smirk",
+        "uuid": "61c228d7-5e97-4ad9-aae6-37471e3631f9",
+        "workspace": "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field><statement name=\"args\"><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\"><field name=\"message\">Hello World!</field></block></statement></block></xml>"
+      }
+    }
   }
 }
