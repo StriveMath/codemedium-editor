@@ -1,74 +1,29 @@
 <template lang="pug">
 q-page
+  //- Hero
   section.content.flex.flex-center
-    //- Hero
     .row.q-col-gutter-lg
       .col-12.col-md-6
         q-card
           q-card-section.text-center
-            img.q-mt-lg.max-width-100(src='~assets/logo-title.png')
-            p.text-subtitle2.q-mt-lg A platform for <span class="text-negative">doing</span> things <span class="text-info">handsfree</span>
-            div.text-subtitle1 
-              strong.text-negative 📅 This project is a work in progress 📅
-              div <a href="http://eepurl.com/hhD7S1" target="_blank">Check back</a> on around <span class="text-negative">11/8</span> for beta!
-          
-          q-card-section
-            q-card.bg-inactive
-              q-card-section
-                p
-                ul.spaced.text-left.text-subtitle2
-                  li Map <span class="text-info">face gestures</span> to the <span class="text-negative">mouse</span> and <span class="text-negative">keyboard</span>
-                  li Play <span class="text-negative">Steam games</span> and more <span class="text-info">handsfree</span>
-                  li Create <span class="text-info">gesture-driven automations</span> for <span class="text-negative">desktop</span>, <span class="text-negative">devices</span>, <span class="text-negative">robots</span>, and <span class="text-negative">more</span>
-                  li <span class="text-info">Voice</span>, <span class="text-info">hand tracking</span>, <span class="text-info">pose estimation</span>, and <span class="text-info">mind control</span> coming soon!
-
-          q-card-section
-            p.text-center
+            q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/YATR9GZSSHKeNw3fht/giphy.gif')
+            p 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
+            p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree!
+            div.q-mt-sm.text-center
               small <a href="https://github.com/midiblocks/midiblocks">GitHub</a> &middot; <a href="https://twitter.com/midiblocks">Twitter</a> &middot; <a href="https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA">YouTube</a> &middot; <a href="https://www.reddit.com/r/SideProject/comments/jipnqe/midiblocks_a_web_based_handsfree_visual_coding/">About</a>
-      .col-12.col-md-6
-        q-card
-          q-card-section.text-subtitle1
-            q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif')
-            p <span class="text-negative">Midiblocks</span> are little apps assembled with blocks that help you do different things on your devices through <span class="text-info">face gestures</span>.
-            p During <span class='text-negative'>Beta</span> a few starter <span class='text-negative'>Midiblocks</span> will be available to use right away to help you do things like <span class='text-info'>controlling</span> a <span class='text-negative'>pointer</span>, <span class='text-info'>copy+pasting </span> <span class='text-negative'>text</span> and <span class='text-negative'>media</span></span>, <span class='text-info'>mapping gestures</span> to <span class='text-negative'>virtual game controllers</span>, and more through <span class='text-info'>face gestures</span>!
-            p But that's just to get you started! You can add more functionality with the handsfree visual code editor in the <router-link :to='{name: "Studio"}'>Midiblocks Studio</router-link> (tutorials coming soon).
 
-  //- About Face Pointers
-  section.content.q-mt-xl
-    .row.q-col-gutter-lg.justify-center
       .col-12.col-md-6
         q-card
+          q-card-section
+            div(style='height: 250px')
+              Workspace.full-height(ref='workspace' :toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options' @change='workspaceEventHandler')
           q-card-section.text-subtitle1
-            h2 About <span class='text-negative'>Face Pointers</span>
-            q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/Iv2aSMS0QTy2P5JNCX/giphy.gif')
-            p A <span class="text-negative">Face Pointer</span> is a pointer that is controlled with <span class="text-info">head movements</span> and <span class="text-info">face gestures</span> through a <span class="text-negative">webcam</span>. By default, the <span class="text-negative">Face Pointer</span> that comes with <span class="text-negative">Midiblocks</span> has the following features:
-            ul.spaced
-              li (<span class="text-negative">Web only</span>) <span class="text-info">Move</span> the <span class="text-negative">Face Pointer</span> above or below a scroll area to scroll in that direction (see below)
-              li <span class="text-negative">Click</span> by <span class="text-info">smiling</span> or <span class="text-info">smirking to either side</span>
-            p <span class="text-negative">Midiblock's </span> <span class="text-info">Face Pointer</span> is powered by my gesture library, <router-link :to='{name: "DocsHandsfreeLanding"}'>Handsfree.js</router-link>
+            div <span class='text-negative'>Midiblocks</span> are groups of blocks that <span class='text-ansi-bright-green'>react</span> to <span class='text-info'>face gestures</span>. When you snap together the two blocks above, they form a <span class='text-negative'>Midiblock</span> that shows a "<span class='text-ansi-bright-green'>🔔 Hello World!</span>" message when you do the <span class='text-info'>selected gesture</span>.
           q-card-actions
-            q-btn.bg-secondary.full-width(:disabled='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")')
-              span.q-mr-sm Try it
-              <strong><small>(requires GPU)</small></strong>
-
-  //- Mapping Face Gestures
-  section.content.q-mt-xl
-    .row.q-col-gutter-lg.justify-center
-      .col-12
-        q-card
-          q-card-section.text-subtitle1
-            h2 Mapping <span class='text-info'>face gestures</span> to the <span class='text-negative'>keyboard</span> and <span class='text-negative'>mouse</span>
-            .row.q-col-gutter-lg
-              .col-12.col-md-6
-                q-card.bg-inactive
-                  q-card-section
-                    h3 Try it!
-                    p <span class='text-info'>Snap</span> these <span class='text-negative'>two blocks</span> together to create a small <span class='text-negative'>Midiblock</span> that <span class='text-info'>responds</span> to the <span class='text-info'>selected event</span> by emitting the <span class='text-negative'>selected key</span>.
-                    p <span class='text-negative'>Midiblocks</span> can be composed of two blocks or dozens or even hundreds of blocks. <span class='text-negative'>The Library</span> contains a <router-link :to='{name: "Library"}'>growing set of Midiblocks</router-link> and the <span class='text-negative'>Blocks</span> that compose them, and you can  <router-link :to='{name: "Factory"}'>create new ones</router-link> using JavaScript!
-              .col-12.col-md-6
-                q-card.bg-inactive
-                  q-card-section(style='height: 300px')
-                    Workspace.full-height(:toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options')
+            q-btn.bg-negative.full-width(v-if='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")') Stop webcam
+            q-btn.bg-secondary.full-width(v-else @click='$store.dispatch("toggleHandsfree")') Try it! Enable Webcam and Go Handsfree
+          div.text-center.q-pb-sm
+            small <span class='text-info'>Gesture recognition</span> happens <span class='text-ansi-bright-green'>locally in your browser</span> (<span class='text-negative'>no data is ever sent anywhere</span>). <strong class="text-info">Graphics card required.</strong>
 
   //- Newsletter
   section.content.q-mt-xl
@@ -122,9 +77,14 @@ q-page
               .col-12.col-md-6
                 q-card.bg-inactive
                   q-card-section
-                    h3 Recent updates
-                    q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/YATR9GZSSHKeNw3fht/giphy.gif')
-                    p more info coming soon!
+                    h3 Roadmap
+                    q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif')
+                    ul
+                      li Release beta (eta 11/8)
+                      li Add Eye Tracking
+                      li Add Handtracking
+                      li Add Voice
+                      li Add Mind Control
 </template>
 
 <script>
@@ -133,6 +93,8 @@ import {mapState} from 'vuex'
 import Workspace from '../components/Workspace'
 import toolbox from '../assets/toolboxes/studio'
 import getToolbox from '../mixins/getToolbox'
+import store from 'store'
+import Blockly from 'blockly'
 
 export default {
   name: 'PageHome',
@@ -150,31 +112,46 @@ export default {
   data () {
     return {
       newsletterEmail: '',
-      hasSubmittedNewsletter: false,
+      hasSubmittedNewsletter: store.get('hasSubmittedNewsletter'),
 
       toolbox: this.getToolbox(toolbox),
       
       workspaces: {
         options: {
-          zoomToFit: true,
+          zoomToFit: -2,
           hideToolbox: true,
           trashcan: false,
           zoom: {
             controls: false
           }
         },
-        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"275\" y=\"125\"><field name=\"gesture\">smirk</field></block><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"true\" x=\"289\" y=\"258\"><field name=\"message\">Hello World!</field></block></xml>"
+        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"262\" y=\"113\"><field name=\"gesture\">smirk</field></block><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"false\" x=\"288\" y=\"244\"><field name=\"message\">Hello World!</field></block></xml>"
       }
     }
   },
 
   mounted () {
     set(window, 'app.$page', this)
+
+    this.$refs.workspace.blockly.addChangeListener(Blockly.Events.disableOrphans)
+    setTimeout(() => {
+      this.$refs.workspace.restartCode()
+    }, 0)
+
+    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
+  },
+
+  destroyed () {
+    document.removeEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   methods: {
+    /**
+     * Toasts a message
+     */
     onNewsletterSubmit (ev) {
       this.hasSubmittedNewsletter = true
+      store.set('hasSubmittedNewsletter', true)
       this.$q.notify({
         type: 'positive',
         message: '🎉 Thank you for signing up to the Newsletter!',
@@ -182,6 +159,34 @@ export default {
       })
 
       ev.target.submit()
+    },
+
+    /**
+     * Run the workspace
+     */
+    sendHandsfreeToInterpreter (data) {
+      // @fixme do this in Handsfree.js
+      data.detail.face = data.detail?.weboji
+      delete data.detail.weboji
+
+      this.$refs.workspace.interpreter.appendCode(`triggerEvent('frame', '${JSON.stringify(data.detail)}')`)
+      this.$refs.workspace.interpreter.run()
+    },
+
+    workspaceEventHandler (ev) {
+      switch (ev.type) {
+        case Blockly.Events.BLOCK_CREATE:
+        case Blockly.Events.BLOCK_DELETE:
+        case Blockly.Events.BLOCK_CHANGE:
+        case Blockly.Events.BLOCK_MOVE:
+        case Blockly.Events.VAR_CREATE:
+        case Blockly.Events.VAR_DELETE:
+        case Blockly.Events.VAR_RENAME:
+          setTimeout(() => {
+            this.$refs.workspace.restartCode()
+          })
+        break
+      }
     }
   }
 }
