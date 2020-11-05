@@ -7,8 +7,8 @@ q-page
         q-card
           q-card-section.text-center
             q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/YATR9GZSSHKeNw3fht/giphy.gif')
-            //- q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif')
-            p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree! 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
+            p 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
+            p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree!
             div.q-mt-sm.text-center
               small <a href="https://github.com/midiblocks/midiblocks">GitHub</a> &middot; <a href="https://twitter.com/midiblocks">Twitter</a> &middot; <a href="https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA">YouTube</a> &middot; <a href="https://www.reddit.com/r/SideProject/comments/jipnqe/midiblocks_a_web_based_handsfree_visual_coding/">About</a>
 
@@ -16,7 +16,7 @@ q-page
         q-card
           q-card-section
             div(style='height: 250px')
-              Workspace.full-height(ref='heroDemo' :toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options')
+              Workspace.full-height(ref='workspace' :toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options' @change='workspaceEventHandler')
           q-card-section.text-subtitle1
             div <span class='text-negative'>Midiblocks</span> are groups of blocks that <span class='text-ansi-bright-green'>react</span> to <span class='text-info'>face gestures</span>. When you snap together the two blocks above, they form a <span class='text-negative'>Midiblock</span> that shows a "<span class='text-ansi-bright-green'>🔔 Hello World!</span>" message when you do the <span class='text-info'>selected gesture</span>.
           q-card-actions
@@ -93,6 +93,8 @@ import {mapState} from 'vuex'
 import Workspace from '../components/Workspace'
 import toolbox from '../assets/toolboxes/studio'
 import getToolbox from '../mixins/getToolbox'
+import store from 'store'
+import Blockly from 'blockly'
 
 export default {
   name: 'PageHome',
@@ -110,7 +112,7 @@ export default {
   data () {
     return {
       newsletterEmail: '',
-      hasSubmittedNewsletter: false,
+      hasSubmittedNewsletter: store.get('hasSubmittedNewsletter'),
 
       toolbox: this.getToolbox(toolbox),
       
@@ -123,18 +125,33 @@ export default {
             controls: false
           }
         },
-        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"262\" y=\"113\"><field name=\"gesture\">smirk</field></block><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"true\" x=\"288\" y=\"244\"><field name=\"message\">Hello World!</field></block></xml>"
+        simpleDemo: "<xml xmlns=\"https://developers.google.com/blockly/xml\"><block type=\"12bffcf1-2bd3-4303-a009-f2831d502267\" id=\".@tNLD2pc,G0Sy.su9T?\" x=\"262\" y=\"113\"><field name=\"gesture\">smirk</field></block><block type=\"62746a3c-92de-439f-b74f-fe74130713d3\" id=\"{+r_gV$|q3-f[yV1:[mO\" disabled=\"false\" x=\"288\" y=\"244\"><field name=\"message\">Hello World!</field></block></xml>"
       }
     }
   },
 
   mounted () {
     set(window, 'app.$page', this)
+
+    this.$refs.workspace.blockly.addChangeListener(Blockly.Events.disableOrphans)
+    setTimeout(() => {
+      this.$refs.workspace.restartCode()
+    }, 0)
+
+    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
+  },
+
+  destroyed () {
+    document.removeEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   methods: {
+    /**
+     * Toasts a message
+     */
     onNewsletterSubmit (ev) {
       this.hasSubmittedNewsletter = true
+      store.set('hasSubmittedNewsletter', true)
       this.$q.notify({
         type: 'positive',
         message: '🎉 Thank you for signing up to the Newsletter!',
@@ -142,6 +159,34 @@ export default {
       })
 
       ev.target.submit()
+    },
+
+    /**
+     * Run the workspace
+     */
+    sendHandsfreeToInterpreter (data) {
+      // @fixme do this in Handsfree.js
+      data.detail.face = data.detail?.weboji
+      delete data.detail.weboji
+
+      this.$refs.workspace.interpreter.appendCode(`triggerEvent('frame', '${JSON.stringify(data.detail)}')`)
+      this.$refs.workspace.interpreter.run()
+    },
+
+    workspaceEventHandler (ev) {
+      switch (ev.type) {
+        case Blockly.Events.BLOCK_CREATE:
+        case Blockly.Events.BLOCK_DELETE:
+        case Blockly.Events.BLOCK_CHANGE:
+        case Blockly.Events.BLOCK_MOVE:
+        case Blockly.Events.VAR_CREATE:
+        case Blockly.Events.VAR_DELETE:
+        case Blockly.Events.VAR_RENAME:
+          setTimeout(() => {
+            this.$refs.workspace.restartCode()
+          })
+        break
+      }
     }
   }
 }

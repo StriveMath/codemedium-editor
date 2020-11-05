@@ -54,7 +54,7 @@ q-layout(ref='main' view='lHh Lpr lFf')
 
   //- Status bar
   q-footer
-    q-bar.bg-inactive
+    q-bar.bg-primary
       div
         q-badge.q-mr-sm.cursor-pointer(v-if='eventLogs.error.length' color='negative' @click='dialog.error = true') {{eventLogs.error.length}}
         q-badge.q-mr-sm.cursor-pointer(v-if='eventLogs.warn.length' color='block-orange' @click='dialog.warning = true') {{eventLogs.warn.length}}

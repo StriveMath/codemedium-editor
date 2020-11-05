@@ -337,6 +337,7 @@ export default {
     sendHandsfreeToInterpreter (data) {
       if (this.studio.isRunning) {
         // Remap for better read
+        // @fixme do this in Handsfree.js
         data.detail.face = data.detail?.weboji
         delete data.detail.weboji
         
