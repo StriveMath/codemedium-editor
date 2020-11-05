@@ -336,7 +336,11 @@ export default {
      */
     sendHandsfreeToInterpreter (data) {
       if (this.studio.isRunning) {
-        this.$refs.workspace.interpreter.appendCode(`handsfree.loop(${JSON.stringify(data.detail)})`)
+        // Remap for better read
+        data.detail.face = data.detail?.weboji
+        delete data.detail.weboji
+        
+        this.$refs.workspace.interpreter.appendCode(`triggerEvent('frame', '${JSON.stringify(data.detail)}')`)
         this.$refs.workspace.interpreter.run()
       }
     },
