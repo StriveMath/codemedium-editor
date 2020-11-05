@@ -3,7 +3,8 @@
   .col-12.col-sm-6.col-lg-4(v-for='block in blocks' :key='block.json.type')
     q-card
       q-card-section
-        Workspace(:options='options' :blocks='[block]' :inline='true' :toolbox='toolbox')
+        div(style='height: 150px;')
+          Workspace.full-height(:options='options' :blocks='[block]' :toolbox='toolbox')
       q-separator
       q-card-section
         h3 {{block.name}}
@@ -26,6 +27,8 @@ import store from 'store'
 import {mapState} from 'vuex'
 import {cloneDeep} from 'lodash'
 import {v4 as uuidv4} from 'uuid'
+import toolbox from '../../assets/toolboxes/studio'
+import getToolbox from '../../mixins/getToolbox'
 
 /**
  * Displays a grid of blocks in the users current library
@@ -35,30 +38,10 @@ export default {
 
   components: {Workspace, DialogDeleteBlock},
 
+  mixins: [getToolbox],
+
   computed: {
-    ...mapState(['blocks']),
-    
-    toolbox () {
-      let toolbox = []
-
-      if (this.blocks.length) {
-        Object.keys(this.blocks).forEach(key => {
-          toolbox.push({
-            tag: 'category',
-            name: 'Readonly',
-            colour: '#fff',
-            children: [
-              {
-                tag: 'block',
-                type: this.blocks[key].category
-              }
-            ]
-          })
-        })
-      }
-
-      return toolbox
-    }
+    ...mapState(['blocks'])
   },
 
   data () {
@@ -70,15 +53,16 @@ export default {
       dialog: {
         deleteBlock: false
       },
-      
+
+      toolbox: this.getToolbox(toolbox),
+
       // Blockly workspace
       options: {
+        zoomToFit: -2,
+        hideToolbox: true,
         trashcan: false,
         zoom: {
-          controls: false,
-          pinch: true,
-          wheel: true,
-          startScale: 0.75
+          controls: false
         }
       }
     }

@@ -90,8 +90,7 @@ export default {
    * Initialize Blockly and setup event listeners
    */
   mounted () {
-    let options = this.$props.options || {}
-    options = defaults(this.$props.options, {
+    let options = defaults(this.$props.options, {
       renderer: 'zelos',
       hideToolbox: false,
       sounds: false,
@@ -104,8 +103,8 @@ export default {
         startScale: 0.8
       },
       grid: {
-        spacing: 50,
-        length: 50,
+        spacing: 25,
+        length: 25,
         colour: '#9effff',
         snap: true
       },
@@ -131,6 +130,7 @@ export default {
     // Autozoom
     if (options.zoomToFit) {
       this.blockly.zoomToFit()
+      this.blockly.zoomCenter(options.zoomToFit)
     }
 
     // Handsfree
