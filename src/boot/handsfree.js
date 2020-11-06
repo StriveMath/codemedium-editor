@@ -19,11 +19,26 @@ if (calibration) {
 handsfree.use('faceClick', faceClick)
 
 /**
+ * FPS
+ */
+handsfree.use('fps', {
+  onFrame () {
+    if (window.app.$.$store.state.settings.isStatsVisible) {
+      window.app.$.stats.end()
+      window.app.$.stats.begin()    
+    }
+  }
+})
+
+/**
  * Overrides
  * - This will be helpful later on to help users quickly mirror camera
  */
 handsfree.use('flipStates', {
   onFrame () {
+    // Without this, an error will be thrown if handsfree.stop() is called before it's actually started
+    if (!handsfree.weboji.data.state) return
+    
     let tmp
     tmp = handsfree.weboji.data.state.browLeftUp
     handsfree.weboji.data.state.browLeftUp = handsfree.weboji.data.state.browRightUp
