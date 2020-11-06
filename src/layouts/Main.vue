@@ -22,6 +22,7 @@ q-layout(ref='main' view='lHh Lpr lFf')
       template(v-if='$route.name === "Studio"')
         q-toggle.no-select(color='negative' dark v-model='studio.isRunning')
           span.gt-xs Code is
+          span.lt-sm 📜
           span.q-ml-xs.gt-xs {{studio.isRunning ? 'running' : 'stopped'}}
         q-space
 
