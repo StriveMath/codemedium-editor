@@ -1,6 +1,6 @@
 {
   "name": "midiblocks",
-  "version": "0.2.3",
+  "version": "2020.11.05.1",
   "description": "A handsfree creative coding platform. Build apps, make art, create bots, & more",
   "productName": "Midiblocks",
   "author": "Oz Ramos <midiblocks@gmail.com>",
@@ -29,6 +29,7 @@
     "mousetrap": "^1.6.5",
     "quasar": "^1.0.0",
     "robotjs": "^0.6.0",
+    "stats.js": "^0.17.0",
     "store": "^2.0.12",
     "uuid": "^8.3.0",
     "vue-monaco": "^1.2.1",

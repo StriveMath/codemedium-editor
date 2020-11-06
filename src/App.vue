@@ -1,6 +1,7 @@
 <template lang="pug">
 #q-app(:key='reloads')
   router-view
+  #stats-wrap
 
   //- Error: Generic
   //- @todo I don't think this is being used
@@ -22,6 +23,7 @@ import Prompt from './components/Prompt'
 import {mapState} from 'vuex'
 import defaultWorkspace from './assets/workspaces/default'
 import store from 'store'
+import Stats from 'stats.js'
 
 export default {
   name: 'App',
@@ -31,33 +33,12 @@ export default {
   },
 
   computed: {
-    ...mapState(['reloads', 'settings'])
-  },
-
-  watch: {
-    /**
-     * Show handfree.js loader
-     */
-    settings: {
-      deep: true,
-      handler (settings) {
-        if (settings.isFacePointerActive) {
-          this.loaderDismiss = this.$q.notify({
-            group: false,
-            timeout: 0,
-            spinner: true,
-            position: 'center',
-            message: 'Loading...',
-            color: 'ansi-bright-green'
-          })
-
-          console.log(this.loaderDismiss)
-        }
-      }
-    }
+    ...mapState(['reloads'])
   },
 
   data () {
+    const stats = new Stats()
+
     return {
       // The handsfree.js loader
       loaderDismiss: null,
@@ -65,7 +46,9 @@ export default {
       // Will display different modals based on error messages
       errors: {
         generic: ''
-      }
+      },
+
+      stats
     }
   },
 
@@ -140,6 +123,8 @@ export default {
       message: 'This is still a prototype and may be buggy 😅',
       color: 'ansi-bright-green'
     })
+
+    document.querySelector('#stats-wrap').appendChild(this.stats.dom)
   },
 
   destroyed () {
@@ -169,11 +154,12 @@ export default {
         message: 'There was an error in loading the face tracker, please refresh the page and try again.',
         color: 'negative'
       })
-      this.loaderDismiss()
+      this.closeLoader()
     },
 
     closeLoader () {
       this.loaderDismiss()
+      this.loaderDismiss = null
     }
   }
 }

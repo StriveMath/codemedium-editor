@@ -44,7 +44,8 @@ export default function (/* { ssrContext } */) {
        */
       settings: {
         isFacePointerActive: false,
-        isDesktopMode: false
+        isDesktopMode: false,
+        isStatsVisible: true
       },
 
       /**
@@ -140,6 +141,7 @@ export default function (/* { ssrContext } */) {
     actions: {
       /**
        * Toggles the Handsfree mode on/off
+       * - Displays a notification when turned on
        */
       toggleHandsfree ({commit}, callback) {
         commit('set', ['settings.isFacePointerActive', !window.handsfree.isLooping])
@@ -147,6 +149,16 @@ export default function (/* { ssrContext } */) {
         if (window.handsfree.isLooping) {
           window.handsfree.stop()
         } else {
+          // Display loader
+          window.app.$.loaderDismiss = window.app.$.$q.notify({
+            group: false,
+            timeout: 0,
+            spinner: true,
+            position: 'center',
+            message: 'Loading...',
+            color: 'ansi-bright-green'
+          })    
+
           // Short delay to allow for loader
           setTimeout(() => {
             window.handsfree.start(() => {

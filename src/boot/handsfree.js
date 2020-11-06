@@ -19,6 +19,18 @@ if (calibration) {
 handsfree.use('faceClick', faceClick)
 
 /**
+ * FPS
+ */
+handsfree.use('fps', {
+  onFrame () {
+    if (window.app.$.$store.state.settings.isStatsVisible) {
+      window.app.$.stats.end()
+      window.app.$.stats.begin()    
+    }
+  }
+})
+
+/**
  * Overrides
  * - This will be helpful later on to help users quickly mirror camera
  */
