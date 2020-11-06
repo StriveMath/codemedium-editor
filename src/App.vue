@@ -158,7 +158,7 @@ export default {
     },
 
     closeLoader () {
-      this.loaderDismiss()
+      this.loaderDismiss && this.loaderDismiss()
       this.loaderDismiss = null
     }
   }

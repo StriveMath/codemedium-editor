@@ -36,6 +36,9 @@ handsfree.use('fps', {
  */
 handsfree.use('flipStates', {
   onFrame () {
+    // Without this, an error will be thrown if handsfree.stop() is called before it's actually started
+    if (!handsfree.weboji.data.state) return
+    
     let tmp
     tmp = handsfree.weboji.data.state.browLeftUp
     handsfree.weboji.data.state.browLeftUp = handsfree.weboji.data.state.browRightUp
