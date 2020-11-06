@@ -10,7 +10,7 @@ q-page
             p 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
             p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree!
             div.q-mt-sm.text-center
-              small <a href="https://github.com/midiblocks/midiblocks">GitHub</a> &middot; <a href="https://twitter.com/midiblocks">Twitter</a> &middot; <a href="https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA">YouTube</a> &middot; <a href="https://www.reddit.com/r/SideProject/comments/jipnqe/midiblocks_a_web_based_handsfree_visual_coding/">About</a>
+              small <a href="https://github.com/midiblocks/midiblocks">GitHub</a> &middot; <a href="https://twitter.com/midiblocks">Twitter</a> &middot; <a href="https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA">YouTube</a> &middot; <a href="https://patreon.com/midiblocks">Support Midiblocks on Patreon</a>
 
       .col-12.col-md-6
         q-card
@@ -60,16 +60,20 @@ q-page
                   q-card-section
                     h3 More updates and documentation coming soon!
                     p Hi! My name is <span class='text-ansi-bright-green'>Oz Ramos</span> and I've been working towards releasing <span class='text-negative'>Midiblocks</span> and <span class='text-info'>Handsfree.js</span> since 2018 with the goal of eventually helping anyone who cannot use a <span class='text-negative'>computer</span> at all use it and by extension <span class='text-negative'>anything</span> connected to the it <span class='text-info'>handsfree</span> (initially with <span class='text-info'>face gestures</span>, but ultimately with <span class='text-info'>mind control</span>).
-                    p Sign up to <a href="http://eepurl.com/hhD7S1">my newsletter</a> to stay updated on these efforts, it's going to be a lot of fun! Also, here are some more links you may enjoy:
-                    ul
+                    p Sign up to <a href="http://eepurl.com/hhD7S1">my newsletter</a> to stay updated on these efforts, it's going to be a lot of fun! Also, here are some more links:
+                    ul.spaced
+                      li
+                        q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-patreon')
+                        a(href='https://patreon.com/midiblocks') Support Midiblocks on Patreon
+                        span  - Support Midiblocks and gain access to exclusives like weekly Midiblocks for popular games and apps!
                       li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-twitter')
                         a(href='https://twitter.com/midiblocks') Twitter <small>@Midiblocks</small>
-                        span  - Connect with me on Twitter
+                        span  - Follow me behind the scenes
                       li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-github')
                         a(href='https://github.com/midiblocks') GitHub <small>@Midiblocks</small>
-                        span  - View the sourcecode to all of my projects, fork them, contribute, or make them your own!
+                        span  - Star, fork, and contribute to Midiblocks, Handsfree.js, and more
                       li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-youtube')
                         a(href='https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA') YouTube
@@ -85,6 +89,9 @@ q-page
                       li Add Handtracking
                       li Add Voice
                       li Add Mind Control
+                    p.q-mt-xl.text-center
+                      q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-patreon')
+                      a(href='https://patreon.com/midiblocks') Support Midiblocks on Patreon
 </template>
 
 <script>
