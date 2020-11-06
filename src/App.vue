@@ -3,6 +3,7 @@
   router-view
 
   //- Error: Generic
+  //- @todo I don't think this is being used
   q-dialog(v-model='!!errors.generic' persistent)
     q-card.bg-negative
       q-card-section.row.items-center
@@ -30,11 +31,37 @@ export default {
   },
 
   computed: {
-    ...mapState(['reloads'])
+    ...mapState(['reloads', 'settings'])
+  },
+
+  watch: {
+    /**
+     * Show handfree.js loader
+     */
+    settings: {
+      deep: true,
+      handler (settings) {
+        if (settings.isFacePointerActive) {
+          this.loaderDismiss = this.$q.notify({
+            group: false,
+            timeout: 0,
+            spinner: true,
+            position: 'center',
+            message: 'Loading...',
+            color: 'ansi-bright-green'
+          })
+
+          console.log(this.loaderDismiss)
+        }
+      }
+    }
   },
 
   data () {
     return {
+      // The handsfree.js loader
+      loaderDismiss: null,
+      
       // Will display different modals based on error messages
       errors: {
         generic: ''
@@ -81,7 +108,7 @@ export default {
       args.forEach(arg => {
         this.$store.commit('set', ['lastEvent', {log: arg.message}])
       })
-      origNotify(...args)
+      return origNotify(...args)
     }
 
     /**
@@ -99,20 +126,26 @@ export default {
     }
 
     /**
+     * Close loader
+     */
+    document.addEventListener('handsfree-modelLoaded', this.closeLoader)
+    document.addEventListener('handsfree-modelError', this.onLoaderError)
+
+    /**
      * @todo Remove after beta
      */
-    this.$nextTick(() => {
-      this.$q.notify({
-        position: 'center',
-        timeout: 2500,
-        message: 'This is still a prototype and may be buggy 😅',
-        color: 'ansi-bright-green'
-      })
+    this.$q.notify({
+      position: 'center',
+      timeout: 2500,
+      message: 'This is still a prototype and may be buggy 😅',
+      color: 'ansi-bright-green'
     })
   },
 
   destroyed () {
     this.$root.$off('error', this.onError)
+    document.removeEventListener('handsfree-modelLoaded', this.closeLoader)
+    document.removeEventListener('handsfree-modelError', this.onLoaderError)
   },
 
   methods: {
@@ -123,6 +156,24 @@ export default {
     goHome () {
       this.$router.push({name: 'Home'})
       this.errors.generic = ''
+    },
+
+    /**
+     * Show error when model loading fails
+     * @todo Make this a dialog and have a button to report
+     */
+    onLoaderError () {
+      this.$q.notify({
+        position: center,
+        timeout: 5000,
+        message: 'There was an error in loading the face tracker, please refresh the page and try again.',
+        color: 'negative'
+      })
+      this.loaderDismiss()
+    },
+
+    closeLoader () {
+      this.loaderDismiss()
     }
   }
 }
