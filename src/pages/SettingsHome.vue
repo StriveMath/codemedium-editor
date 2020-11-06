@@ -3,18 +3,23 @@ q-page.full-height
   section.content
     h1 Settings
 
-    .row
+    .row.q-col-gutter-lg
       .col-12.col-md-6
         q-card.q-mb-lg
           q-card-section
-            .text-h6 Calibrate
-          q-card-section
+            h2 Calibrate
             q-video(:ratio='16/9' src='https://www.youtube.com/embed/LihLtc0nmzk')
           q-card-section
             p Use the button below to active the Calibrator. Try and hold your pose such that your head is pointed towards the inner circle. Once calibration is complete, the Calibrator will disappear and you'll be good to go!
           q-card-actions
             q-space
             q-btn.bg-secondary(@click='calibrate') Start calibration
+
+      .col-12.col-md-6
+        q-card.q-mb-lg
+          q-card-section
+            h2 Misc
+            q-toggle(color='positive' v-model='settings.isStatsVisible' label='Display performance monitor?')
 </template>
 
 <script>
@@ -36,6 +41,15 @@ export default {
   
   beforeDestroy () {
     document.removeEventListener('handsfree-handsfreeCalibrationEnded', this.saveCalibration)
+  },
+
+  watch: {
+    settings: {
+      deep: true,
+      handler (settings) {
+        store.set('settings.isStatsVisible', settings.isStatsVisible)
+      }
+    }
   },
 
   methods: {

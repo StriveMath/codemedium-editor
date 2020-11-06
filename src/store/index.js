@@ -45,7 +45,7 @@ export default function (/* { ssrContext } */) {
       settings: {
         isFacePointerActive: false,
         isDesktopMode: false,
-        isStatsVisible: true
+        isStatsVisible: false
       },
 
       /**

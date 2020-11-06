@@ -33,7 +33,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['reloads'])
+    ...mapState(['reloads', 'settings'])
   },
 
   data () {
@@ -49,6 +49,22 @@ export default {
       },
 
       stats
+    }
+  },
+
+  watch: {
+    /**
+     * Toggles FPS/Stats
+     */
+    settings: {
+      deep: true,
+      handler (settings) {
+        if (settings.isStatsVisible) {
+          document.querySelector('#stats-wrap').classList.remove('hidden')
+        } else {
+          document.querySelector('#stats-wrap').classList.add('hidden')
+        }
+      }
     }
   },
 
@@ -124,7 +140,9 @@ export default {
       color: 'ansi-bright-green'
     })
 
+    // Final setup
     document.querySelector('#stats-wrap').appendChild(this.stats.dom)
+    this.$store.commit('set', ['settings.isStatsVisible', store.get('settings.isStatsVisible', false)])
   },
 
   destroyed () {
