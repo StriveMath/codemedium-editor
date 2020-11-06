@@ -147,9 +147,12 @@ export default function (/* { ssrContext } */) {
         if (window.handsfree.isLooping) {
           window.handsfree.stop()
         } else {
-          window.handsfree.start(() => {
-            callback && callback()
-          })
+          // Short delay to allow for loader
+          setTimeout(() => {
+            window.handsfree.start(() => {
+              callback && callback()
+            })
+          }, 50)
         }
       },
 
