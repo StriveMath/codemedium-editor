@@ -125,7 +125,7 @@ export default {
           },
           {
             title: 'Studio',
-            description: 'Visually map and program your MIDI devices',
+            description: 'Visually map and program your devices',
             link: '/studio',
             icon: 'fas fa-puzzle-piece fa-flip-both'
           },

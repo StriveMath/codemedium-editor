@@ -6,7 +6,7 @@ q-page
       .col-12.col-md-6
         q-card
           q-card-section.text-center
-            q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/YATR9GZSSHKeNw3fht/giphy.gif')
+            q-video.q-mb-md(:ratio='16/9' src='https://www.youtube-nocookie.com/embed/JH_czsssoZE')
             p 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
             p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree!
             div.q-mt-sm.text-center
@@ -32,7 +32,7 @@ q-page
         q-card
           q-card-section.text-subtitle1
             h2 The <span class='text-negative'>Midiblocks </span> <span class='text-info'>Newsletter</span>
-            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once a week</span> (but probably way less, especially in the beginning). These updates will include:
+            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once very 2 week</span> (but probably way less, especially in the beginning). These updates will include:
             ul
               li Updates to Midiblocks and Handsfree.js
               li Tips & Tricks for using Midiblocks and Handsfree.js
@@ -59,7 +59,7 @@ q-page
                 q-card.bg-inactive
                   q-card-section
                     h3 More updates and documentation coming soon!
-                    p Hi! My name is <span class='text-ansi-bright-green'>Oz Ramos</span> and I've been working towards releasing <span class='text-negative'>Midiblocks</span> and <span class='text-info'>Handsfree.js</span> since 2018 with the goal of eventually helping anyone who cannot use a <span class='text-negative'>computer</span> at all use it and by extension <span class='text-negative'>anything</span> connected to the it <span class='text-info'>handsfree</span> (initially with <span class='text-info'>face gestures</span>, but ultimately with <span class='text-info'>mind control</span>).
+                    p Hi! My name is <span class='text-ansi-bright-green'>Oz Ramos</span> and I've been working towards releasing <span class='text-negative'>Midiblocks</span> and <span class='text-negative'>Handsfree.js</span> since 2018 with the goal of eventually helping anyone who cannot use a <span class='text-negative'>computer</span> at all use it and by extension <span class='text-negative'>anything</span> connected to the it <span class='text-info'>handsfree</span> (initially with <span class='text-info'>face gestures</span>, but ultimately with <span class='text-info'>mind control</span>).
                     p Sign up to <a href="http://eepurl.com/hhD7S1">my newsletter</a> to stay updated on these efforts, it's going to be a lot of fun! Also, here are some more links:
                     ul.spaced
                       li
@@ -81,17 +81,35 @@ q-page
               .col-12.col-md-6
                 q-card.bg-inactive
                   q-card-section
-                    h3 Roadmap
-                    q-img.q-mb-md(:ratio='16/9' src='https://media0.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif')
+                    h3 Powered by <a href="https://github.com/midiblocks/handsfree">Handsfree.js</a>
+                    q-video.q-mb-md(:ratio='16/9' src='https://www.youtube-nocookie.com/embed/lb-Bkejm0Pg')
+                    p <span class='text-negative'>Handsfree.js</span> is a wrapper library around popular computer vision models designed to help you add <span class='text-info'>gesture recognition</span> to your own projects, and is what powers Midiblocks. Currently it supports:
                     ul
-                      li Release beta (eta 11/8)
-                      li Add Eye Tracking
-                      li Add Handtracking
-                      li Add Voice
-                      li Add Mind Control
+                      li Face tracking through [Weboji]()
+                    p More information on how to implement Handsfree.js will be available on the <router-link :to='{name: "DocsHandsfreeLanding"}'>documentation page</router-link> soon!
                     p.q-mt-xl.text-center
                       q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-patreon')
                       a(href='https://patreon.com/midiblocks') Support Midiblocks on Patreon
+
+  section.content.q-mt-xl
+    .row.q-col-gutter-lg.justify-center
+      .col-12.col-md-6
+        q-card
+          q-card-section.text-subtitle1
+            h3 <span class='text-negative'>Special </span> Thanks
+            p This project was made possible through the support of:
+            ul
+              li
+                a(href='http://studioforcreativeinquiry.org/' rel='nofollow') The STUDIO for Creative Inquiry
+                |  for hosting me for a residency during 2019 and for helping me approach projects in a more expressive way
+              li
+                a(href='https://glitch.com/@ozramos' rel='nofollow') Glitch.com
+                |  for supporting the project during Winter 2018 out of the blue and the opportunities to share my early start kits
+              li
+                a(href='https://research.google/teams/brain/pair/' rel='nofollow') Google PAIR
+                |  for the very early support that made starting this project possible
+              li
+                | Everyone who's supported me on Patreon, GoFundMe, and through Twitter over the years
 </template>
 
 <script>

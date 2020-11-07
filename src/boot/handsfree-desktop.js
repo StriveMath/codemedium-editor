@@ -21,18 +21,28 @@ handsfree.use('socketConnector', {
    * Sends a message
    */
   sendMessage (action, data) {
-    lastPose && socketConnected && socket && socket.send(JSON.stringify({
-      handsfree: true,
-      action,
-      data
-    }))
+    // @fixme I'm not sure why this is needed, but without it the app occasionally fails with circular reference
+    try {
+      lastPose && socketConnected && socket && socket.send(JSON.stringify({
+        handsfree: true,
+        action,
+        data
+      }))
+    } catch (e) {
+      console.log(e)
+    }
   }
 })
 
 /**
  * Override faceclick to send click
  */
-handsfree.plugin.faceClick.click = function () {
+const oldClick = handsfree.plugin.faceClick.click
+handsfree.plugin.faceClick.click = function (weboji) {
+  if (!window.app.$.$store.state.isDesktopMode) {
+    oldClick.call(this, weboji)
+  }
+  
   lastPose && socketConnected && socket && socket.send(JSON.stringify({
     handsfree: true,
     action: 'click'
