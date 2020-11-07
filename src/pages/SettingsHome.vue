@@ -8,8 +8,6 @@ q-page.full-height
         q-card.q-mb-lg
           q-card-section
             h2 Calibrate
-            q-video(:ratio='16/9' src='https://www.youtube.com/embed/LihLtc0nmzk')
-          q-card-section
             p Use the button below to active the Calibrator. Try and hold your pose such that your head is pointed towards the inner circle. Once calibration is complete, the Calibrator will disappear and you'll be good to go!
           q-card-actions
             q-space

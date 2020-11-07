@@ -9,7 +9,7 @@ q-page.full-height
           q-card-section
             div.text-h2 Midiblocks
           q-card-section
-            q-video(:ratio='16/9' src='//www.youtube.com/embed/bcDOv09-5RI?rel=0')
+            q-video(:ratio='16/9' src='https://player.vimeo.com/video/476536466?dnt=1')
           q-card-section
             p Learn what Midiblocks is about, how to create different kinds of apps, and more!
           q-card-actions
@@ -20,7 +20,7 @@ q-page.full-height
           q-card-section
             div.text-h2 Handsfree.js
           q-card-section
-            q-video(:ratio='16/9' src='//www.youtube.com/embed/lb-Bkejm0Pg?rel=0')
+            q-video(:ratio='16/9' src='https://player.vimeo.com/video/476537051?dnt=1')
           q-card-section
             p Learn how to add Face Pointers and gesture recognition to your own projects (outside of Midiblocks) via CDN and NPM
           q-card-actions
