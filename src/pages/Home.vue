@@ -32,7 +32,7 @@ q-page
         q-card
           q-card-section.text-subtitle1
             h2 The <span class='text-negative'>Midiblocks </span> <span class='text-info'>Newsletter</span>
-            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once a week</span> (but probably way less, especially in the beginning). These updates will include:
+            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once very 2 week</span> (but probably way less, especially in the beginning). These updates will include:
             ul
               li Updates to Midiblocks and Handsfree.js
               li Tips & Tricks for using Midiblocks and Handsfree.js
