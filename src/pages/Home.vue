@@ -6,7 +6,7 @@ q-page
       .col-12.col-md-6
         q-card
           q-card-section.text-center
-            q-video.q-mb-md(:ratio='16/9' src='https://www.youtube.com/embed/JH_czsssoZE')
+            q-video.q-mb-md(:ratio='16/9' src='https://www.youtube-nocookie.com/embed/JH_czsssoZE')
             p 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
             p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree!
             div.q-mt-sm.text-center
@@ -82,7 +82,7 @@ q-page
                 q-card.bg-inactive
                   q-card-section
                     h3 Powered by <a href="https://github.com/midiblocks/handsfree">Handsfree.js</a>
-                    q-video.q-mb-md(:ratio='16/9' src='https://www.youtube.com/embed/lb-Bkejm0Pg')
+                    q-video.q-mb-md(:ratio='16/9' src='https://www.youtube-nocookie.com/embed/lb-Bkejm0Pg')
                     p <span class='text-negative'>Handsfree.js</span> is a wrapper library around popular computer vision models designed to help you add <span class='text-info'>gesture recognition</span> to your own projects, and is what powers Midiblocks. Currently it supports:
                     ul
                       li Face tracking through [Weboji]()
@@ -105,12 +105,6 @@ q-page
               li
                 a(href='https://glitch.com/@ozramos' rel='nofollow') Glitch.com
                 |  for supporting the project during Winter 2018 out of the blue and the opportunities to share my early start kits
-                
-              li
-                a(href='https://twitter.com/SchoolOfAIOffic' rel='nofollow') The School of AI
-                |  for the 
-                a(href='https://www.youtube.com/watch?v=CJDpF4xUieY&t=58' rel='nofollow') 2018 Fellowship
-                |  in support of this project
               li
                 a(href='https://research.google/teams/brain/pair/' rel='nofollow') Google PAIR
                 |  for the very early support that made starting this project possible
