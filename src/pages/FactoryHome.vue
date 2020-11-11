@@ -737,7 +737,6 @@ export default {
      */
     getFieldsJson (block) {
       let fields = []
-      let options = []
       
       while (block) {
         if (!block.disabled && !block.getInheritedDisabled()) {
@@ -811,7 +810,9 @@ export default {
             break
 
             case 'field_dropdown':
-              for (let i = 0; i < block.optionCount_; i++) {
+              let options = []
+
+              for (let i = 0; i < block.optionList_.length; i++) {
                 options[i] = [block.getFieldValue('USER' + i), block.getFieldValue('CPU' + i)]
               }
 
@@ -819,7 +820,7 @@ export default {
                 fields.push({
                   type: block.type,
                   name: block.getFieldValue('FIELDNAME'),
-                  options: options
+                  options
                 })
               }
             break

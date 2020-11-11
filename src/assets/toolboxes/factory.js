@@ -81,10 +81,10 @@ export default [
         tag: 'block',
         type: 'field_variable'
       },
-      {
-        tag: 'block',
-        type: 'field_midi_device_dropdown'
-      }
+      // {
+      //   tag: 'block',
+      //   type: 'field_midi_device_dropdown'
+      // }
       // {
       //   tag: 'block',
       //   type: 'field_image'
