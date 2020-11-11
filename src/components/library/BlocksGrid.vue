@@ -77,7 +77,7 @@ export default {
       store.set('currentFactory', block)
       this.$q.notify({
         type: 'positive',
-        message: `Block "${block.json.type}" loaded!`,
+        message: `Block "${block.json.name}" loaded!`,
         timeout: 3000
       })
 
