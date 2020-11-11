@@ -32,7 +32,7 @@ q-page
         q-card
           q-card-section.text-subtitle1
             h2 The <span class='text-negative'>Midiblocks </span> <span class='text-info'>Newsletter</span>
-            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once very 2 week</span> (but probably way less, especially in the beginning). These updates will include:
+            p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once every 2 weeks</span> (but probably way less, especially in the beginning). These updates will include:
             ul
               li Updates to Midiblocks and Handsfree.js
               li Tips & Tricks for using Midiblocks and Handsfree.js
@@ -75,6 +75,10 @@ q-page
                         a(href='https://github.com/midiblocks') GitHub <small>@Midiblocks</small>
                         span  - Star, fork, and contribute to Midiblocks, Handsfree.js, and more
                       li
+                        q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-twitch')
+                        a(href='https://twitch.tv/midiblocks') Twitch
+                        span  - Come watch me work on Midiblocks, Handsfree.js, and other projects live 9-12, 2-5, and 7-10 PST most days
+                      li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-youtube')
                         a(href='https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA') YouTube
                         span  - Watch demos, get quick tips & tricks, and watch me game and build things handsfree!
@@ -96,7 +100,7 @@ q-page
       .col-12.col-md-6
         q-card
           q-card-section.text-subtitle1
-            h3 <span class='text-negative'>Special </span> Thanks
+            h3 <span class='text-negative'>Special </span> <span class='text-info'>Thanks</span>
             p This project was made possible through the support of:
             ul
               li

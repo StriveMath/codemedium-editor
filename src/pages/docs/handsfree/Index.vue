@@ -12,7 +12,7 @@ q-page.full-height
       .col-12.col-md-9
         q-card
           q-card-section
-            q-video(:ratio='16/9' src='//www.youtube.com/embed/lb-Bkejm0Pg')
+            q-video.q-mb-md(:ratio='16/9' src='https://player.vimeo.com/video/476537051?dnt=1')
 
   section.content
     .row.q-col-gutter-md.justify-center
