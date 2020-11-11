@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
-  Workspace.full-height(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
+  Workspace.studio-workspace.full-height(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
     q-item.q-mt-lg(@click='saveMidiblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
@@ -410,3 +410,8 @@ export default {
   }
 }
 </script>
+
+<style lang="sass">
+.studio-workspace > div
+  height: 100%
+</style>
