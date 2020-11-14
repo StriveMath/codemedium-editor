@@ -1,6 +1,6 @@
 {
   "localStorage": {
-    "version": "0.2.2",
+    "version": "2020.11.13.1",
     "splitter": 50,
     "currentStudio": {
       "title": "Hello World",
@@ -26,7 +26,7 @@
         "nextStatement": null,
         "colour": "#2ec4b6"
       },
-      "code": "/**\r\n * Sends the key\r\n */\r\nconsole.log($message)\r\nemit({\r\n  event: 'toast',\r\n  $message\r\n})",
+      "code": "/**\r\n * Sends the key\r\n */\r\nemit({\r\n  event: 'toast',\r\n  $message\r\n})",
       "variables": [
         {
           "type": "field",
@@ -176,7 +176,7 @@
           ],
           "colour": "#ff628c"
         },
-        "code": "/**\r\n * Runs code when a face gesture is made\r\n */\r\non('frame', ({face}) => {\r\n  console.log(face.state[$gesture])\r\n  if (face.state[$gesture]) {\r\n    $args()\r\n  }\r\n})",
+        "code": "/**\r\n * Runs code when a face gesture is made\r\n */\r\non('frame', ({face}) => {\r\n  if (face.state[$gesture]) {\r\n    $args()\r\n  }\r\n})",
         "variables": [
           {
             "type": "field",
@@ -212,7 +212,7 @@
           "nextStatement": null,
           "colour": "#2ec4b6"
         },
-        "code": "/**\r\n * Sends the key\r\n */\r\nemit({\r\n  event: 'keypress',\r\n  key: $key\r\n})",
+        "code": "/**\r\n * Sends the key\r\n */\r\nemit({\r\n  event: 'keypress',\r\n  $key\r\n})",
         "variables": [
           {
             "type": "field",
@@ -243,7 +243,7 @@
           "nextStatement": null,
           "colour": "#2ec4b6"
         },
-        "code": "/**\r\n * Sends the key\r\n */\r\nconsole.log($message)\r\nemit({\r\n  event: 'toast',\r\n  $message\r\n})",
+        "code": "/**\r\n * Sends the key\r\n */\r\nemit({\r\n  event: 'toast',\r\n  $message\r\n})",
         "variables": [
           {
             "type": "field",
