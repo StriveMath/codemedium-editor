@@ -1,6 +1,7 @@
 const WebSocket = require('ws')
 const wss = new WebSocket.Server({ port: 8081 })
 const robot = require('robotjs')
+const {debounce} = require('lodash')
 
 wss.on('connection', (ws) => {
   console.log('connected...')
@@ -20,7 +21,7 @@ wss.on('connection', (ws) => {
         robot.mouseClick()
       break
       case 'keypress':
-        robot.keyTap(message.data.key)
+        _keypress(message)
       break
     }
   })
@@ -32,3 +33,7 @@ wss.on('connection', (ws) => {
     console.log('...disconnected')
   })
 })
+
+const _keypress = debounce(message => {
+  robot.keyTap(message.data.$key)
+}, 250, {trailing: true})

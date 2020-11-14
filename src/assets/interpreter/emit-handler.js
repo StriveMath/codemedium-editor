@@ -13,9 +13,9 @@ export default (ev) => {
     // keyTap
     case 'keypress':
       if (window.app.$page.$store.state.settings.isDesktopMode) {
-        $socket.sendMessage('keypress', {key: emitted.key})
+        $socket.sendMessage('keypress', {...emitted})
       } else {
-        document.dispatchEvent(new KeyboardEvent('keypress', {key: emitted.key}))
+        document.dispatchEvent(new KeyboardEvent('keypress', {...emitted}))
       }
     break
 

@@ -1,8 +1,9 @@
 <div align="center">
   <p><a href="https://www.youtube.com/watch?v=bcDOv09-5RI"><img src="https://media3.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif"></a></p>
-  <h2>A platform for using websites, browsers, desktops, robots...pretty much anything handsfree!</h2>
+  <h2>Map face gestures to a mouse, keyboard, virtual game controller, MIDI device, robot, drone...pretty much anything!</h2>
   <br>
-  <h3>🚧 This repo is still in development (target date 📅 Nov 8th) 🚧</h3>
+  <h3>🚧 This repo is still a prototype and things change daily 🚧</h3>
+  <h4>🚧 these docs are old 🚧</h4>
   <br>
   <p>
     <a href="https://github.com/midiblocks/midblocks-web"><img src="https://img.shields.io/github/stars/midiblocks/midiblocks-web?style=social"></a>&nbsp;
@@ -11,7 +12,7 @@
   </p>
 </div>
 
-## TL:DR;
+## TL:DR; Setup
 ```bash
 git clone https://github.com/midiblocks/midiblocks
 cd midiblocks
@@ -20,7 +21,10 @@ npm start
 # Point your browser to http://localhost:8080
 ```
 
+### TL:DR; Troubleshoot
+**🐞 Windows** - If you run into errors after `npm install` it's probably due to Robot.js. Remove the line in `package.json` for `"robotjs"` and try again. [Check out this README](https://github.com/MIDIBlocks/handsfree-desktop) if you want to use Desktop Mode (`npm run desktop`)
 
+----
 
 # Contents
 - [About](#about)
