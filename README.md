@@ -1,9 +1,10 @@
 <div align="center">
-  <p><a href="https://www.youtube.com/watch?v=bcDOv09-5RI"><img src="https://media3.giphy.com/media/tfd78t11fomshP1eq6/giphy.gif"></a></p>
-  <h2>Map face gestures to a mouse, keyboard, virtual game controller, MIDI device, robot, drone...pretty much anything!</h2>
+  <p><img src="https://i.imgur.com/loLmHkX.png"></p>
   <br>
-  <h3>🚧 This repo is still a prototype and things change daily 🚧</h3>
-  <h4>🚧 these docs are old 🚧</h4>
+  <p><a href="https://www.youtube.com/watch?v=bcDOv09-5RI"><img src="https://media.giphy.com/media/eABiZprIEtouRZIc75/giphy.gif"></a></p>
+  <h2>Map face and hand gestures to a mouse, keyboard, virtual game controller, MIDI device, robot, drone...basically anything!</h2>
+  <br>
+  <h3>🐞 This is still a prototype and may be buggy 🐞</h3>
   <br>
   <p>
     <a href="https://github.com/midiblocks/midblocks-web"><img src="https://img.shields.io/github/stars/midiblocks/midiblocks-web?style=social"></a>&nbsp;
@@ -12,19 +13,57 @@
   </p>
 </div>
 
-## TL:DR; Setup
+
+
+
+<br>
+<br>
+<br>
+
+-------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
+
+
+
+
+## Quickstart Setup
 ```bash
+# 1) Setup
 git clone https://github.com/midiblocks/midiblocks
 cd midiblocks
 npm install
+
+# 2a) Web based mode (native browser events)
 npm start
-# Point your browser to http://localhost:8080
+
+# 2b) Desktop mode (native desktop events)
+npm run desktop
+
+# 3) Point your browser to http://localhost:8080
 ```
 
-### TL:DR; Troubleshoot
-**🐞 Windows** - If you run into errors after `npm install` it's probably due to Robot.js. Remove the line in `package.json` for `"robotjs"` and try again. [Check out this README](https://github.com/MIDIBlocks/handsfree-desktop) if you want to use Desktop Mode (`npm run desktop`)
+> ### Troubleshooting
+> ---
+> **🐞 Windows** - If you run into errors after `npm install` it's probably due to Robot.js dependencies (most likely you need Python and node-gyp). If you don't need desktop mode then remove the line in `package.json` for `"robotjs"` and try running `npm install` again. If you do want desktop mode, then [check out this README](https://github.com/MIDIBlocks/handsfree-desktop) for a troubleshooting guide.
+> 
+> This will be fixed soon!
 
-----
+
+
+<br>
+<br>
+<br>
+
+-------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
+
+
 
 # Contents
 - [About](#about)
@@ -45,18 +84,30 @@ npm start
 - [License](#license)
 
 
+
+<br>
+<br>
+<br>
+
+-------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
+
+
+
 # About
 
-**Midiblocks is a visual, all-in-one MIDI mapping, scripting, and live coding platform for driving highly collaborative MIDI experiences.**
+**Midiblocks is a visual, all-in-one gesture mapping and handsfree desktop automation platform designed to help you use devices handsfree!** Some use cases include:
 
-Some things Midiblocks can (eventually) help you do:
-- Quickly map MIDI to JavaScript variables, functions, and events on any web site or web service
-- Use MIDI to drive custom apps with libraries like [magenta.js](https://magenta.tensorflow.org/), [ml5.js](https://ml5js.org/), [p5.js](https://p5js.org/), [handsfree.js](https://github.com/midiblocks/handsfree), and others
-- Send MIDI to your native [Digital Audio Workstations (DAWs)](https://en.wikipedia.org/wiki/Digital_audio_workstation#List_of_notable_commercial_DAWs) and apps
-- Work on mobile with no internet required
-- Work on projects collaboratively
+- [Playing commercial video games handsfree with face gestures](https://www.youtube.com/watch?v=fgVIZx-jkXA)
+- [Controlling robots handsfree with head movements](https://youtu.be/lb-Bkejm0Pg?t=54)
+- [Handsfree and voice-free typing](https://www.youtube.com/watch?v=o0i_AivvsQ4)
+- [Using a mobile device as a handsfree secondary display](https://www.youtube.com/watch?v=NNqIkVRzWbs)
 
-> 🚧 More info coming soon
+Midiblocks is powered by [Google's Blockly](https://developers.google.com/blockly) which is used to help create a block-based visual language that lets users snap blocks together to help you map gestures to a mouse, keyboard, MIDI, and really anything at all!
+
 
 ## The Studio
 
@@ -78,55 +129,15 @@ Some things Midiblocks can (eventually) help you do:
 
 
 
----
+<br>
+<br>
+<br>
 
+-------------------------------------------------------------------------
 
-
-
-# Motivation
-
-> 🚧 More info coming soon
-
-
-
-
----
-
-
-
-
-# Keyboard Shortcuts
-
-<table>
-  <thead>
-    <tr>
-      <th>Location</th>
-      <th>Shortcut</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Anywhere</td>
-      <td><kbd>s</kbd></td>
-      <td>Navigate to the Studio</td>
-    </tr>
-    <tr>
-      <td>Anywhere</td>
-      <td><kbd>f</kbd></td>
-      <td>Navigate to the Factory</td>
-    </tr>
-    <tr>
-      <td>Factory</td>
-      <td><kbd>ctrl + s</kbd></td>
-      <td>Save the current block</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
--------------------------------------------------------------------------------
+<br>
+<br>
+<br>
 
 
 
@@ -155,7 +166,15 @@ For more info, including on how to support Firefox, Internet Explorer, and Safar
 
 
 
--------------------------------------------------------------------------------
+<br>
+<br>
+<br>
+
+-------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
 
 
 
@@ -218,9 +237,58 @@ The following is available inside `localStorage`:
 
 
 
--------------------------------------------------------------------------------
+<br>
+<br>
+<br>
+
+-------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
 
 
+
+# Keyboard Shortcuts
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Shortcut</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Anywhere</td>
+      <td><kbd>s</kbd></td>
+      <td>Navigate to the Studio</td>
+    </tr>
+    <tr>
+      <td>Anywhere</td>
+      <td><kbd>f</kbd></td>
+      <td>Navigate to the Factory</td>
+    </tr>
+    <tr>
+      <td>Factory</td>
+      <td><kbd>ctrl + s</kbd></td>
+      <td>Save the current block</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<br>
+<br>
+<br>
+
+-------------------------------------------------------------------------
+
+<br>
+<br>
+<br>
 
 
 
