@@ -102,28 +102,36 @@ npm run desktop
 **Midiblocks is a visual, all-in-one gesture mapping and handsfree desktop automation platform designed to help you use devices handsfree!** Some use cases include:
 
 - [Playing commercial video games handsfree with face gestures](https://www.youtube.com/watch?v=fgVIZx-jkXA)
+
 - [Controlling robots handsfree with head movements](https://youtu.be/lb-Bkejm0Pg?t=54)
+
 - [Handsfree and voice-free typing](https://www.youtube.com/watch?v=o0i_AivvsQ4)
+
 - [Using a mobile device as a handsfree secondary display](https://www.youtube.com/watch?v=NNqIkVRzWbs)
 
-Midiblocks is powered by [Google's Blockly](https://developers.google.com/blockly) which is used to help create a block-based visual language that lets users snap blocks together to help you map gestures to a mouse, keyboard, MIDI, and really anything at all!
+Midiblocks is centered around blocks of code that are literally represented visually by blocks. Midiblocks is broken up into several views:
 
+- [The Studio](#the-studio) is where you actually snap the blocks together to map gestures to things. All of the blocks in a Studio workspace are collectively referred to as `midiblocks`
 
-## The Studio
+- Each individual block represents JavaScript code and [The Factory](#the-factory) is where you design the shape of these blocks and write its code
 
-![](https://i.imgur.com/VnvGtig.jpg)
+- [The Library](#the-library) is where your Factory Blocks and Studio Midiblocks are stored. You can edit, remix, and delete them there
+
+### The Studio
+
+![](https://i.imgur.com/qeidIys.png)
 
 > 🚧 More info coming soon
 
-## The Factory
+### The Factory
 
-![](https://i.imgur.com/NOOzES6.jpg)
+![](https://i.imgur.com/3h229Km.png)
 
 > 🚧 More info coming soon
 
-## The Library
+### The Library
 
-![](https://i.imgur.com/7LL7s5h.jpg)
+![](https://i.imgur.com/iZpHeVh.png)
 
 > 🚧 More info coming soon
 
