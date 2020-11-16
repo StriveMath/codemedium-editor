@@ -32,8 +32,8 @@
 ## Quickstart Setup
 ```bash
 # 1) Setup
-git clone https://github.com/midiblocks/midiblocks
-cd midiblocks
+git clone https://github.com/midiblocks/midiblocks-web
+cd midiblocks-web
 npm install
 
 # 2a) Web based mode (native browser events)
