@@ -4,19 +4,29 @@ const routes = [
     component: () => import('layouts/Main.vue'),
     children: [
       {
+        name: 'Home',
+        path: '/',
+        component: () => import('pages/EditorHome.vue')
+      },
+      {
+        name: 'Editor',
+        path: '/editor',
+        component: () => import('pages/EditorHome.vue')
+      },
+      {
         name: 'Studio',
         path: '/studio',
         component: () => import('pages/StudioHome.vue')
       },
       {
-        name: 'Library',
-        path: '/library',
-        component: () => import('pages/LibraryHome.vue')
-      },
-      {
         name: 'Factory',
         path: '/factory',
         component: () => import('pages/FactoryHome.vue')
+      },
+      {
+        name: 'Library',
+        path: '/library',
+        component: () => import('pages/LibraryHome.vue')
       },
       {
         name: 'Settings',
