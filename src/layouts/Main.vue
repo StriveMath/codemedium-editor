@@ -87,7 +87,6 @@ q-layout(ref='main' view='lHh Lpr lFf')
 </template>
 
 <script>
-import {get, set} from 'lodash'
 import pkg from '../../package.json'
 import MainNavLink from 'components/mainNavPanel/Link'
 import ImporterExporter from 'components/ImporterExporter'
@@ -117,6 +116,12 @@ export default {
     return {
       mainNavPanel: {
         links: [
+          {
+            title: 'Editor',
+            description: 'Work directly on the page',
+            link: '/editor',
+            icon: 'fas fa-keyboard'
+          },
           {
             title: 'Studio',
             description: 'Visually map and program your devices',
