@@ -80,8 +80,8 @@ export default {
     runCode () {
       window.parent?.postMessage({
         action: 'pixelfelt.editor.runCode',
-        code: this.code
-      })
+        code: this.currentEditor.code
+      }, '*')
     }
   }
 }
