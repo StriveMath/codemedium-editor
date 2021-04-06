@@ -7,6 +7,7 @@
 // https://quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 const fs = require('fs-extra')
+const pkg = require('./package.json')
 
 /**
  * Conditional environment variables
@@ -76,11 +77,11 @@ module.exports = function (ctx) {
         HANDSFREE_DESKTOP
       },
       
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: 'hash', // available values: 'hash', 'history'
 
-      publicPath: env.PUBLIC_PATH,
+      publicPath: process.env.NODE_ENV === 'production' ? `/pixelfelt-blockly@${pkg.version}/dist/` : env.PUBLIC_PATH,
+      vueRouterBase: process.env.NODE_ENV === 'production' ? `/pixelfelt-blockly@${pkg.version}/dist/` : env.APP_BASE,
       distDir: env.BUILD_DIR,
-      vueRouterBase: env.APP_BASE,
       
       // transpile: false,
 

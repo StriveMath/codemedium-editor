@@ -12,7 +12,7 @@ q-layout(ref='main' view='lHh Lpr lFf')
       q-space
 
       //- Editor controls
-      template(v-if='$route.name === "Editor"')
+      template(v-if='$route.name === "Editor" || $route.name === "Home"')
         q-btn(color='secondary' size='sm' icon='fas fa-play' @click='$root.$emit("editor.runCode")') Run code
         q-space
 
