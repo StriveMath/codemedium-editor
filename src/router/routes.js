@@ -5,8 +5,13 @@ const routes = [
     children: [
       {
         name: 'Home',
-        path: '',
-        component: () => import('pages/Home.vue')
+        path: '/',
+        component: () => import('pages/EditorHome.vue')
+      },
+      {
+        name: 'Editor',
+        path: '/editor',
+        component: () => import('pages/EditorHome.vue')
       },
       {
         name: 'Studio',
@@ -14,31 +19,19 @@ const routes = [
         component: () => import('pages/StudioHome.vue')
       },
       {
-        name: 'Library',
-        path: '/library',
-        component: () => import('pages/LibraryHome.vue')
-      },
-      {
         name: 'Factory',
         path: '/factory',
         component: () => import('pages/FactoryHome.vue')
       },
       {
+        name: 'Library',
+        path: '/library',
+        component: () => import('pages/LibraryHome.vue')
+      },
+      {
         name: 'Settings',
         path: '/settings',
         component: () => import('pages/SettingsHome.vue')
-      },
-
-      // Docs
-      {
-        name: 'DocsLanding',
-        path: '/docs',
-        component: () => import('pages/docs/Index.vue')
-      },
-      {
-        name: 'DocsHandsfreeLanding',
-        path: '/docs/handsfree',
-        component: () => import('pages/docs/handsfree/Index.vue')
       }
     ]
   },

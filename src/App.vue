@@ -18,7 +18,6 @@
 
 <script>
 import {set} from 'lodash'
-import Blockly from 'blockly'
 import Prompt from './components/Prompt'
 import {mapState} from 'vuex'
 import defaultWorkspace from './assets/workspaces/default'
@@ -157,7 +156,7 @@ export default {
     },
 
     goHome () {
-      this.$router.push({name: 'Home'})
+      // this.$router.push({name: 'Home'})
       this.errors.generic = ''
     },
 

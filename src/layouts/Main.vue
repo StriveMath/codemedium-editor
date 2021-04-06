@@ -5,11 +5,16 @@ q-layout(ref='main' view='lHh Lpr lFf')
     q-toolbar
       q-btn(flat dense round icon='fas fa-bars' aria-label='Menu' @click='leftDrawerOpen = !leftDrawerOpen')
       q-toolbar-title(style='flex: 0 0 auto')
-        router-link.text-decoration-none.text-white(:to='{name: "Home"}')
+        span.text-decoration-none.text-white(:to='{name: "Script"}')
           img.gt-sm.q-mr-sm(src='~assets/logo-title.png' height=32 style='vertical-align: middle')
           img.lt-md.q-mr-sm(src='~assets/logo-title-favicon.png' height=32 style='vertical-align: middle')
         small.gt-xs.q-ml-sm.text-secondary(style='font-size: .65em; display: inline-block; transform: translate(0, -3px)') {{version}}
       q-space
+
+      //- Editor controls
+      template(v-if='$route.name === "Editor"')
+        q-btn(color='secondary' size='sm' icon='fas fa-play' @click='$root.$emit("editor.runCode")') Run code
+        q-space
 
       //- Studio controls
       template(v-if='studio.hasBookmarks && $route.name === "Studio"')
@@ -87,7 +92,6 @@ q-layout(ref='main' view='lHh Lpr lFf')
 </template>
 
 <script>
-import {get, set} from 'lodash'
 import pkg from '../../package.json'
 import MainNavLink from 'components/mainNavPanel/Link'
 import ImporterExporter from 'components/ImporterExporter'
@@ -118,10 +122,10 @@ export default {
       mainNavPanel: {
         links: [
           {
-            title: 'Home',
-            description: 'Get an overview of what Midiblocks is about',
-            link: '/',
-            icon: 'fas fa-home'
+            title: 'Editor',
+            description: 'Work directly on the page',
+            link: '/editor',
+            icon: 'fas fa-keyboard'
           },
           {
             title: 'Studio',
@@ -146,12 +150,6 @@ export default {
             description: 'Toggle Handsfree mode and other settings',
             link: '/settings',
             icon: 'fas fa-cogs'
-          },
-          {
-            title: 'Documentation',
-            description: 'Learn how to use Midiblocks and Handsfree.js',
-            link: '/docs',
-            icon: 'fas fa-book'
           }
         ]
       },

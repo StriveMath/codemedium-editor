@@ -1,0 +1,25 @@
+# Folders
+.quasar
+.vscode
+desktop
+node_modules
+public
+src
+
+# Handsfree Assets
+dist/assets
+
+# Root files
+.default.quasar.env.json
+.editorconfig
+.eslintignore
+.eslintrc.json
+.firebaserc
+.postcssrc.json
+babel.config.js
+firebase.json
+firestore.indexes.json
+firestore.rules
+jsconfig.json
+quasar.conf.js
+quasar.extensions.json

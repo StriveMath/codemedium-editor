@@ -1,10 +1,10 @@
 {
-  "name": "midiblocks",
-  "version": "2020.11.13.1",
+  "name": "pixelfelt-blockly",
+  "version": "2021.04.06.1",
   "description": "A handsfree creative coding platform. Build apps, make art, create bots, & more",
-  "productName": "Midiblocks",
-  "author": "Oz Ramos <midiblocks@gmail.com>",
-  "private": true,
+  "productName": "Pixelfelt Blockly",
+  "author": "Oz Ramos <oz@pixelfelt.com>",
+  "main": "dist/index.html",
   "scripts": {
     "start": "quasar dev",
     "desktop": "concurrently \"quasar dev --handsfree-desktop\" \"nodemon desktop/server.js\"",
