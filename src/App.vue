@@ -156,7 +156,7 @@ export default {
     },
 
     goHome () {
-      this.$router.push({name: 'Home'})
+      // this.$router.push({name: 'Home'})
       this.errors.generic = ''
     },
 
