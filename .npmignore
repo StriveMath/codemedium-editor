@@ -7,7 +7,10 @@ public
 src
 
 # Handsfree Assets
-dist/assets
+dist/assets/jeelizFaceTransfer.js
+dist/assets/jeelizFaceTransferNNC.json
+dist/assets/ml5.min.js.js
+dist/assets/ml5.min.js.map
 
 # Root files
 .default.quasar.env.json
