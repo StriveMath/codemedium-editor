@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page
   .min-height-inherit.q-pt-appbar
-    CodeEditor.min-height-inherit(ref='code' @onCodeChange='onCodeChange' :value='code' :extraOptions='{language: "javascript"}')
+    CodeEditor.min-height-inherit(ref='code' :cursor='{lineNumber: 6, column: 9}' @onCodeChange='onCodeChange' :value='code' :extraOptions='{language: "javascript"}')
 </template>
 
 <script>
@@ -18,7 +18,19 @@ export default {
 
   data () {
     return {
-      code: '',
+      code: `(function () {
+  handsfree.use('custom', {
+    onFrame ({hands, weboji, pose, handpose, facemesh}) {
+      if (!data || !data?.hands) return
+      try {
+        
+
+      } catch (err) {
+        console.error(err)
+      }
+    }
+  })
+})()`,
       splitter: 50
     }
   },

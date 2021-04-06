@@ -24,7 +24,11 @@ export default {
       language: 'javascript'
     }},
     value: {default: ''},
-    prefix: {default: ''}
+    prefix: {default: ''},
+    cursor: {default: () => ({
+      lineNumber: 1,
+      column: 1
+    })}
   },
 
   watch: {
@@ -108,6 +112,10 @@ export default {
           }
       })
       monaco.editor.setTheme('shadesofpurple')
+
+      // Set cursor
+      this.$refs.editor.editor.focus()
+      this.$refs.editor.editor.setPosition({...this.$props.cursor})
 
       // Autoheight
       if (this.$props.extraOptions.autoheight) {
