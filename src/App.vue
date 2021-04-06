@@ -18,7 +18,6 @@
 
 <script>
 import {set} from 'lodash'
-import Blockly from 'blockly'
 import Prompt from './components/Prompt'
 import {mapState} from 'vuex'
 import defaultWorkspace from './assets/workspaces/default'

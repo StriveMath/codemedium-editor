@@ -90,7 +90,7 @@ q-page
                     p <span class='text-negative'>Handsfree.js</span> is a wrapper library around popular computer vision models designed to help you add <span class='text-info'>gesture recognition</span> to your own projects, and is what powers Midiblocks. Currently it supports:
                     ul
                       li Face tracking through [Weboji]()
-                    p More information on how to implement Handsfree.js will be available on the <router-link :to='{name: "DocsHandsfreeLanding"}'>documentation page</router-link> soon!
+                    //- p More information on how to implement Handsfree.js will be available on the <router-link :to='{name: "DocsHandsfreeLanding"}'>documentation page</router-link> soon!
                     p.q-mt-xl.text-center
                       q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-patreon')
                       a(href='https://patreon.com/midiblocks') Support Midiblocks on Patreon

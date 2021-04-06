@@ -27,18 +27,6 @@ const routes = [
         name: 'Settings',
         path: '/settings',
         component: () => import('pages/SettingsHome.vue')
-      },
-
-      // Docs
-      {
-        name: 'DocsLanding',
-        path: '/docs',
-        component: () => import('pages/docs/Index.vue')
-      },
-      {
-        name: 'DocsHandsfreeLanding',
-        path: '/docs/handsfree',
-        component: () => import('pages/docs/handsfree/Index.vue')
       }
     ]
   },
