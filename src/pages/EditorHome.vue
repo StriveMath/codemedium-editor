@@ -7,6 +7,7 @@ q-page
 <script>
 import CodeEditor from '../components/CodeEditor'
 import {set} from 'lodash'
+import store from 'store'
 
 /**
  * @todo document
@@ -17,8 +18,14 @@ export default {
   components: {CodeEditor},
 
   data () {
+    const currentEditor = store.get('currentEditor', {})
+    
     return {
-      code: `(function () {
+      currentEditor: {
+        code: ''
+      },
+      
+      code: currentEditor.code || `(function () {
   handsfree.use('custom', {
     onFrame ({hands, weboji, pose, handpose, facemesh}) {
       if (!data || !data?.hands) return
@@ -30,8 +37,7 @@ export default {
       }
     }
   })
-})()`,
-      splitter: 50
+})()`
     }
   },
 
@@ -52,12 +58,16 @@ export default {
   }, 
 
   methods: {
+    autosave () {
+      store.set('currentEditor', this.currentEditor)
+    },
+    
     /**
      * Handles code editor changes
      */
-    onCodeChange () {
-      // this.autosave()
-      console.log('autosave')
+    onCodeChange (code) {
+      this.currentEditor.code = code
+      this.autosave()
     },
 
     /**
@@ -72,21 +82,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass" scoped>
-table
-  height: 100%
-  width: 100%
-</style>
-
-<style lang="sass">
-#preview
-  display: flex
-  flex-direction: column
-
-  .injectionDiv
-    flex: 1 !important
-
-    .blocklySvg
-      height: 100%
-</style>
