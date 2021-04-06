@@ -37,7 +37,19 @@ export default {
 
   mounted () {
     set(window, 'app.$page', this)
+
+    this.$mousetrap.bindGlobal('ctrl+`', ev => {
+      ev.preventDefault()
+      this.runCode()
+    })
+
+    this.$root.$on('editor.runCode', this.runCode)
   },
+
+  destroyed () {
+    this.$mousetrap.unbind('ctrl+`')
+    this.$root.$off('editor.runCode', this.runCode)
+  }, 
 
   methods: {
     /**
@@ -47,6 +59,16 @@ export default {
       // this.autosave()
       console.log('autosave')
     },
+
+    /**
+     * Runs the code in the parent frame (or current frame if there is no parent)
+     */
+    runCode () {
+      window.parent?.postMessage({
+        action: 'pixelfelt.editor.runCode',
+        code: this.code
+      })
+    }
   }
 }
 </script>

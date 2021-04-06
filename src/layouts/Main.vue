@@ -11,6 +11,11 @@ q-layout(ref='main' view='lHh Lpr lFf')
         small.gt-xs.q-ml-sm.text-secondary(style='font-size: .65em; display: inline-block; transform: translate(0, -3px)') {{version}}
       q-space
 
+      //- Editor controls
+      template(v-if='$route.name === "Editor"')
+        q-btn(color='secondary' size='sm' icon='fas fa-play' @click='$root.$emit("editor.runCode")') Run code
+        q-space
+
       //- Studio controls
       template(v-if='studio.hasBookmarks && $route.name === "Studio"')
         span.q-mr-sm.gt-xs 📌
