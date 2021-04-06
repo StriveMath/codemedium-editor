@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page
   .min-height-inherit.q-pt-appbar
-    CodeEditor.min-height-inherit(ref='code' :cursor='{lineNumber: 6, column: 9}' @onCodeChange='onCodeChange' :value='code' :extraOptions='{language: "javascript"}')
+    CodeEditor.min-height-inherit(ref='code' :cursor='{lineNumber: currentEditor.cursor.lineNumber || 6, column: currentEditor.cursor.column || 9}' @onCodeChange='onCodeChange' :value='code' :extraOptions='{language: "javascript"}')
 </template>
 
 <script>
@@ -22,7 +22,11 @@ export default {
     
     return {
       currentEditor: {
-        code: ''
+        code: '',
+        cursor: {
+          column: currentEditor.code ? 1 : 9,
+          lineNumber: currentEditor.code ? 1 : 6
+        }
       },
       
       code: currentEditor.code || `(function () {
