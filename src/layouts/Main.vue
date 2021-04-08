@@ -13,7 +13,8 @@ q-layout(ref='main' view='lHh Lpr lFf')
 
       //- Editor controls
       template(v-if='$route.name === "Editor" || $route.name === "Home"')
-        q-btn(color='secondary' size='sm' icon='fas fa-play' @click='$root.$emit("editor.runCode")') Run code
+        q-btn.q-mr-sm(color='secondary' size='sm' icon='fas fa-play' @click='$root.$emit("editor.runCode")') Run code
+        q-btn(color='tertiary' size='sm' icon='fas fa-portrait' @click='$root.$emit("showDebugger")') Show debugger
         q-space
 
       //- Studio controls

@@ -54,11 +54,13 @@ export default {
     })
 
     this.$root.$on('editor.runCode', this.runCode)
+    this.$root.$on('showDebugger', this.showDebugger)
   },
 
   destroyed () {
     this.$mousetrap.unbind('ctrl+`')
     this.$root.$off('editor.runCode', this.runCode)
+    this.$root.$off('showDebugger', this.showDebugger)
   }, 
 
   methods: {
@@ -82,6 +84,13 @@ export default {
         action: 'pixelfelt.editor.runCode',
         code: this.currentEditor.code
       }, '*')
+    },
+
+    /**
+     * Tell parent window to show debugger in Picture in Picture
+     */
+    showDebugger () {
+      window.parent?.postMessage({action: 'pixelfelt.showDebugger'})
     }
   }
 }
