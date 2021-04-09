@@ -90,7 +90,7 @@ export default {
      * Tell parent window to show debugger in Picture in Picture
      */
     showDebugger () {
-      window.parent?.postMessage({action: 'pixelfelt.showDebugger'})
+      window.parent?.postMessage({action: 'pixelfelt.showDebugger'}, '*')
     }
   }
 }
