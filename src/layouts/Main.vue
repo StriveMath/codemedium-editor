@@ -44,6 +44,10 @@ q-layout(ref='main' view='lHh Lpr lFf')
         span.lt-sm 👋
         span.q-ml-xs.gt-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
 
+      //- Expand/collapse
+      q-btn.q-ml-md(v-if="isMinimized" color='tertiary' size='sm' icon='fas fa-chevron-up' @click='maximizeIframe')
+      q-btn.q-ml-md(v-else color='tertiary' size='sm' icon='fas fa-chevron-down' @click='minimizeIframe')
+
   //- Sidebar
   q-drawer.main-sidebar.flex-drawer(v-model='leftDrawerOpen' bordered)
     q-toolbar.bg-primary.text-white
@@ -120,6 +124,9 @@ export default {
   
   data () {
     return {
+      // Whether the Pixelfelt iFrame is maximized or not
+      isMinimized: true,
+      
       mainNavPanel: {
         links: [
           {
@@ -215,6 +222,18 @@ export default {
     clearAllLogs () {
       this.$store.commit('set', ['eventLogs.error', []])
       this.$store.commit('set', ['eventLogs.warn', []])
+    },
+
+    /**
+     * Resize iframe
+     */
+    maximizeIframe () {
+      window.parent?.postMessage({action: 'pixelfelt.maximize'}, '*')
+      this.isMinimized = false
+    },
+    minimizeIframe () {
+      window.parent?.postMessage({action: 'pixelfelt.minimize'}, '*')
+      this.isMinimized = true
     }
   }
 }
