@@ -45,7 +45,7 @@ q-layout(ref='main' view='lHh Lpr lFf')
         span.q-ml-xs.gt-xs {{settings.isFacePointerActive ? 'on' : 'off'}}
 
   //- Sidebar
-  q-drawer.main-sidebar.flex-drawer(v-model='leftDrawerOpen' show-if-above bordered :breakpoint='1400')
+  q-drawer.main-sidebar.flex-drawer(v-model='leftDrawerOpen' bordered)
     q-toolbar.bg-primary.text-white
     q-list.q-pa-sm
       template(v-if='mainNavPanel')

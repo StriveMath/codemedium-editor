@@ -32,7 +32,7 @@ export default {
       code: currentEditor.code || `(function () {
   handsfree.use('custom', {
     onFrame ({hands, weboji, pose, handpose, facemesh}) {
-      if (!data || !data?.hands) return
+      if (!hands && !weboji && !pose && !handpose && !facemesh) return
       try {
         
 
