@@ -154,6 +154,11 @@ export default {
     // Final setup
     document.querySelector('#stats-wrap').appendChild(this.stats.dom)
     this.$store.commit('set', ['settings.isStatsVisible', store.get('settings.isStatsVisible', false)])
+
+    // Let parent frame know that everything is loaded
+    this.$nextTick(() => {
+      window.parent?.postMessage({action: 'pixelfelt.ready'}, '*')
+    })
   },
 
   destroyed () {
