@@ -139,6 +139,18 @@ export default {
       color: 'ansi-bright-green'
     })
 
+    // Handle messages (from parent frame)
+    window.addEventListener('message', (event) => {
+      switch (event.data.action) {
+        case 'editor.loadCode':
+          this.$root.$emit('editor.loadCode', event)
+        break
+        case 'editor.runCode':
+          this.$root.$emit('editor.runCode')
+        break
+      }
+    })
+
     // Final setup
     document.querySelector('#stats-wrap').appendChild(this.stats.dom)
     this.$store.commit('set', ['settings.isStatsVisible', store.get('settings.isStatsVisible', false)])
