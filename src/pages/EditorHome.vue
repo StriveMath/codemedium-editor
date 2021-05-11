@@ -7,7 +7,6 @@ q-page
 <script>
 import CodeEditor from '../components/CodeEditor'
 import {set} from 'lodash'
-import store from 'store'
 
 /**
  * @todo document
@@ -18,30 +17,16 @@ export default {
   components: {CodeEditor},
 
   data () {
-    const currentEditor = store.get('currentEditor', {})
-    
     return {
       currentEditor: {
         code: '',
         cursor: {
-          column: currentEditor.code ? 1 : 9,
-          lineNumber: currentEditor.code ? 1 : 6
+          column: 9,
+          lineNumber: 6
         }
       },
       
-      code: currentEditor.code || `(function () {
-  handsfree.use('custom', {
-    onFrame ({hands, weboji, pose, handpose, facemesh}) {
-      if (!hands && !weboji && !pose && !handpose && !facemesh) return
-      try {
-        
-
-      } catch (err) {
-        console.error(err)
-      }
-    }
-  })
-})()`
+      code: ''
     }
   },
 
@@ -69,7 +54,10 @@ export default {
 
   methods: {
     autosave () {
-      store.set('currentEditor', this.currentEditor)
+      window.parent?.postMessage({
+        action: 'pixelfelt.editor.autosave',
+        code: this.currentEditor.code
+      }, '*')
     },
     
     /**
