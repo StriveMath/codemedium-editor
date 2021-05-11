@@ -54,13 +54,17 @@ export default {
     })
 
     this.$root.$on('editor.runCode', this.runCode)
+    this.$root.$on('editor.loadCode', this.loadCode)
     this.$root.$on('showDebugger', this.showDebugger)
+    window.addEventListener('message', this.onMessage)
   },
 
   destroyed () {
     this.$mousetrap.unbind('ctrl+`')
     this.$root.$off('editor.runCode', this.runCode)
+    this.$root.$off('editor.loadCode', this.loadCode)
     this.$root.$off('showDebugger', this.showDebugger)
+    window.removeEventListener('message', this.onMessage)
   }, 
 
   methods: {
@@ -91,6 +95,13 @@ export default {
      */
     showDebugger () {
       window.parent?.postMessage({action: 'pixelfelt.showDebugger'}, '*')
+    },
+
+    /**
+     * Load code from parent frame
+     */
+    loadCode (event) {
+      this.$refs.code.code = event.data.code
     }
   }
 }
