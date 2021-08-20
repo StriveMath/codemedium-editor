@@ -16,7 +16,7 @@
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/standalone": "^7.11.6",
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.10.11",
     "axios": "^0.18.1",
     "blockly": "^3.20200924.3",
     "core-js": "^3.6.5",
@@ -27,7 +27,7 @@
     "markdown-it": "^11.0.0",
     "monaco-editor-webpack-plugin": "^1.9.0",
     "mousetrap": "^1.6.5",
-    "quasar": "^1.0.0",
+    "quasar": "^1.15.23",
     "stats.js": "^0.17.0",
     "store": "^2.0.12",
     "uuid": "^8.3.0",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
-    "@quasar/quasar-app-extension-qenv": "^1.0.3",
+    "@quasar/quasar-app-extension-qenv": "^1.1.0",
     "babel-eslint": "^10.0.1",
     "concurrently": "^5.3.0",
     "eslint": "^6.8.0",
