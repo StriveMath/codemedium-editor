@@ -37,7 +37,7 @@ export default function (/* { ssrContext } */) {
        * Blocks library
        */
       blocks: store.get('blocks', {}),
-      midiblocks: store.get('midiblocks', {}),
+      codeblocks: store.get('codeblocks', {}),
 
       /**
        * Settings

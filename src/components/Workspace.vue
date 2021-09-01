@@ -45,7 +45,7 @@ import {mapState} from 'vuex'
 import interpreterBase from '../assets/interpreter/index.js'
 import {defaults} from 'lodash'
 import Interpreter from 'js-interpreter'
-import midiblocksTheme from '../assets/toolboxes/theme'
+import codemediumTheme from '../assets/toolboxes/theme'
 import emitHandler from '../assets/interpreter/emit-handler.js'
 import * as Babel from '@babel/standalone'
 import * as BabelClassProperties from '@babel/plugin-proposal-class-properties'
@@ -108,7 +108,7 @@ export default {
         colour: '#9effff',
         snap: true
       },
-      theme: midiblocksTheme
+      theme: codemediumTheme
     })
 
     // Create workspace and add bindings

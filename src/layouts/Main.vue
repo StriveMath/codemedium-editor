@@ -149,7 +149,7 @@ export default {
           },
           {
             title: 'Library',
-            description: 'Browse our library of user created Midiblocks and learn how to use them',
+            description: 'Browse our library of user created Codeblocks and learn how to use them',
             link: '/library',
             icon: 'fas fa-cubes'
           },
