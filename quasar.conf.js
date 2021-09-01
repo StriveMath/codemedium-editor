@@ -80,8 +80,8 @@ module.exports = function (ctx) {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
 
       // Use these for bookmarklet
-      // publicPath: process.env.NODE_ENV === 'production' ? `/pixelfelt-blockly@${pkg.version}/dist/` : env.PUBLIC_PATH,
-      // vueRouterBase: process.env.NODE_ENV === 'production' ? `/pixelfelt-blockly@${pkg.version}/dist/` : env.APP_BASE,
+      // publicPath: process.env.NODE_ENV === 'production' ? `/codemedium-editor@${pkg.version}/dist/` : env.PUBLIC_PATH,
+      // vueRouterBase: process.env.NODE_ENV === 'production' ? `/codemedium-editor@${pkg.version}/dist/` : env.APP_BASE,
       publicPath: env.PUBLIC_PATH,
       vueRouterBase: env.APP_BASE,
       distDir: env.BUILD_DIR,
