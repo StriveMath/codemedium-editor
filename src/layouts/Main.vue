@@ -27,9 +27,9 @@ q-layout(ref='main' view='lHh Lpr lFf')
 
       template(v-if='$route.name === "Studio"')
         q-toggle.no-select(color='negative' dark v-model='studio.isRunning')
-          span.gt-xs Code is
+          span.gt-xs Preview
           span.lt-sm 📜
-          span.q-ml-xs.gt-xs {{studio.isRunning ? 'running' : 'stopped'}}
+          span.q-ml-xs.gt-xs {{studio.isRunning ? 'on' : 'off'}}
         q-space
 
       //- Desktop toggle

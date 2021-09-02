@@ -1,5 +1,6 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
+  iframe#preview(ref='preview' sandbox='allow-scripts' src='/preview.html' :class='{hidden: !studio.isRunning}')
   Workspace.studio-workspace.full-height(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
     q-item.q-mt-lg(@click='saveCodeblock' clickable)
       q-item-section(avatar)
@@ -103,7 +104,7 @@ export default {
 
   mounted () {
     set(window, 'app.$page', this)
-
+  
     // Load workspace
     const currentStudio = store.get('currentStudio', {})
     if (currentStudio.workspace) {
@@ -414,4 +415,15 @@ export default {
 <style lang="sass">
 .studio-workspace > div
   height: 100%
+
+#preview
+  position: absolute
+  height: 400px
+  width: 400px
+  top: 0
+  right: 0
+  z-index: 10
+  background: #fff
+  box-shadow: -3px 3px 3px rgba(0,0,0,0.35)
+  border: none
 </style>
