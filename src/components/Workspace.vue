@@ -306,9 +306,9 @@ export default {
     /**
      * Execute code from beginning
      */
-    restartCode (iframe) {
-      this.code = Blockly.JavaScript.workspaceToCode(this.blockly)
-      iframe.$el.contentWindow.postMessage({action: 'reload'}, '*')
+    restartCode () {
+      let code = Blockly.JavaScript.workspaceToCode(this.blockly)
+      this.$emit('updateCode', code)
 
       // @fixme 9/1/21 - No longer using interpreter but keeping just in case
       // this.interpreter = new Interpreter(

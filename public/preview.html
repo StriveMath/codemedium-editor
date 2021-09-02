@@ -7,6 +7,9 @@
         case 'reload':
           window.location.reload()
         break
+        case 'runCode':
+          eval(event.data.code)
+        break
       }
     }
   }, false)

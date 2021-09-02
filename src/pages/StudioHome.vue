@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
-  CodePreview(ref='preview' :class='{hidden: !studio.isRunning}')
-  Workspace.studio-workspace.full-height(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
+  CodePreview(ref='preview' :code='code' :class='{hidden: !studio.isRunning}')
+  Workspace.studio-workspace.full-height(ref='workspace' :options='options' @updateCode='updateCode' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
     q-item.q-mt-lg(@click='saveCodeblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
@@ -201,6 +201,9 @@ export default {
       isUnsaved: store.get('isStudioUnsaved'),
       
       hasLoaded: false,
+
+      // The generated iframe code
+      code: '',
       
       // Current bookmark index
       currentBookmark: -1,
@@ -310,8 +313,11 @@ export default {
     /**
      * Start dragging the preview
      */
-    startDrag () {
-
+    updateCode (code) {
+      this.code = code
+      if (this.studio.isRunning) {
+        this.$refs.preview.$el.contentWindow.postMessage({action: 'reload'}, '*')
+      }
     },
 
     /**

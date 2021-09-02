@@ -4,6 +4,8 @@
 
 <script>
 export default {
+  props: ['code'],
+  
   mounted () {
     this.$refs.iframe.onload = this.onLoad
   },
@@ -14,7 +16,7 @@ export default {
     },
     
     onLoad () {
-      console.log('laod', arguments)
+      this.$refs.iframe.contentWindow.postMessage({action: 'runCode', code: this.code}, '*')
     }
   }
 }
