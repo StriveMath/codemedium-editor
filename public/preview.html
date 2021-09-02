@@ -1,6 +1,13 @@
 <!DOCTYPE html>
+<h1>Test</h1>
 <script>
   window.addEventListener('message', (event) => {
-    console.log('🧙‍♂️ CHILD', event)
+    if (typeof event.data === 'object') {
+      switch (event.data.action) {
+        case 'reload':
+          window.location.reload()
+        break
+      }
+    }
   }, false)
 </script>
