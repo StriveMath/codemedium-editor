@@ -16,6 +16,7 @@ export default {
     },
     
     onLoad () {
+      console.log('💻 Loaded Code:', this.code)
       this.$refs.iframe.contentWindow.postMessage({action: 'runCode', code: this.code}, '*')
     }
   }

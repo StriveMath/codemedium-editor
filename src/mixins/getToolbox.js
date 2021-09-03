@@ -67,7 +67,9 @@ export default {
               } else {
                 switch (variable.input) {
                   case 'value':
-                    code.push(`var $${variable.name} = ${JSON.stringify(Blockly.JavaScript.valueToCode(block, variable.name, Blockly.JavaScript.ORDER_ATOMIC))}`)
+                    let value = Blockly.JavaScript.valueToCode(block, variable.name, Blockly.JavaScript.ORDER_ATOMIC)
+                    if (value === '') value = '""'
+                    code.push(`var $${variable.name} = ${value}`)
                   break
                   case 'statements':
                     const statement = Blockly.JavaScript.statementToCode(block, variable.name)
