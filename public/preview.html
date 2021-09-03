@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+<script>
+  window.addEventListener('message', (event) => {
+    if (typeof event.data === 'object') {
+      switch (event.data.action) {
+        case 'reload':
+          window.location.reload()
+        break
+        case 'runCode':
+          const $script = document.createElement('script')
+          $script.type = 'text/javascript'
+          $script.appendChild(document.createTextNode(event.data.code))
+          document.body.appendChild($script)
+        break
+      }
+    }
+  }, false)
+</script>

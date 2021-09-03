@@ -77,7 +77,7 @@ export default {
     if (!store.get('version') || store.get('version') < this.$v) {
       if (store.get('version')) {
         this.$q.notify({
-          message: '📦 Midiblocks has been updated!',
+          message: '📦 CodeMedium has been updated!',
           type: 'positive',
           timeout: 5000
         })
@@ -91,7 +91,7 @@ export default {
         store.set(key, defaultWorkspace.localStorage[key])
       })
       this.$store.commit('set', ['blocks', defaultWorkspace.localStorage.blocks])
-      this.$store.commit('set', ['midiblocks', defaultWorkspace.localStorage.midiblocks])
+      this.$store.commit('set', ['codeblocks', defaultWorkspace.localStorage.codeblocks])
     }
 
     // Use new version
@@ -157,7 +157,7 @@ export default {
 
     // Let parent frame know that everything is loaded
     this.$nextTick(() => {
-      window.parent?.postMessage({action: 'pixelfelt.ready'}, '*')
+      window.parent?.postMessage({action: 'codemedium.ready'}, '*')
     })
   },
 

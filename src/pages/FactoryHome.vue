@@ -490,7 +490,7 @@ export default {
         // Not used by Blockly, but may be used by a loader
         type: blockType,
         tooltip: '',
-        helpUrl: 'https://midiblocks.com/help/block/' + blockType
+        helpUrl: 'https://codemedium.com/help/block/' + blockType
       }
       let message = []
       let args = []

@@ -7,9 +7,9 @@
   <h3>🐞 This is still a prototype and may be buggy 🐞</h3>
   <br>
   <p>
-    <a href="https://github.com/midiblocks/midblocks-web"><img src="https://img.shields.io/github/stars/midiblocks/midiblocks-web?style=social"></a>&nbsp;
-    <a href="https://github.com/MIDIBlocks/midiblocks-web/milestone/1"><img src="https://img.shields.io/github/milestones/progress/midiblocks/midiblocks-web/1"></a>&nbsp;
-    <a href="https://github.com/MIDIBlocks/midiblocks-web"><img src="https://img.shields.io/github/last-commit/midiblocks/midiblocks-web"></a>&nbsp;
+    <a href="https://github.com/codemedium/codemedium-editor"><img src="https://img.shields.io/github/stars/codemedium/codemedium-editor?style=social"></a>&nbsp;
+    <a href="https://github.com/codemedium/codemedium-editor/milestone/1"><img src="https://img.shields.io/github/milestones/progress/codemedium/codemedium-editor/1"></a>&nbsp;
+    <a href="https://github.com/codemedium/codemedium-editor"><img src="https://img.shields.io/github/last-commit/codemedium/codemedium-editor"></a>&nbsp;
   </p>
 </div>
 
@@ -32,8 +32,8 @@
 ## Quickstart Setup
 ```bash
 # 1) Setup
-git clone https://github.com/midiblocks/midiblocks-web
-cd midiblocks-web
+git clone https://github.com/codemedium/codemedium-editor
+cd codemedium-editor
 npm install
 
 # 2a) Web based mode (native browser events)
@@ -99,7 +99,7 @@ npm run desktop
 
 # About
 
-**Midiblocks is a visual, all-in-one gesture mapping and handsfree desktop automation platform designed to help you use devices handsfree!** Some use cases include:
+**CodeMedium is a visual, all-in-one gesture mapping and handsfree desktop automation platform designed to help you use devices handsfree!** Some use cases include:
 
 - [Playing commercial video games handsfree with face gestures](https://www.youtube.com/watch?v=fgVIZx-jkXA)
 
@@ -109,13 +109,13 @@ npm run desktop
 
 - [Using a mobile device as a handsfree secondary display](https://www.youtube.com/watch?v=NNqIkVRzWbs)
 
-Midiblocks is centered around blocks of code that are literally represented visually by blocks. Midiblocks is broken up into several views:
+CodeMedium is centered around blocks of code that are literally represented visually by blocks. CodeMedium is broken up into several views:
 
-- [The Studio](#the-studio) is where you actually snap the blocks together to map gestures to things. All of the blocks in a Studio workspace are collectively referred to as `midiblocks`
+- [The Studio](#the-studio) is where you actually snap the blocks together to map gestures to things. All of the blocks in a Studio workspace are collectively referred to as `codeblocks`
 
 - Each individual block represents JavaScript code and [The Factory](#the-factory) is where you design the shape of these blocks and write its code
 
-- [The Library](#the-library) is where your Factory Blocks and Studio Midiblocks are stored. You can edit, remix, and delete them there
+- [The Library](#the-library) is where your Factory Blocks and Studio Codeblocks are stored. You can edit, remix, and delete them there
 
 ### The Studio
 
@@ -155,8 +155,8 @@ Midiblocks is centered around blocks of code that are literally represented visu
 - [NodeJS LTS (eg 12.x.x)](https://nodejs.org/en/)
 
 ## Installing
-- Open terminal and clone this repository with: `git clone https://github.com/midiblocks/midiblocks`
-- Change into directory with: `cd midiblocks`
+- Open terminal and clone this repository with: `git clone https://github.com/codemedium/codemedium-editor`
+- Change into directory with: `cd codemedium`
 - Run `npm install` from the project root to install dependencies (> 250Mb)
 - Run `npm start` from the project's root to start the app at [localhost:8080](http://localhost:8080)
 
@@ -234,7 +234,7 @@ The following is available inside `localStorage`:
 ```js
 {
   blocks: [],           // All loaded Factory Blocks
-  midiblocks: [],       // All loaded Studio Midiblocks
+  codeblocks: [],       // All loaded Studio codeblocks
   currentFactory: {},   // The Factory's last state (autosave)
   currentStudio: {},    // The Studio's last state (autosave)
   splitter: 50
@@ -302,7 +302,7 @@ The following is available inside `localStorage`:
 
 # License: [MIT](https://opensource.org/licenses/MIT)
 
-Copyright 2020 midiblocks
+Copyright 2020 CodeBlocks
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

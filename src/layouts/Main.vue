@@ -27,9 +27,9 @@ q-layout(ref='main' view='lHh Lpr lFf')
 
       template(v-if='$route.name === "Studio"')
         q-toggle.no-select(color='negative' dark v-model='studio.isRunning')
-          span.gt-xs Code is
+          span.gt-xs Preview
           span.lt-sm 📜
-          span.q-ml-xs.gt-xs {{studio.isRunning ? 'running' : 'stopped'}}
+          span.q-ml-xs.gt-xs {{studio.isRunning ? 'on' : 'off'}}
         q-space
 
       //- Desktop toggle
@@ -124,7 +124,7 @@ export default {
   
   data () {
     return {
-      // Whether the Pixelfelt iFrame is maximized or not
+      // Whether the codemedium iFrame is maximized or not
       isMinimized: true,
       
       mainNavPanel: {
@@ -149,7 +149,7 @@ export default {
           },
           {
             title: 'Library',
-            description: 'Browse our library of user created Midiblocks and learn how to use them',
+            description: 'Browse our library of user created Codeblocks and learn how to use them',
             link: '/library',
             icon: 'fas fa-cubes'
           },
@@ -228,11 +228,11 @@ export default {
      * Resize iframe
      */
     maximizeIframe () {
-      window.parent?.postMessage({action: 'pixelfelt.maximize'}, '*')
+      window.parent?.postMessage({action: 'codemedium.maximize'}, '*')
       this.isMinimized = false
     },
     minimizeIframe () {
-      window.parent?.postMessage({action: 'pixelfelt.minimize'}, '*')
+      window.parent?.postMessage({action: 'codemedium.minimize'}, '*')
       this.isMinimized = true
     }
   }

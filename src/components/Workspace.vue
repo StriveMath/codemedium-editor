@@ -41,14 +41,14 @@
 
 <script>
 import Blockly from 'blockly'
-import {mapState} from 'vuex'
-import interpreterBase from '../assets/interpreter/index.js'
+// import {mapState} from 'vuex'
+// import interpreterBase from '../assets/interpreter/index.js'
 import {defaults} from 'lodash'
-import Interpreter from 'js-interpreter'
-import midiblocksTheme from '../assets/toolboxes/theme'
+// import Interpreter from 'js-interpreter'
+import codemediumTheme from '../assets/toolboxes/theme'
 import emitHandler from '../assets/interpreter/emit-handler.js'
-import * as Babel from '@babel/standalone'
-import * as BabelClassProperties from '@babel/plugin-proposal-class-properties'
+// import * as Babel from '@babel/standalone'
+// import * as BabelClassProperties from '@babel/plugin-proposal-class-properties'
 
 /**
  * @emits onChange
@@ -64,6 +64,7 @@ export default {
       interpreter: null,
       isFlyoutOpen: false,
       blockBeingDragged: false,
+      code: '',
 
       // Handsfree data
       handsfree: {
@@ -108,7 +109,7 @@ export default {
         colour: '#9effff',
         snap: true
       },
-      theme: midiblocksTheme
+      theme: codemediumTheme
     })
 
     // Create workspace and add bindings
@@ -306,14 +307,17 @@ export default {
      * Execute code from beginning
      */
     restartCode () {
-      const code = Blockly.JavaScript.workspaceToCode(this.blockly)
-      this.interpreter = new Interpreter(
-        Babel.transform(interpreterBase + '\n' + code, {
-          presets: ['env'],
-          plugins: [BabelClassProperties],
-          sourceType: 'script'
-        }).code, this.setupInterpreter)
-      this.interpreter.run()
+      let code = Blockly.JavaScript.workspaceToCode(this.blockly)
+      this.$emit('updateCode', code)
+
+      // @fixme 9/1/21 - No longer using interpreter but keeping just in case
+      // this.interpreter = new Interpreter(
+      //   Babel.transform(interpreterBase + '\n' + code, {
+      //     presets: ['env'],
+      //     plugins: [BabelClassProperties],
+      //     sourceType: 'script'
+      //   }).code, this.setupInterpreter)
+      // this.interpreter.run()
     },
 
     /**

@@ -9,8 +9,6 @@ q-page
             q-video.q-mb-md(:ratio='16/9' src='https://player.vimeo.com/video/476536466?dnt=1')
             p 🔔 <span class='text-ansi-bright-green'>This is still a prototype</span> 🔔
             p.text-subtitle1.text-left Map <span class='text-info'>Face Gestures</span> to a <span class='text-negative'>Mouse</span>, <span class='text-negative'>Keyboard</span>, <span class='text-negative'>Game Controller</span>, and <span class='text-negative'>more</span> and use your desktop and devices handsfree!
-            div.q-mt-sm.text-center
-              small <a href="https://github.com/midiblocks/midiblocks">GitHub</a> &middot; <a href="https://twitter.com/midiblocks">Twitter</a> &middot; <a href="https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA">YouTube</a> &middot; <a href="https://patreon.com/midiblocks">Support Midiblocks on Patreon</a>
 
       .col-12.col-md-6
         q-card
@@ -18,7 +16,7 @@ q-page
             div(style='height: 250px')
               Workspace.full-height(ref='workspace' :toolbox='toolbox' :autoload='workspaces.simpleDemo' :blocks='[]' :options='workspaces.options' @change='workspaceEventHandler')
           q-card-section.text-subtitle1
-            div <span class='text-negative'>Midiblocks</span> are groups of blocks that <span class='text-ansi-bright-green'>react</span> to <span class='text-info'>face gestures</span>. When you snap together the two blocks above, they form a <span class='text-negative'>Midiblock</span> that shows a "<span class='text-ansi-bright-green'>🔔 Hello World!</span>" message when you do the <span class='text-info'>selected gesture</span>.
+            div <span class='text-negative'>CodeMedium</span> are groups of blocks that <span class='text-ansi-bright-green'>react</span> to <span class='text-info'>face gestures</span>. When you snap together the two blocks above, they form a <span class='text-negative'>CodeBlock</span> that shows a "<span class='text-ansi-bright-green'>🔔 Hello World!</span>" message when you do the <span class='text-info'>selected gesture</span>.
           q-card-actions
             q-btn.bg-negative.full-width(v-if='settings.isFacePointerActive' @click='$store.dispatch("toggleHandsfree")') Stop webcam
             q-btn.bg-secondary.full-width(v-else @click='$store.dispatch("toggleHandsfree")') Try it! Enable Webcam and Go Handsfree
@@ -31,11 +29,11 @@ q-page
       .col-12.col-md-6
         q-card
           q-card-section.text-subtitle1
-            h2 The <span class='text-negative'>Midiblocks </span> <span class='text-info'>Newsletter</span>
+            h2 The <span class='text-negative'>CodeMedium </span> <span class='text-info'>Newsletter</span>
             p <span class='text-info'>Sign up</span> to get an email <span class='text-negative'>up to once every 2 weeks</span> (but probably way less, especially in the beginning). These updates will include:
             ul
-              li Updates to Midiblocks and Handsfree.js
-              li Tips & Tricks for using Midiblocks and Handsfree.js
+              li Updates to CodeMedium and Handsfree.js
+              li Tips & Tricks for using CodeMedium and Handsfree.js
               li Upcoming plans and roadmap
               li Links to special newsletter-only videos, repositories, and more
           q-card-section
@@ -43,7 +41,7 @@ q-page
               q-card.bg-positive
                 q-card-section
                   div 🎉 Thank you for signing up to the Newsletter!
-            q-form(v-else @submit='onNewsletterSubmit' action='https://midiblocks.us2.list-manage.com/subscribe/post?u=d46c4c0193c967959310937da&amp;id=868ba249fe' method='post' target='_blank')
+            q-form(v-else @submit='onNewsletterSubmit' action='https://CodeMedium.us2.list-manage.com/subscribe/post?u=d46c4c0193c967959310937da&amp;id=868ba249fe' method='post' target='_blank')
               q-input(v-model='newsletterEmail' lazy-rules type='email' name='EMAIL' color='secondary' filled placeholder='Your email')
               q-input.hidden(name='b_d46c4c0193c967959310937da_868ba249fe')
               q-btn.q-mt-md.bg-secondary.full-width(type='submit') Sign up
@@ -59,25 +57,17 @@ q-page
                 q-card.bg-inactive
                   q-card-section
                     h3 More updates and documentation coming soon!
-                    p Hi! My name is <span class='text-ansi-bright-green'>Oz Ramos</span> and I've been working towards releasing <span class='text-negative'>Midiblocks</span> and <span class='text-negative'>Handsfree.js</span> since 2018 with the goal of eventually helping anyone who cannot use a <span class='text-negative'>computer</span> at all use it and by extension <span class='text-negative'>anything</span> connected to it <span class='text-info'>handsfree</span> (initially with <span class='text-info'>face gestures</span>, but ultimately with <span class='text-info'>mind control</span>).
+                    p Hi! My name is <span class='text-ansi-bright-green'>Oz Ramos</span> and I've been working towards releasing <span class='text-negative'>CodeMedium</span> and <span class='text-negative'>Handsfree.js</span> since 2018 with the goal of eventually helping anyone who cannot use a <span class='text-negative'>computer</span> at all use it and by extension <span class='text-negative'>anything</span> connected to it <span class='text-info'>handsfree</span> (initially with <span class='text-info'>face gestures</span>, but ultimately with <span class='text-info'>mind control</span>).
                     p Sign up to <a href="http://eepurl.com/hhD7S1">my newsletter</a> to stay updated on these efforts, it's going to be a lot of fun! Also, here are some more links:
                     ul.spaced
                       li
-                        q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-patreon')
-                        a(href='https://patreon.com/midiblocks') Support Midiblocks on Patreon
-                        span  - Support Midiblocks and gain access to exclusives like weekly Midiblocks for popular games and apps!
-                      li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-twitter')
-                        a(href='https://twitter.com/midiblocks') Twitter <small>@Midiblocks</small>
+                        a(href='https://twitter.com/TheCodeMedium') Twitter <small>@TheCodeMedium</small>
                         span  - Follow me behind the scenes
                       li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-github')
-                        a(href='https://github.com/midiblocks') GitHub <small>@Midiblocks</small>
-                        span  - Star, fork, and contribute to Midiblocks, Handsfree.js, and more
-                      li
-                        q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-twitch')
-                        a(href='https://twitch.tv/midiblocks') Twitch
-                        span  - Come watch me work on Midiblocks, Handsfree.js, and other projects live 9-12, 2-5, and 7-10 PST most days
+                        a(href='https://github.com/CodeMedium') GitHub <small>@CodeMedium</small>
+                        span  - Star, fork, and contribute to CodeMedium, Handsfree.js, and more
                       li
                         q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-youtube')
                         a(href='https://www.youtube.com/channel/UCDzb8yXGOm6ZYd0Jf_FYKWA') YouTube
@@ -87,13 +77,10 @@ q-page
                   q-card-section
                     h3 Powered by <a href="https://github.com/midiblocks/handsfree">Handsfree.js</a>
                     q-video.q-mb-md(:ratio='16/9' src='https://player.vimeo.com/video/476537051?dnt=1')
-                    p <span class='text-negative'>Handsfree.js</span> is a wrapper library around popular computer vision models designed to help you add <span class='text-info'>gesture recognition</span> to your own projects, and is what powers Midiblocks. Currently it supports:
+                    p <span class='text-negative'>Handsfree.js</span> is a wrapper library around popular computer vision models designed to help you add <span class='text-info'>gesture recognition</span> to your own projects, and is what powers CodeMedium. Currently it supports:
                     ul
                       li Face tracking through [Weboji]()
                     //- p More information on how to implement Handsfree.js will be available on the <router-link :to='{name: "DocsHandsfreeLanding"}'>documentation page</router-link> soon!
-                    p.q-mt-xl.text-center
-                      q-icon.q-mr-sm.text-ansi-bright-green(name='fab fa-patreon')
-                      a(href='https://patreon.com/midiblocks') Support Midiblocks on Patreon
 
   section.content.q-mt-xl
     .row.q-col-gutter-lg.justify-center

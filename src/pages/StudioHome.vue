@@ -1,72 +1,74 @@
 <template lang="pug">
 q-page(:style-fn='resizePage')
-  Workspace.studio-workspace.full-height(ref='workspace' :options='options' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
-    q-item.q-mt-lg(@click='saveMidiblock' clickable)
+  CodePreview(ref='preview' :code='code' :class='{hidden: !studio.isRunning}')
+  Workspace.studio-workspace.full-height(ref='workspace' :options='options' @updateCode='updateCode' :toolbox='toolbox' :blocks='[]' @change='workspaceEventHandler' :isRunning='studio.isRunning')
+    q-item.q-mt-lg(@click='saveCodeblock' clickable)
       q-item-section(avatar)
         q-icon(color='secondary' name='fas fa-save')
       q-item-section.gt-sm
         q-badge(v-if='isUnsaved' color='negative' floating) Unsaved changes
-        q-item-label.text-secondary Save Midiblock
+        q-item-label.text-secondary Save Codeblock
     q-item.q-mb-lg(@click='showSettings' clickable)
       q-item-section(avatar)
         q-icon(name='fas fa-cogs')
       q-item-section.gt-sm
-        q-item-label Midiblock Settings
+        q-item-label Codeblock Settings
     q-item(@click='dialog.confirmNew = true' clickable)
       q-item-section(avatar)
         q-icon(color='positive' name='fas fa-file')
       q-item-section.gt-sm
-        q-item-label.text-positive New Midiblock
+        q-item-label.text-positive New Codeblock
     q-item(@click='dialog.loadBlock = true' clickable)
       q-item-section(avatar)
         q-icon(color='positive' name='fas fa-folder-open')
       q-item-section.gt-sm
-        q-item-label.text-positive Load Midiblock
+        q-item-label.text-positive Load Codeblock
     q-item.q-mb-lg(@click='dialog.remixConfirm = true' clickable)
       q-item-section(avatar)
         q-icon(color='positive' name='fas fa-copy')
       q-item-section.gt-sm
-        q-item-label.text-positive Remix Midiblock
+        q-item-label.text-positive Remix Codeblock
     q-item(@click='dialog.deleteConfirm = true' clickable)
       q-item-section(avatar)
         q-icon(color='negative' name='fas fa-trash')
       q-item-section.gt-sm
-        q-item-label.text-negative Delete Midiblock
+        q-item-label.text-negative Delete Codeblock
 
   //- Dialogs
   DialogConfirm(v-model='dialog.confirmNew'
-    @accept='createNewMidiblock'
+    @accept='createNewCodeblock'
     icon='fas fa-file'
-    title='Create new Midiblock?')
-      p Are you sure you'd like to create a new Midiblock? Any unsaved changes will be lost.
+    title='Create new Codeblock?')
+      p Are you sure you'd like to create a new Codeblock? Any unsaved changes will be lost.
 
   DialogConfirm(v-model='dialog.remixConfirm'
-    @accept='remixMidiblock'
+    @accept='remixCodeblock'
     icon='fas fa-copy'
-    title='Remix this midiblock?')
-      p Any unsaved changes to the current midiblock will be lost.
-      p Are you sure you'd like to create a copy of this midiblock and open it?
+    title='Remix this codeblock?')
+      p Any unsaved changes to the current codeblock will be lost.
+      p Are you sure you'd like to create a copy of this codeblock and open it?
 
   DialogConfirm(v-model='dialog.editSettings'
     @accept='updateSettings'
     bg='primary'
     icon='fas fa-cogs'
-    title='Midiblock Settings'
+    title='Codeblock Settings'
     accept-label='Update')
       q-input.q-mb-md(ref='autofocus' label='Title' color='secondary' v-model='meta._title' filled)
       q-input(label='Description' color='secondary' v-model='meta._description' type='textarea' filled)
       
-  DialogLoadMidiblock(v-model='dialog.loadBlock')
+  DialogLoadCodeblock(v-model='dialog.loadBlock')
 
-  DialogDeleteMidiblock(v-model='dialog.deleteConfirm' :midiblock='block')
+  DialogDeleteCodeblock(v-model='dialog.deleteConfirm' :codeblock='block')
 </template>
 
 <script>
 import {throttle, cloneDeep, set, sortBy} from 'lodash'
 import {mapState} from 'vuex'
 import Workspace from '../components/Workspace'
-import DialogLoadMidiblock from '../components/dialog/LoadMidiblock'
-import DialogDeleteMidiblock from '../components/dialog/DeleteMidiblock'
+import CodePreview from '../components/CodePreview'
+import DialogLoadCodeblock from '../components/dialog/LoadCodeblock'
+import DialogDeleteCodeblock from '../components/dialog/DeleteCodeblock'
 import DialogConfirm from '../components/dialog/Confirm'
 import store from 'store'
 import Blockly from 'blockly'
@@ -80,7 +82,7 @@ import getToolbox from '../mixins/getToolbox'
 export default {
   name: 'MainLayout',
 
-  components: {Workspace, DialogConfirm, DialogLoadMidiblock, DialogDeleteMidiblock},
+  components: {CodePreview, Workspace, DialogConfirm, DialogLoadCodeblock, DialogDeleteCodeblock},
 
   computed: {
     ...mapState(['notifications', 'studio']),
@@ -103,7 +105,7 @@ export default {
 
   mounted () {
     set(window, 'app.$page', this)
-
+  
     // Load workspace
     const currentStudio = store.get('currentStudio', {})
     if (currentStudio.workspace) {
@@ -144,7 +146,7 @@ export default {
     // Autosave with CTRL+S
     this.$mousetrap.bindGlobal('ctrl+s', ev => {
       ev.preventDefault()
-      this.saveMidiblock()
+      this.saveCodeblock()
     })
     this.$mousetrap.bindGlobal('ctrl+o', ev => {
       ev.preventDefault()
@@ -152,7 +154,8 @@ export default {
     })
 
     // Handsfree
-    document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
+    // @fixme 9/1/21 - No longer using interpreter
+    // document.addEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   destroyed () {
@@ -165,7 +168,8 @@ export default {
       this.$mousetrap.unbind(i.toString())
     }
 
-    document.removeEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
+    // @fixme 9/1/21 - No longer using interpreter
+    // document.removeEventListener('handsfree-data', this.sendHandsfreeToInterpreter)
   },
 
   watch: {
@@ -183,7 +187,7 @@ export default {
       deep: true,
       handler (studio) {
         if (studio.isRunning) {
-          this.$refs.workspace.restartCode()
+          this.$refs.workspace.restartCode(this.$refs.preview)
         }
       }
     }
@@ -193,10 +197,13 @@ export default {
     const currentStudio = store.get('currentStudio', {})
 
     return {
-      // Whether the autosave has been saved to a midiblock or not
+      // Whether the autosave has been saved to a codeblock or not
       isUnsaved: store.get('isStudioUnsaved'),
       
       hasLoaded: false,
+
+      // The generated iframe code
+      code: '',
       
       // Current bookmark index
       currentBookmark: -1,
@@ -245,42 +252,42 @@ export default {
     },
 
     /**
-     * Save the midiblock
+     * Save the codeblock
      */
-    saveMidiblock () {
-      const midiblocks = store.get('midiblocks', {})
-      midiblocks[this.block.uuid] = this.saveData
-      store.set('midiblocks', midiblocks)
+    saveCodeblock () {
+      const codeblocks = store.get('codeblocks', {})
+      codeblocks[this.block.uuid] = this.saveData
+      store.set('codeblocks', codeblocks)
       store.set('isStudioUnsaved', false)
-      this.$store.commit('set', ['midiblocks', midiblocks])
+      this.$store.commit('set', ['codeblocks', codeblocks])
       this.isUnsaved = false
 
       this.$q.notify({
         type: 'positive',
-        message: `Midiblock "${midiblocks[this.block.uuid].title}" saved`,
+        message: `Codeblock "${codeblocks[this.block.uuid].title}" saved`,
         timeout: 2000
       })
     },
 
     /**
-     * Creates a new midiblock
+     * Creates a new Codeblock
      */
-    createNewMidiblock () {
+    createNewCodeblock () {
       this.block.uuid = uuidv4()
       store.remove('currentStudio')
       this.$store.commit('tally', 'reloads')
-      this.$store.commit('set', ['lastEvent', {log: 'New midiblock created'}])
+      this.$store.commit('set', ['lastEvent', {log: 'New codeblock created'}])
     },
 
     /**
-     * Create a clone of a midiblock
+     * Create a clone of a Codeblock
      */
-    remixMidiblock () {
+    remixCodeblock () {
       this.block.uuid = uuidv4()
       this.meta.title += ' [Remixed]'
 
       this.autosave()
-      this.saveMidiblock()
+      this.saveCodeblock()
       
       this.$store.commit('tally', 'reloads')
     },
@@ -301,6 +308,16 @@ export default {
       this.meta.title = this.meta._title
       this.meta.description = this.meta._description
       this.autosave()
+    },
+
+    /**
+     * Start dragging the preview
+     */
+    updateCode (code) {
+      this.code = code
+      if (this.studio.isRunning) {
+        this.$refs.preview.$el.contentWindow.postMessage({action: 'reload'}, '*')
+      }
     },
 
     /**
@@ -333,6 +350,7 @@ export default {
 
     /**
      * Triggers the loop inside the interpreter
+     * @fixme 9/1/21 This is an oprhan method and no longer used...but keeping it because figuring this out was hard
      */
     sendHandsfreeToInterpreter (data) {
       if (this.studio.isRunning) {
@@ -392,7 +410,7 @@ export default {
         case Blockly.Events.VAR_DELETE:
         case Blockly.Events.VAR_RENAME:
           if (this.studio.isRunning) {
-            this.$refs.workspace.restartCode()
+            this.$refs.workspace.restartCode(this.$refs.preview)
           }
           this.checkBookmarks()
           this.hasLoaded && this.autosave()
